@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Configurações do Ambiente  
+title: Configurações do Ambiente
 type: configuracao-ambiente
 codigo: configuracao-ambiente
 ordem: 8
@@ -50,19 +50,23 @@ ordem: 8
       <p>- O arquivo criado deverá conter as informações da base de dados usada pela aplicação</p>
 
       <p>Exemplo para um banco local:</p>
-      <p><code>
-        oracle.jdbc.driverClassName=oracle.jdbc.OracleDriver <br>
-        oracle.jdbc.url=jdbc:oracle:thin:@localhost:1521:xe <br>
-        oracle.jdbc.username=BRIDGE <br>
-        oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM <br>
-      </code></p>
-
+      <div class="highlighter-rouge">
+        <pre class="highlight">
+            <!-- Atribuição da Id abaixo -->
+          <code class="textarea" id="database-properties"  >
+      <!-- Conteúdo do Arquivo -->
+oracle.jdbc.driverClassName=oracle.jdbc.OracleDriver
+oracle.jdbc.url=jdbc:oracle:thin:@localhost:1521:xe
+oracle.jdbc.username=BRIDGE
+oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
+      <!-- Fim da Conteúdo do Arquivo  -->
+          </code>
+        </pre>
+        <input id="myButton1" type="button" class="copiar btn"  onclick="copiar('database-properties', 'myButton1')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
+      </div>
+      <br>
       <p>* Para não gerar .orig:</p>
       <p><code>git config --global mergetool.keepBackup false</code></p>
-
-
-
-
     <br>
     <h1 align="center"><img src="https://maven.apache.org/images/maven-logo-black-on-white.png" alt="Maven" width="100px"></h1>
     <br>
@@ -152,7 +156,7 @@ ordem: 8
                     </textarea>
                       <button class="copiar btn btn-primary"  onclick="copiar('import-homologacao')">Import do homologação</button>
                   </div>
-                </div>  
+                </div>
                 <div class="row">
                   <p></p>
                   <div class="col-sm-2">
@@ -194,7 +198,7 @@ ordem: 8
       </div>
     </div>
 
-    <h1 align="center"> IDE JAVA</h1>  
+    <h1 align="center"> IDE JAVA</h1>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
