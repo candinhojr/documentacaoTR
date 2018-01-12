@@ -1,0 +1,35 @@
+<h2 id="padrão-de-nomenclatura-a-ser-utilizada-no-sismob">Padrão de nomenclatura a ser utilizada no SISMOB</h2>
+
+<p>O banco de dados deve seguir os padrões definidos pelo DATASUS.</p>
+
+<p>Segue link com o PDF com o detalhe dos padrões:
+https://drive.google.com/open?id=0B-h414mXnBScQ29jUHk4bWxKaGs</p>
+
+<p><strong>Observações específicas do SISMOB</strong></p>
+<ul>
+  <li>Não utilizar o sufixo ou prefixo “DbSismob” no nome das classes JPA. Caso exista uma classe com o mesmo nome e em outro pacote esta deve ser excluída, caso não seja utilizada, ou deve receber o prefixo com o nome do SCHEMA que ela pertence;</li>
+  <li>Nome das tabela - quando possuir vários nomes o primeiro deve ser o mais significativo ou o principal. Ex.: TB_PROPOSTA_ANEXO ou TB_MONITORAMENTO_PROJETO_LICITACAO</li>
+  <li>Se um enum não possuir uma tabela de relacionamento deve ser usado o prefixo “TP_” nas tabelas que recebem o @Enumerated</li>
+</ul>
+
+<p><strong>Orientações para manipulação do banco</strong></p>
+
+<ul>
+  <li>Para criação de chaves, estamos utilizando três tamanhos definidos em changelog-master.xml: small (4), medium (9) e big (12). Use conforme a necessidade da tabela, se esta tende a ter muitos registros, utilize 12, caso contrário, uma tabela com poucos tipos por exemplo, utilize 4.</li>
+  <li>A chave estrangeira precisa ter o mesmo tamanho e tipo da chave primária da tabela a qual ela está referenciando.</li>
+  <li>Para toda chave estrangeira, é necessário a criação de um Index na coluna que possui a FK.</li>
+  <li>Muito cuidado na hora de definir as constraints, existe um padrão para criação do nome de cada uma, e caso seja criada de maneira errada sua manutenção é custosa. Este padrão está definido no documento acima. Abaixo alguns exemplos, utilizando TB_TABELA_ORIGEM e TB_TABELA_DESTINO:</li>
+  <li>PK_TABELAORIGEM (sem TB nem underline)</li>
+  <li>FK_TABELADESTINO_TABELAORIGEM</li>
+  <li>IN_TABELAORIGEM_COTABELADESTINO</li>
+  <li>CK_TABELAORIGEM_STREGISTROATIVO</li>
+  <li>Caso o nome da constraint ultrapasse 30 caracteres, utilizar abreviação conforme definido no documento acima.</li>
+  <li>TODAS as colunas e tabelas do sistema precisam de comentário.</li>
+  <li>É necessário que esteja escrito no comentário da coluna que possui chave primária gerada por sequence (CO_SEQ), o nome da sequence que está sendo utilizada.</li>
+  <li>É necessário que esteja escrito no comentário da coluna que possui chave estrangeira qual tabela e qual chave está sendo referenciada.</li>
+  <li>As tabelas de relacionamento (RL) também possuem um padrão para criação do nome, sendo basicamente RL_TABELA1_TABELA2. Mais informações no documento acima.</li>
+  <li>Toda coluna do tipo ST ou TP precisa ter um valor DEFAULT, ser NOT NULL, ter uma constraint Check que verifica seus possíveis valores e ter explícito no comentário da coluna quais são os possíveis valores.</li>
+  <li>Pela necessidade de ser NOT NULL, o uso de TP é desencorajado, a menos que haja a garantia de que sempre haverá um valor pra essa coluna. Caso contrário, cria-se uma tabela de tipos e usa-se chave estrangeira normalmente.</li>
+  <li>O uso de chave primária composta em tabelas que não são RL é desencorajado, pois possui difícil manutenibilidade.</li>
+  <li>Qualquer dúvida, não havendo o entendimento do documento ou algum problema desconhecido, não hesite em perguntar ao colega.</li>
+</ul>

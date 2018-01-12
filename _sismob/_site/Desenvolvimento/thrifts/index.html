@@ -1,0 +1,24 @@
+<h1 id="sismobthriftgeneratorrunner">SismobThriftGeneratorRunner</h1>
+
+<p>Gera os arquivos .thrift para as classes que estão listadas dentro desta classe no método main.
+Recursivamente o gerador percorre os atributos das classes e gera outro arquivo para cada nova classe que for encontrada.</p>
+
+<p>Os atributos que possuírem a anotação @IgnoreThrift não serão exportados no arquivo .thrift.</p>
+
+<h1 id="comando-sh-generate_allsh">Comando sh generate_all.sh</h1>
+
+<p>Executar o comando SH (sh generate_all.sh), que está dentro da pasta sismob.common.api/thrift
+Este comando irá gerar as classes <alguma coisa="">Thrift contendo a classe thrift relacionada com as classes originais do passo 1.</alguma></p>
+
+<p><em>Para executar este comando é necessário ter instalado o binário do thrift <strong>0.9.3</strong> no sistema operacional</em>:</p>
+
+<p>http://ftp.unicamp.br/pub/apache/thrift/0.9.3/thrift-0.9.3.tar.gz</p>
+
+<p>Compile e instale com:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get install libboost-dev libboost-test-dev libboost-program-options-dev libevent-dev automake libtool flex bison pkg-config g++ libssl-dev
+<span class="nv">$ </span>./configure
+<span class="nv">$ </span><span class="nb">sudo </span>make
+<span class="nv">$ </span><span class="nb">sudo </span>make install
+<span class="nv">$ </span>thrift <span class="nt">-version</span> <span class="c"># Thrift version 0.9.3</span>
+</code></pre></div></div>

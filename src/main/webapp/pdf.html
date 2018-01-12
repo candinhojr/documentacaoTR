@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Gerar PDF</title>
+  <meta name="description" content="Sismob para Testers">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/pdf.html">
+  <link rel="icon" type="image/png" href="/img/logo-mini.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="/js/search.js" type="text/javascript"></script>
+  <script src="/js/copy-text.js" type="text/javascript"></script>
+  <script src="/js/functions.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="/js/bootstrap.js"type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      <img src="/img/logo-sismob.png">
+      <span class="title-text"></span>
+      <span class="label">Wiki</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="javascript: void" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+            <a href="/about/"><i class="icon icon-about"></i> Sobre</a>
+          
+        
+          
+        
+          
+            <a href="/pdf.html"><i class="icon icon-pdf"></i> Gerar PDF</a>
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="breadcrumb-placeholder">
+  <div class="wrapper breadcrumb-wrapper">
+    <ol class="breadcrumb">
+      <img src="/img/logo-mini.png">
+      <li><a href="/">Home</a></li>
+
+      
+        <li title="Gerar PDF">Gerar PDF</li>
+      
+    </ol>
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+
+        <div class="sidebar">
+          <div class="sidebar-content">
+            <form action="/search.html">
+  <input type="search" placeholder="Pesquisar..." name="q" id="search-input" autocomplete="off">
+</form>
+
+<ul id="search-results"></ul>
+
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('search-results'),
+    json: '/search.json',
+    noResultsText: 'Nenhum resultado encontrado'
+  });
+</script>
+
+<div class="menu">
+  
+
+
+
+  
+
+  <ul>
+    
+      <li>
+        <a title="Voltar para Home" href="/" class="back-link">
+          <i class="icon icon-back"></i> Voltar
+          <small>(Home)</small>
+        </a>
+      </li>
+    
+
+    <li>
+      <a class="open" title="" href=""></a>
+      <ul>
+        
+      </ul>
+    </li>
+  </ul>
+
+
+</div>
+
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="pdf-select">
+  <a class="pull-right btn" href="javascript: generate()">Imprimir / Gerar PDF</a>
+  <h2>Selecione as páginas que deseja incluir</h2>
+
+  
+  <ul>
+    
+
+      <li id="item-raiz" data-url="/">
+        <label>
+          <input type="checkbox" value="raiz" checked="checked"> WIKI
+          <small>
+            <a onclick="checkById('raiz', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('raiz', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+
+      <li id="item-processos" data-url="/sismob/processos/index.html">
+        <label>
+          <input type="checkbox" value="processos" checked="checked"> Processos
+          <small>
+            <a onclick="checkById('processos', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('processos', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+
+      <li id="item-arquitetura" data-url="/sismob/arquitetura/index.html">
+        <label>
+          <input type="checkbox" value="arquitetura" checked="checked"> Arquitetura
+          <small>
+            <a onclick="checkById('arquitetura', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('arquitetura', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+
+      <li id="item-analise" data-url="/sismob/An%C3%A1lise/index.html">
+        <label>
+          <input type="checkbox" value="analise" checked="checked"> Análise
+          <small>
+            <a onclick="checkById('analise', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('analise', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+
+      <li id="item-desenvolvimento" data-url="/sismob/Desenvolvimento/index.html">
+        <label>
+          <input type="checkbox" value="desenvolvimento" checked="checked"> Desenvolvimento
+          <small>
+            <a onclick="checkById('desenvolvimento', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('desenvolvimento', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+
+      <li id="item-testes" data-url="/sismob/Testes/index.html">
+        <label>
+          <input type="checkbox" value="testes" checked="checked"> Testes
+          <small>
+            <a onclick="checkById('testes', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('testes', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+  <ul>
+    
+
+      <li id="item-automatizado" data-url="/sismob/Testes/automatizado/index.html">
+        <label>
+          <input type="checkbox" value="automatizado" checked="checked"> Automatizado
+          <small>
+            <a onclick="checkById('automatizado', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('automatizado', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+  <ul>
+    
+
+      <li id="item-setid" data-url="/sismob/Testes/automatizado/como-setar-ids/index.html">
+        <label>
+          <input type="checkbox" value="setid" checked="checked"> Configurar ID
+          <small>
+            <a onclick="checkById('setid', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('setid', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+  </ul>
+
+
+        
+      </li>
+    
+  </ul>
+
+
+        
+      </li>
+    
+
+      <li id="item-banco-de-dados" data-url="/sismob/banco-de-dados/index.html">
+        <label>
+          <input type="checkbox" value="banco-de-dados" checked="checked"> Banco de Dados
+          <small>
+            <a onclick="checkById('banco-de-dados', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('banco-de-dados', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+  <ul>
+    
+
+      <li id="item-consultas-importantes" data-url="/sismob/banco-de-dados/consultas-importantes/index.html">
+        <label>
+          <input type="checkbox" value="consultas-importantes" checked="checked"> Consultas Importantes
+          <small>
+            <a onclick="checkById('consultas-importantes', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('consultas-importantes', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+
+      <li id="item-dumps-e-config" data-url="/sismob/banco-de-dados/dumps-e-config/index.html">
+        <label>
+          <input type="checkbox" value="dumps-e-config" checked="checked"> Dumps e Configurações
+          <small>
+            <a onclick="checkById('dumps-e-config', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('dumps-e-config', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+
+      <li id="item-nomenclatura" data-url="/sismob/banco-de-dados/nomenclatura/index.html">
+        <label>
+          <input type="checkbox" value="nomenclatura" checked="checked"> Padrão de Nomenclatura
+          <small>
+            <a onclick="checkById('nomenclatura', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('nomenclatura', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+  </ul>
+
+
+        
+      </li>
+    
+
+      <li id="item-configuracao-ambiente" data-url="/sismob/configuracao-ambiente/index.html">
+        <label>
+          <input type="checkbox" value="configuracao-ambiente" checked="checked"> Configurações do Ambiente
+          <small>
+            <a onclick="checkById('configuracao-ambiente', true); return false;">Marcar todos</a> |
+            <a onclick="checkById('configuracao-ambiente', false); return false;">Desmarcar todos</a>
+          </small>
+        </label>
+
+        
+          
+
+        
+      </li>
+    
+  </ul>
+
+
+
+  <h2>Informações de capa</h2>
+  <input id="input-titulo-documento" class="input" type="text" placeholder="Título do documento" />
+
+  <br>
+  <a class="btn primary block large" href="javascript: generate()">Imprimir / Gerar PDF</a>
+</div>
+
+<div class="pdf-content">
+  <div class="capa hidden">
+    <div class="capa-center">
+      <img src="/img/bridge-logo-lg.png" />
+      <h1 id="target-titulo-documento">Título do documento</h1>
+    </div>
+
+    <div class="capa-bottom">
+      <p>Florianópolis</p>
+      <p id="target-date-documento">00 de abril de 3000</p>
+    </div>
+  </div>
+
+  
+    <div class="post pdf shown" id="raiz" data-url="/">
+      <header class="post-header">
+        <h1 class="post-title">WIKI</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <p>Página destinada a Ajudar as Equipes  nas rotinas diárias</p>
+
+<p><strong>SISMOB FOR DEVELOPMENT</strong></p>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+    <div class="post pdf shown" id="processos" data-url="/sismob/processos/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Processos</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <h1 id="definição-de-processos">Definição de processos</h1>
+
+<p><img src="/sismob/processos/img/ProcessosSismob.png" alt="" /></p>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+    <div class="post pdf shown" id="arquitetura" data-url="/sismob/arquitetura/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Arquitetura</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <h2 id="modelo-de-projeto---mvp--pt_br">Modelo de Projeto - <a href="http://github.com">MVP</a> | <a href="https://pt.wikipedia.org/wiki/Model-view-presenter">PT_BR</a></h2>
+
+<p><img src="/sismob/arquitetura/img/MVP.png" alt="" /></p>
+
+<h3 id="definições">Definições</h3>
+
+<p><strong>Nodos:</strong> Nodos são classes que representam folhas na árvore de navegação. Todos os nodos são instanciados durante a fase de boot da aplicação e nunca são liberados da memória. <strong>Uma instância de nodo pode possuir n filhos, mas somente um pai.</strong> É possível que na árvore de navegação exista mais de uma folha para o mesmo tipo de nodo, desde que seus pais sejam diferentes.</p>
+
+<p><strong>Presenters:</strong> Apresentadores são classes que fazem o intermédio da camada de visão com a camada de modelo. Não devem possuir lógica de negócio e chamadas da visão para o apresentador nunca devem esperar por um retorno.</p>
+
+<p><strong>Views:</strong> Views são classes que representam como a página é apresentada ao usuário do sistema. Não devem conter lógica de negócios e não podem fazer chamadas diretas para a camada de modelo.</p>
+
+<p><strong>ViewParameters:</strong> ViewParameters são classes utilizadas para configurar como a visão deve ser apresentada. Sua criação é feita no apresentador utilizando um serviço, mas sua utilização é feita pela visão. Um ViewParameters só é criado quando seu respectivo apresentador é criado (initialize = true).</p>
+
+<p><strong>Services:</strong> Serviços são classes responsáveis por aplicar as regras de negócio e, se necessário, fazer requisições ao banco de dados. Seus resultados sempre são retornados ao apresentador.</p>
+
+<p><strong>Forms:</strong> Forms são <a href="https://en.wikipedia.org/wiki/Data_transfer_object">DTOs</a> utilizados pela visão para <strong>preencher os dados apresentados.</strong></p>
+
+<h3 id="fluxo-de-navegação">Fluxo de navegação</h3>
+
+<p><img src="/sismob/arquitetura/sismob-navigation.png" alt="" /></p>
+
+<ul>
+  <li>1 - Usuário interage com um componente que irá levá-lo a outra página do sistema.</li>
+  <li>2 - O componente interagido avisa a visão sobre a interação do usuário.</li>
+  <li>3 - A visão repassa a requisição ao seu respectivo apresentador.</li>
+  <li>4 - O apresentador utiliza o nodo de origem para recuperar o nodo destino.</li>
+  <li>5 - O nodo destino é enviado ao <a href="https://github.com/sismob/sismob/blob/master/core/core.view.impl/src/br/gov/core/view/impl/application/CoreApplicationImpl.java">CoreApplication</a> para que ele inicie o processo de navegação através do método <em>navigateTo</em>. O primeiro passo é publicar na url todos os parâmetros utilizados pelo apresentador atual, isso é feito chamando o método <em>publishParameters(CoreURL)</em>.</li>
+  <li>6 - A partir do nodo destino o <a href="https://github.com/sismob/sismob/blob/master/core/core.view.impl/src/br/gov/core/view/impl/application/CoreApplicationImpl.java">CoreApplication</a> instância o apresentador do nodo e faz a chamada do método <em>applyParameters(CoreURL)</em>.</li>
+  <li>7 - Se necessário, o apresentador faz requisições ao serviço para validar regras ou recuperar registros do banco de dados.</li>
+  <li>8 - O serviço utiliza o <em>EntityManager</em> para criar uma conexão e executar uma transação na base de dados.</li>
+  <li>9 - O apresentador envia para a view o que ela precisa para se desenhar através do <em>ViewParameters</em> e logo em seguida envia para ela o <em>form</em> para preencher os componentes de acordo com os registros salvos no banco de dados.</li>
+</ul>
+
+<h3 id="applyparameters">ApplyParameters</h3>
+
+<div style="text-align:center;"> <img src="/sismob/arquitetura/img/apply-parameters.png" width="370px" /> </div>
+<p></p>
+
+<p>O método <em>applyParameters(CoreURL, boolean)</em> do presenter é chamado a partir do seu nodo, quando o presenter é uma nova instância.</p>
+
+<p><strong>checkParentPresenters(CoreURL):</strong> Método utilizado para verificar se os presenters necessários para a execução do nodo corrente foram corretamente inicializados.</p>
+
+<p><strong>createUrlBinder(CoreURL):</strong> Método vazio que pode ser sobrescrito para instanciar um objeto do tipo <a href="https://github.com/sismob/sismob/blob/master/core/core.presenter.impl/src/main/java/br/gov/core/presenter/impl/binder/UrlBinder.java">UrlBinder</a>.</p>
+
+<p><strong>readUrl(CoreURL):</strong> Método utilizado para ler os parâmetros publicados na url e, se necessário, salva-los em atributos para uso posterior.</p>
+
+<p><strong>beforeInitialize(CoreURL, boolean):</strong> Método executado antes da inicialização do apresentador. Um apresentador só é inicializado somente quando uma nova instancia sua é criada, o que ocorre somente quando o nodo daquele apresentador é adicionado na árvore de navegação.</p>
+
+<p><strong>initialize(CoreURL, boolean):</strong> Método abstrato utilizado para inicializar o apresentador. Instancia objetos que precisam estar prontos antes do <em>refreshData</em>. Os métodos <em>getViewParameters</em> e <em>render</em> normalmente são chamados durante a inicialização do apresentador.</p>
+
+<p><strong>afterInitialize(CoreURL, boolean):</strong> Método  vazio que pode ser sobrescrito para instanciar objetos que precisam ser criados antes do <em>refreshData</em> e depois do <em>initialize</em>.</p>
+
+<p><strong>validateInitialization:</strong> Verifica se os objetos necessários para o correto funcionamento do apresentador foram criados.</p>
+
+<p><strong>refreshData(CoreURL):</strong> Verifica se a tela precisa ser atualizada e executa o método <em>refresh</em>, se necessário. Normalmente o método refresh é responsável por fazer a requisição ao serviço pedindo os dados salvos no banco de dados e repassando-os à visão, para que ela preencha os campos criados.</p>
+
+<p><strong>bindParentView(CoreURL, boolean):</strong> Envia ao presenter pai a view corrente para ela ser desenhada na tela.</p>
+
+<p><strong>keepGoing:</strong> Último método do <em>applyParameters</em>, responsável por fazer as últimas verificações e dizer se o fluxo de execução pode seguir adiante ou deve ser interrompido.</p>
+
+<h3 id="publishparameters">PublishParameters</h3>
+
+<div style="text-align:center;"> <img src="/sismob/arquitetura/img/publish-parameters.png" width="370px" /> </div>
+<p></p>
+<p>O método <em>publishParameters(CoreURL)</em> é chamadado a partir do nodo, que repassa a chamada para o <em>CoreApplication</em>.</p>
+
+<p><strong>newURL(CoreApplication):</strong> Método chamado pelo nodo, que utiliza o <em>CoreApplication</em> passado como parâmetro para criar uma CoreURL e iterar sobre os apresentadores atachados.</p>
+
+<p><strong>for presenter in presenters atachados:</strong> Para cada apresentador atachado no <em>CoreApplication</em> é verificado se esse apresentador faz parte da árvore de navegação destino, se sim, o método <em>publishParameters(CoreURL)</em> do apresentador é chamado para que ele publique seus parâmetros na nova url. Todos os parâmetros não publicados são perdidos.</p>
+
+<h3 id="exemplos">Exemplos</h3>
+
+<p><strong>Exemplo do <em>publishParameters</em> ao clicar no botão de emitir parecer de uma solicitação na lista de propostas e obras</strong></p>
+
+<p><img src="/sismob/arquitetura/img/exemplo-publish-parameters.png" alt="" /></p>
+
+<h3 id="links-úteis">Links úteis</h3>
+
+<ul>
+  <li>
+    <p><a href="https://vaadin.com/docs/-/part/framework/introduction/intro-overview.html"><img src="/sismob/arquitetura/img/vaadin-logo.png" alt="Vaadin" /></a></p>
+  </li>
+  <li>
+    <p><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/"><img src="/sismob/arquitetura/img/spring-by-pivotal.png" width="20%" /></a></p>
+  </li>
+</ul>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+    <div class="post pdf shown" id="analise" data-url="/sismob/An%C3%A1lise/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Análise</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+    <div class="post pdf shown" id="desenvolvimento" data-url="/sismob/Desenvolvimento/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Desenvolvimento</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+    <div class="post pdf shown" id="testes" data-url="/sismob/Testes/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Testes</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <div class="link-block">
+
+<a title="Automatizado" href="/sismob/Testes/automatizado/index.html">Automatizado</a>
+
+</div>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+    <div class="post pdf shown" id="automatizado" data-url="/sismob/Testes/automatizado/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Automatizado</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <div class="link-block">
+
+<a title="Configurar ID" href="/sismob/Testes/automatizado/como-setar-ids/index.html">Configurar ID</a>
+
+</div>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+    <div class="post pdf shown" id="setid" data-url="/sismob/Testes/automatizado/como-setar-ids/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Configurar ID</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <h2 id="como-colocarconfigurar-ids-nos-componentes-de-uma-tela">Como colocar/configurar ID’s nos componentes de uma tela</h2>
+
+<h3 id="por-que-configurar-id-no-componente">Por que configurar ID no componente?</h3>
+
+<p>É uma boa prática para poder facilitar a captura de elementos/componentes na tela, com a configuração de id podemos resumir melhor nossa construção do código de PageObjects.</p>
+
+<h3 id="1-procurando-o-componente">1. Procurando o Componente</h3>
+
+<p>Na tela do seu browser, você pode Inspecionar o elemento desejado que está sem id e pela sua herança, ir de pai em pai procurando uma id que contenha o texto como id=”…ViewImpl” no final de seu cadastro.</p>
+
+<p><img /sismob/Testes/automatizado/como-setar-ids/s/sismob/Testes/automatizado/como-setar-ids/r/sismob/Testes/automatizado/como-setar-ids/c/sismob/Testes/automatizado/como-setar-ids/=/sismob/Testes/automatizado/como-setar-ids/"/sismob/Testes/automatizado/como-setar-ids/"/sismob/Testes/automatizado/como-setar-ids/ alt="" /></p>
+
+<p>Esse id provavelmente será a classe JAVA ou classe que invoca o componente que possui o id desejado,</p>
+
+<h4 id="caso-seja-uma-label">Caso seja uma label:</h4>
+
+<p>Vai ter a conotação do tipo</p>
+
+<p><strong>Label ou VaadinLabel</strong></p>
+
+<p>Veja exemplo:</p>
+
+<p><img src="/sismob/Testes/automatizado/como-setar-ids/img/label-code.png" alt="" /></p>
+
+<p>O que é necessário realizar é apenas referenciar o objeto, com a chamada do método <strong>setId(<em>Nome do ID que vai ser configurado</em>)</strong> conforme exemplo abaixo:</p>
+
+<p><img src="/sismob/Testes/automatizado/como-setar-ids/img/label-code-with-id.png" alt="" /></p>
+
+<h4 id="caso-seja-um-textfield">Caso seja um TextField:</h4>
+
+<h6 id="ps-sendo-assim-você-capturar-seu-elemento-usando-o-id-sem-precisar-ter-que-encontrar-um-xpath-instável">P.S: Sendo assim, você capturar seu elemento usando o id, sem precisar ter que encontrar um xpath instável.</h6>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+
+    
+
+
+    
+
+    <div class="post pdf shown" id="banco-de-dados" data-url="/sismob/banco-de-dados/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Banco de Dados</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+    <div class="post pdf shown" id="consultas-importantes" data-url="/sismob/banco-de-dados/consultas-importantes/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Consultas Importantes</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <h2 id="alterar-o-período-de-cadastro-da-proposta">Alterar o período de cadastro da proposta:</h2>
+
+<p>Altera o período de cadastro de proposta para o fim das 4 datas em 31/12/2018.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="altera-periodo-proposta">
+    <!-- Query/Consulta -->
+      ALTER TRIGGER dbcorpfns.tra_tbportaria DISABLE;
+
+      UPDATE dbcorpfns.tb_portaria
+          SET DT_FIM_VIGENCIA = TO_DATE('31/12/2018','DD/MM/YYYY'),
+          DT_INICIO_VIGENCIA = TO_DATE('31/12/2016','DD/MM/YYYY'),
+          DT_FIM_DILIGENCIA = TO_DATE('31/12/2018','DD/MM/YYYY'),
+          DT_FIM_ANALISE = TO_DATE('31/12/2018','DD/MM/YYYY')
+      WHERE
+          co_seq_portaria in (45, 46);
+
+      ALTER TRIGGER dbcorpfns.tra_tbportaria ENABLE;
+      COMMIT;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('altera-periodo-proposta')">Copiar Script</button>
+</div>
+
+<h2 id="alterar-o-proponente-da-proposta">Alterar o proponente da proposta:</h2>
+
+<p>Altera o proponente de uma proposta para a mesma poder ser utilizada por um técnico em ‘Florianópolis’.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="altera-proponente">
+      <!-- Query/Consulta -->
+      UPDATE DBSISMOB.TB_PROPOSTA
+      SET CO_ATOR_PESSOA_ENTIDADE = 5624687, CO_ENDERECO = 181
+      WHERE NU_PROPOSTA = :NU_PROPOSTA;
+      commit;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('altera-proponente')">Copiar Script</button>
+</div>
+
+<h2 id="alterar-as-senhas-para-123qwe">Alterar as senhas para 123qwe:</h2>
+
+<p>Altera a senha de todos os usuário para 123qwe.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="altera-senhas">
+      <!-- Query/Consulta -->
+      UPDATE dbsismob.tb_autenticacao
+      SET ds_senha  = '$2a$11$bQtFzFwniBDi/0z7r3.r2ubM13P9ni88mhlz3KIB0nShIh6XKsWAK';
+      COMMIT;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('altera-senhas')">Copiar Script</button>
+</div>
+
+<h2 id="buscar-algum-cnes-para-inserir-na-etapa-de-funcionamento">Buscar algum CNES para inserir na etapa de funcionamento:</h2>
+
+<p>Busca todos os CNES de um município específico, não levando em consideração o ‘Tipo de Obra’.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="busca-cnes">
+      <!-- Query/Consulta -->
+      select CO_CNES, NO_BAIRRO from DBCNESRJ.TB_ESTABELECIMENTO where CO_MUNICIPIO_GESTOR = Código do Município;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('busca-cnes')">Copiar Script</button>
+</div>
+
+<h2 id="buscar-cnpj-de-uma-fmsfes-específica">Buscar CNPJ de uma FMS/FES específica:</h2>
+
+<p>Busca o CNPJ de uma entidade através do nome do município/estado que a representa.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="busca-cnpj">
+      <!-- Query/Consulta -->
+      SELECT NO_PADRONIZADO, NU_CNPJ
+      FROM DBSISMOB.TB_ATOR_PESSOA_ENTIDADE
+      WHERE NO_PADRONIZADO LIKE '%NOME_CIDADE_EM_CAPS%';
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('busca-cnpj')">Copiar Script</button>
+</div>
+
+<h2 id="buscar-o-ibge-de-um-município-específico">Buscar o IBGE de um município específico:</h2>
+
+<p>Busca o código IBGE do município.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="busca-ibge">
+      <!-- Query/Consulta -->
+      SELECT CO_MUNICIPIO_IBGE FROM DBSISMOB.TB_ATOR_PESSOA_ENTIDADE
+      WHERE NO_PADRONIZADO LIKE %NOME_CIDADE_EM_CAPS%';
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('busca-ibge')">Copiar Script</button>
+</div>
+
+<h2 id="buscar-todos-os-perfis-que-estão-expirados">Buscar todos os perfis que estão expirados:</h2>
+
+<p>Busca todos os perfis que estão com o período de utilização expirados.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="busca-perfis-expirados">
+      <!-- Query/Consulta -->
+      SELECT dadoPessoal.NU_CPF, atorPapel.DT_FIM, entidade.NU_CNPJ
+      FROM DBSISMOB.TB_ATOR_PAPEL atorPapel
+
+      INNER JOIN DBSISMOB.TB_ATOR_PESSOA_ENTIDADE entidade
+      ON entidade.CO_ATOR = atorPapel.CO_ATOR_PESSOA_ENTIDADE
+
+      INNER JOIN DBSISMOB.TB_ATOR_PESSOA_FISICA pessoaFisica
+      ON pessoaFisica.CO_ATOR = atorPapel.CO_ATOR
+
+      INNER JOIN DBSISMOB.TB_ATOR_DADO_PESSOAL dadoPessoal
+      ON dadoPessoal.CO_SEQ_ATOR_DADO_PESSOAL = pessoaFisica.CO_ATOR_DADO_PESSOAL
+
+      WHERE atorPapel.DT_FIM &lt; DATA_DE_HOJE (DD/MM/AAAA)’';
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('busca-perfis-expirados')">Copiar Script</button>
+</div>
+
+<h2 id="criar-programas-e-emendas-para-um-município-específico">Criar programas e emendas para um município específico:</h2>
+
+<p>Cria 5 programas e 5 programas com 5 emendas cada no FMS de Florianópolis.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="criar-programas-emendas">
+      <!-- Query/Consulta -->
+      ALTER TRIGGER DBCORPFNS.TRA_RLPRGESTOBJETOESFERA DISABLE;
+      INSERT INTO DBCORPFNS.RL_PROGRAMA_ACAO (CO_PROGRAMA, CO_ACAO, NU_ANO_EXERCICIO) VALUES ('UFSC', 'UFSC', '2017');
+      DECLARE
+      CNPJ_FUNCDO_FLORIPA VARCHAR2(14) := '08935681000191';
+      CO_MUNICIPIO_IBGE_FLORIPA VARCHAR2(6) := '420540';
+      CO_SEQ_ACAO_ID VARCHAR(4) := 'UFSC';
+      ANO VARCHAR(4) := '2017';
+      QUANTIDADE_OBJETOS_PROGRAMA NUMBER(2):= 5;
+      QUANTIDADE_OBJETOS_EMENDA NUMBER(2):= 5;
+      QUANTIDADE_EMENDAS NUMBER(2):= 5;
+      VALOR NUMBER(10) := 1234567890;
+      VALOR_EMENDA NUMBER(10) := VALOR / QUANTIDADE_EMENDAS;
+      ID_PARLAMENTAR VARCHAR(4):= '5265';
+      BEGIN
+
+      FOR TIPO_PROPOSTA IN (SELECT * FROM DBPROPOSTAFNS.TB_TIPO_PROPOSTA) LOOP
+      FOR I IN 1..QUANTIDADE_OBJETOS_PROGRAMA LOOP
+
+      INSERT INTO DBCORPFNS.VW_ESFERA_TIPO_ENT_ATIVO_PES (CO_SEQ_ESFERA_TIPO_ENT_PESSOA,NU_CPF_CNPJ_PESSOA,CO_TIPO_ENTIDADE)
+      (SELECT MAX(CO_SEQ_ESFERA_TIPO_ENT_PESSOA) + 1,CNPJ_FUNCDO_FLORIPA,'13' FROM DBCORPFNS.VW_ESFERA_TIPO_ENT_ATIVO_PES);
+
+      INSERT INTO DBPROPOSTAFNS.TB_OBJETO (CO_SEQ_OBJETO, DS_OBJETO, CO_GND, NU_ANO_EXERCICIO, ST_ATIVO)
+        (SELECT MAX(CO_SEQ_OBJETO) + 1, 'TESTE INTERNO - BRIDGE' || (MAX(CO_SEQ_OBJETO) + 1), '4', ANO, 'S' FROM DBPROPOSTAFNS.TB_OBJETO);
+
+      DECLARE LAST_VALUE_OBJ NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_OBJETO) INTO LAST_VALUE_OBJ FROM DBPROPOSTAFNS.TB_OBJETO;
+
+      INSERT INTO DBPROPOSTAFNS.RL_TIPOPROPOSTA_OBJETO (CO_SEQ_TIPOPROPOSTA_OBJETO,CO_TIPO_PROPOSTA,CO_TIPO_RECURSO,CO_OBJETO,CO_ACAO)
+      (SELECT MAX(CO_SEQ_TIPOPROPOSTA_OBJETO) + 1, TIPO_PROPOSTA.CO_TIPO_PROPOSTA,'2',LAST_VALUE_OBJ,CO_SEQ_ACAO_ID FROM DBPROPOSTAFNS.RL_TIPOPROPOSTA_OBJETO);
+
+      DECLARE LAST_VALUE_TIPO_PROPOSTA_OBJ NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_TIPOPROPOSTA_OBJETO) INTO LAST_VALUE_TIPO_PROPOSTA_OBJ FROM DBPROPOSTAFNS.RL_TIPOPROPOSTA_OBJETO;
+
+      INSERT INTO DBCORPFNS.RL_PRGEST_OBJETO_ESFERA (CO_SEQ_PRGEST_OBJETO_ESFERA,CO_PROGRAMA_ESTRATEGICO,CO_TIPOPROPOSTA_OBJETO,CO_ESFERA_ADMINISTRATIVA)
+        (SELECT MAX(CO_SEQ_PRGEST_OBJETO_ESFERA) + 1, '245',LAST_VALUE_TIPO_PROPOSTA_OBJ,'02' FROM DBCORPFNS.RL_PRGEST_OBJETO_ESFERA);
+
+      DECLARE LAST_VALUE_OBJ_ESFERA NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_PRGEST_OBJETO_ESFERA) INTO LAST_VALUE_OBJ_ESFERA FROM DBCORPFNS.RL_PRGEST_OBJETO_ESFERA;
+
+      INSERT INTO DBPROPOSTAFNS.RL_PRGESTOBJESF_TIPOENTIDADE (CO_PRGEST_OBJETO_ESFERA,CO_TIPO_ENTIDADE)
+      VALUES (LAST_VALUE_OBJ_ESFERA,'13');
+
+      INSERT INTO DBPROPOSTAFNS.TB_INDICACAO_OBJETO (CO_SEQ_INDIC_OBJETO, VL_OBJETO, DS_OBSERVACAO, NU_CPF_CNPJ_PESSOA, DS_USUARIO, DS_IP_USUARIO, CO_PRGEST_OBJETO_ESFERA)
+        (SELECT MAX(CO_SEQ_INDIC_OBJETO) + 1, VALOR, 'INDICAÇÃO OBJETO - TESTE INTERNO BRIDGE', CNPJ_FUNCDO_FLORIPA, 'TESTE BRIDGE', '127.0.0.1', LAST_VALUE_OBJ_ESFERA FROM DBPROPOSTAFNS.TB_INDICACAO_OBJETO);
+
+      DECLARE LAST_VALUE_INDIC_OBJ NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_INDIC_OBJETO) INTO LAST_VALUE_INDIC_OBJ FROM DBPROPOSTAFNS.TB_INDICACAO_OBJETO;
+
+      INSERT INTO DBPROPOSTACONVENIO.RL_INDOBJ_PROJETO (CO_SEQ_INDOBJ_EMENDA_PROJETO, CO_INDIC_OBJETO, CO_EMENDA, CO_PROCESSO, VL_INDICADO, DS_USUARIO, DS_IP_USUARIO, ST_LIMITE_SRI)
+        (SELECT MAX(CO_SEQ_INDOBJ_EMENDA_PROJETO) + 1, LAST_VALUE_INDIC_OBJ, NULL, NULL, VALOR, 'TESTE SISMOB - BRIDGE', '127.0.0.1', 'N' FROM DBPROPOSTACONVENIO.RL_INDOBJ_PROJETO);
+
+      END;
+      END;
+      END;
+      END;
+      END LOOP;
+
+      FOR J IN 1..QUANTIDADE_OBJETOS_EMENDA LOOP
+
+      INSERT INTO DBCORPFNS.VW_ESFERA_TIPO_ENT_ATIVO_PES (CO_SEQ_ESFERA_TIPO_ENT_PESSOA,NU_CPF_CNPJ_PESSOA,CO_TIPO_ENTIDADE)
+      (SELECT MAX(CO_SEQ_ESFERA_TIPO_ENT_PESSOA) + 1,CNPJ_FUNCDO_FLORIPA,'13' FROM DBCORPFNS.VW_ESFERA_TIPO_ENT_ATIVO_PES);
+
+      INSERT INTO DBPROPOSTAFNS.TB_OBJETO (CO_SEQ_OBJETO, DS_OBJETO, CO_GND, NU_ANO_EXERCICIO, ST_ATIVO)
+        (SELECT MAX(CO_SEQ_OBJETO) + 1, 'TESTE INTERNO - BRIDGE - CO_SEQ_OBJETO = ' || (MAX(CO_SEQ_OBJETO) + 1), '4', ANO, 'S' FROM DBPROPOSTAFNS.TB_OBJETO);
+
+      DECLARE LAST_VALUE_OBJ2 NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_OBJETO) INTO LAST_VALUE_OBJ2 FROM DBPROPOSTAFNS.TB_OBJETO;
+
+      INSERT INTO DBPROPOSTAFNS.RL_TIPOPROPOSTA_OBJETO (CO_SEQ_TIPOPROPOSTA_OBJETO,CO_TIPO_PROPOSTA,CO_TIPO_RECURSO,CO_OBJETO,CO_ACAO)
+      (SELECT MAX(CO_SEQ_TIPOPROPOSTA_OBJETO) + 1,TIPO_PROPOSTA.CO_TIPO_PROPOSTA,'2',LAST_VALUE_OBJ2,'UFSC' FROM DBPROPOSTAFNS.RL_TIPOPROPOSTA_OBJETO);
+
+      DECLARE LAST_VALUE_TIPO_PROPOSTA_OBJ2 NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_TIPOPROPOSTA_OBJETO) INTO LAST_VALUE_TIPO_PROPOSTA_OBJ2 FROM DBPROPOSTAFNS.RL_TIPOPROPOSTA_OBJETO;
+
+      INSERT INTO DBCORPFNS.RL_PRGEST_OBJETO_ESFERA (CO_SEQ_PRGEST_OBJETO_ESFERA,CO_PROGRAMA_ESTRATEGICO,CO_TIPOPROPOSTA_OBJETO,CO_ESFERA_ADMINISTRATIVA)
+        (SELECT MAX(CO_SEQ_PRGEST_OBJETO_ESFERA) + 1, '245',LAST_VALUE_TIPO_PROPOSTA_OBJ2,'02' FROM DBCORPFNS.RL_PRGEST_OBJETO_ESFERA);
+
+      DECLARE LAST_VALUE_OBJ_ESFERA2 NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_PRGEST_OBJETO_ESFERA) INTO LAST_VALUE_OBJ_ESFERA2 FROM DBCORPFNS.RL_PRGEST_OBJETO_ESFERA;
+
+      INSERT INTO DBPROPOSTAFNS.RL_PRGESTOBJESF_TIPOENTIDADE (CO_PRGEST_OBJETO_ESFERA,CO_TIPO_ENTIDADE)
+      VALUES (LAST_VALUE_OBJ_ESFERA2,'13');
+
+      INSERT INTO DBPROPOSTAFNS.TB_INDICACAO_OBJETO (CO_SEQ_INDIC_OBJETO, VL_OBJETO, DS_OBSERVACAO, NU_CPF_CNPJ_PESSOA, DS_USUARIO, DS_IP_USUARIO, CO_PRGEST_OBJETO_ESFERA)
+        (SELECT MAX(CO_SEQ_INDIC_OBJETO) + 1, VALOR, 'INDICAÇÃO OBJETO - TESTE INTERNO BRIDGE', CNPJ_FUNCDO_FLORIPA, 'TESTE BRIDGE', '127.0.0.1', LAST_VALUE_OBJ_ESFERA2 FROM DBPROPOSTAFNS.TB_INDICACAO_OBJETO);
+
+      DECLARE LAST_VALUE_INDIC_OBJ2 NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_INDIC_OBJETO) INTO LAST_VALUE_INDIC_OBJ2 FROM DBPROPOSTAFNS.TB_INDICACAO_OBJETO;
+
+      INSERT INTO DBCORPFNS.TB_FUNCIONAL (CO_PTRES,NU_ANO_EXERCICIO,CO_ACAO,CO_PROGRAMA,CO_FUNCIONAL)
+      (SELECT MAX(CO_PTRES) + 1,ANO,CO_SEQ_ACAO_ID,'0000','10301121485812104' FROM DBCORPFNS.TB_FUNCIONAL);
+
+      DECLARE LAST_VALUE_FUNCIONAL NUMBER;
+      BEGIN
+      SELECT MAX(CO_PTRES) INTO LAST_VALUE_FUNCIONAL FROM DBCORPFNS.TB_FUNCIONAL;
+
+      FOR K IN 1..QUANTIDADE_EMENDAS LOOP
+
+      INSERT INTO DBPROPOSTAFNS.TB_EMENDA (CO_SEQ_EMENDA, NU_EMENDA, NU_FONTE, NU_ANO_EXERCICIO, DS_TITULO, CO_PTRES, CO_GND, CO_MODALIDADE, CO_PARLAMENTAR, CO_MUNICIPIO_IBGE, VL_EMENDA, ST_BLOQUEADA, VL_SALDO_EMENDA, CO_OBJETO)
+        (SELECT MAX(CO_SEQ_EMENDA) + 1, '012345' || K, '0123', ANO, 'EMENDA DE TESTE - BRIDGE', LAST_VALUE_FUNCIONAL, '3', '40', ID_PARLAMENTAR, CO_MUNICIPIO_IBGE_FLORIPA, VALOR, 'N', VALOR, LAST_VALUE_OBJ2 FROM DBPROPOSTAFNS.TB_EMENDA);
+
+      DECLARE LAST_VALUE_EMENDA2 NUMBER;
+      BEGIN
+      SELECT MAX(CO_SEQ_EMENDA) INTO LAST_VALUE_EMENDA2 FROM DBPROPOSTAFNS.TB_EMENDA;
+
+      INSERT INTO DBPROPOSTACONVENIO.RL_INDOBJ_PROJETO (CO_SEQ_INDOBJ_EMENDA_PROJETO, CO_INDIC_OBJETO, CO_EMENDA, VL_INDICADO, DS_USUARIO, DS_IP_USUARIO, ST_LIMITE_SRI)
+        (SELECT MAX(CO_SEQ_INDOBJ_EMENDA_PROJETO) + 1, LAST_VALUE_INDIC_OBJ2, LAST_VALUE_EMENDA2, VALOR_EMENDA, 'TESTE SISMOB - BRIDGE', '127.0.0.1', 'N' FROM DBPROPOSTACONVENIO.RL_INDOBJ_PROJETO);
+
+      END;
+      END LOOP;
+      END;
+      END;
+      END;
+      END;
+      END;
+      END LOOP;
+      END LOOP;
+      END;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('criar-programas-emendas')">Copiar Script</button>
+</div>
+
+<h2 id="criar-solicitação-de-etapa">Criar solicitação de etapa:</h2>
+
+<p>Cria uma solicitação de etapa anterior a etapa de uma proposta específica.</p>
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="criar-solicitacao-etapa">
+      <!-- Query/Consulta -->
+      :XXXX;
+      define var_co_proposta = &XXXX;
+
+      UPDATE DBSISMOB.TB_TRAMITE
+      SET ST_ABERTO   = 'N', st_ultimo='N'
+      WHERE CO_PROPOSTA =
+        &amp;var_co_proposta
+      AND CO_TIPO_TRAMITE in (2,10);
+
+      UPDATE DBSISMOB.TB_SOLICITACAO_PARCELA
+      SET ST_ULTIMO   ='N'
+      WHERE CO_PROPOSTA =
+        &var_co_proposta;
+
+      INSERT
+      INTO DBSISMOB.TB_SOLICITACAO_PARCELA
+        (CO_SEQ_SOLICITACAO_PARCELA, CO_PARCELA,ST_REGISTRO_ATIVO, CO_ETAPA_PROPOSTA,ST_ULTIMO, CO_PROPOSTA,CO_SITUACAO_SOLICITACAO)
+        VALUES
+        (
+          DBSISMOB.SQ_SOLPARCELA_COSEQSOLPARCELA.NEXTVAL,
+          1,
+          'S',
+          1,
+          'S',
+          &amp;var_co_proposta,
+          1
+        );
+
+      INSERT
+      INTO DBSISMOB.TB_TRAMITE
+        (
+          CO_SEQ_TRAMITE,
+          CO_ATOR_PAPEL,
+          DT_TRAMITE,
+          ST_REGISTRO_ATIVO,
+          CO_TIPO_TRAMITE,
+          ST_ABERTO,
+          CO_SOLICITACAO_PARCELA,
+          TP_SERIALIZADOR,
+          NU_UNICO,
+          ST_ULTIMO,
+          DS_TRAMITE,
+          CO_PROPOSTA
+        )
+        VALUES
+        (
+          DBSISMOB.SQ_TRAMITE_COSEQTRAMITE.NEXTVAL,
+          2,
+          CURRENT_TIMESTAMP,
+          'S',
+          10,
+          'S',
+          DBSISMOB.SQ_SOLPARCELA_COSEQSOLPARCELA.CURRVAL,
+          0,
+          SYS_GUID(),
+          'S',
+          'Obra concluída e solicitada superação da etapa de ação preparatória da obra, dados importados do SISMOB 1.0, desativado em 07/03/2017',
+          &amp;var_co_proposta
+        );
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('criar-solicitacao-etapa')">
+&lt;/div&gt;
+Copiar Script</button>
+
+
+## Inserir as diligências e alteração de endereço:
+
+Inclui as diligências para uma 'Solicitação de alteração de endereço'.
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="inserir-diligencias-endereco">
+      <!-- Query/Consulta -->
+      INSERT INTO tb_diligencia (co_seq_diligencia, co_tipo_diligencia, co_parcela, tp_solicitacao_tramite, co_parametrizacao, st_registro_ativo, co_tipo_tramite, co_etapa_proposta) WITH diligencia AS (
+          SELECT MAX(co_seq_diligencia) + 1 AS co FROM tb_diligencia) SELECT diligencia.co, 20200025, NULL, 1, 1,'S', NULL, 1 FROM diligencia;
+
+      INSERT INTO tb_diligencia (co_seq_diligencia, co_tipo_diligencia, co_parcela, tp_solicitacao_tramite, co_parametrizacao, st_registro_ativo, co_tipo_tramite, co_etapa_proposta) WITH diligencia AS (
+          SELECT MAX(co_seq_diligencia) + 1 AS co FROM tb_diligencia) SELECT diligencia.co, 849999, NULL, 1, 1,'S', NULL, 1 FROM diligencia;
+
+      INSERT INTO tb_diligencia (co_seq_diligencia, co_tipo_diligencia, co_parcela, tp_solicitacao_tramite, co_parametrizacao, st_registro_ativo, co_tipo_tramite, co_etapa_proposta) WITH diligencia AS (
+          SELECT MAX(co_seq_diligencia) + 1 AS co FROM tb_diligencia) SELECT diligencia.co, 369999, NULL, 1, 1, 'S', NULL, 1 FROM diligencia;
+
+      COMMIT;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('inserir-diligencias-endereco')">Copiar Script</button>
+</div>
+
+
+## Migração para ser executado no novo dump:
+
+Migração que precisa ser executada no novo dump. Necessário executar antes de subir o servidor.
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="migracao-novo-dump">
+      <!-- Query/Consulta -->
+      ALTER TABLE DBSISMOB.TB_PARECER_BLOQUEIO RENAME TO TB_BLOQUEIO;
+      ALTER TABLE DBSISMOB.TB_BLOQUEIO DROP CONSTRAINT PK_PARECERBLOQUEIO;
+      ALTER TABLE DBSISMOB.TB_BLOQUEIO DROP COLUMN CO_TRAMITE CASCADE CONSTRAINTS;
+      ALTER TABLE DBSISMOB.TB_BLOQUEIO ADD (NU_REGISTRO NUMBER(12) NOT NULL);
+      COMMENT ON COLUMN DBSISMOB.TB_BLOQUEIO.NU_REGISTRO IS 'Número do registro a ser bloqueado.';
+      ALTER TABLE DBSISMOB.TB_BLOQUEIO MODIFY (CO_OPERACAO NOT NULL);
+      ALTER TABLE DBSISMOB.TB_BLOQUEIO ADD CONSTRAINT PK_BLOQUEIO PRIMARY KEY (NU_REGISTRO,CO_OPERACAO) ENABLE;
+
+      DELETE FROM DBSISMOB.TB_TIPO_OPERACAO;
+      INSERT INTO DBSISMOB.TB_TIPO_OPERACAO (CO_SEQ_TIPO_OPERACAO, DS_TIPO_OPERACAO) VALUES ('1', 'Proposta');
+      INSERT INTO DBSISMOB.TB_TIPO_OPERACAO (CO_SEQ_TIPO_OPERACAO, DS_TIPO_OPERACAO) VALUES ('2', 'Usuário');
+      INSERT INTO DBSISMOB.TB_TIPO_OPERACAO (CO_SEQ_TIPO_OPERACAO, DS_TIPO_OPERACAO) VALUES ('3', 'Solicitação de acesso');
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('migracao-novo-dump')">Copiar Script</button>
+</div>
+
+
+## Popular base de solicitações:
+
+Apaga todas as solicitações atuais (etapa, prorrogação de prazo, etc) e cria 3 solicitações em cada situação possível para cada tipo de situação (útil para testar os filtros das listagens).
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="solicitacoes-na-base">
+      <!-- Query/Consulta -->
+      ----------------------------------- DESATIVANDO TODAS AS SOLICITAÇÕES  -----------------------------------
+      UPDATE TB_SOLICITACAO_PARCELA
+      SET ST_REGISTRO_ATIVO = 'N', ST_ULTIMO = 'N';
+      DELETE FROM DBSISMOB.TB_SOLICITACAO_PRORROGACAO
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO &gt; 681;
+      UPDATE TB_CANCELAMENTO_OBRA_PROPONEN
+      SET ST_REGISTRO_ATIVO = 'N';
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET ST_REGISTRO_ATIVO = 'N';
+
+      ----------------------------------- SOLICITACAO DE ALTERAÇÃO DE ENDEREÇO  -----------------------------------
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 1
+      WHERE CO_SEQ_SOLICITACAO_ALTRC_ENDRC IN (1, 21, 41, 61, 81);
+
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 2
+      WHERE CO_SEQ_SOLICITACAO_ALTRC_ENDRC IN (101, 121, 141, 161, 181);
+
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 3
+      WHERE CO_SEQ_SOLICITACAO_ALTRC_ENDRC IN (201, 221, 241, 261, 281);
+
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 4
+      WHERE CO_SEQ_SOLICITACAO_ALTRC_ENDRC IN (301, 321, 341, 361, 381);
+
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 5
+      WHERE CO_SEQ_SOLICITACAO_ALTRC_ENDRC IN (401, 421, 441, 461, 481);
+
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 6
+      WHERE CO_SEQ_SOLICITACAO_ALTRC_ENDRC IN (501, 521, 541, 561, 581);
+
+      UPDATE dbsismob.tb_solicitacao_alteracao_endrc
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 7
+      WHERE CO_SEQ_SOLICITACAO_ALTRC_ENDRC IN (601, 621, 641, 661, 681);
+
+      ----------------------------------- SOLICITACAO DE PRORROGAÇÃO DE PRAZO -----------------------------------
+      UPDATE dbsismob.TB_SOLICITACAO_PRORROGACAO
+      SET co_situacao_solicitacao = 1
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO IN (1, 21, 41, 61, 81);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PRORROGACAO
+      SET co_situacao_solicitacao = 2
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO IN (101, 121, 141, 161, 181);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PRORROGACAO
+      SET co_situacao_solicitacao = 3
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO IN (201, 221, 241, 261, 281);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PRORROGACAO
+      SET co_situacao_solicitacao = 4
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO IN (301, 321, 341, 361, 381);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PRORROGACAO
+      SET co_situacao_solicitacao = 5
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO IN (401, 421, 441, 461, 481);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PRORROGACAO
+      SET co_situacao_solicitacao = 6
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO IN (501, 521, 541, 561, 581);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PRORROGACAO
+      SET co_situacao_solicitacao = 7
+      WHERE CO_SEQ_SOLICITACAO_PRORROGACAO IN (601, 621, 641, 661, 681);
+
+      ----------------------------------- SOLICITACAO DE CANCELAMENTO DA OBRA -----------------------------------
+      UPDATE dbsismob.TB_CANCELAMENTO_OBRA_PROPONEN
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 1
+      WHERE CO_SEQ_TB_CANCELA_OBRA_PROPONE IN (1, 21, 41, 61, 81);
+
+      UPDATE dbsismob.TB_CANCELAMENTO_OBRA_PROPONEN
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 2
+      WHERE CO_SEQ_TB_CANCELA_OBRA_PROPONE IN (101, 121, 141, 161, 181);
+
+      UPDATE dbsismob.TB_CANCELAMENTO_OBRA_PROPONEN
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 3
+      WHERE CO_SEQ_TB_CANCELA_OBRA_PROPONE IN (201, 221, 241, 261, 281);
+
+      UPDATE dbsismob.TB_CANCELAMENTO_OBRA_PROPONEN
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 4
+      WHERE CO_SEQ_TB_CANCELA_OBRA_PROPONE IN (301, 321, 341, 361, 381);
+
+      UPDATE dbsismob.TB_CANCELAMENTO_OBRA_PROPONEN
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 5
+      WHERE CO_SEQ_TB_CANCELA_OBRA_PROPONE IN (401, 421, 441, 461, 481);
+
+      UPDATE dbsismob.TB_CANCELAMENTO_OBRA_PROPONEN
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 6
+      WHERE CO_SEQ_TB_CANCELA_OBRA_PROPONE IN (501, 521, 541, 561, 581);
+
+      UPDATE dbsismob.TB_CANCELAMENTO_OBRA_PROPONEN
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 7
+      WHERE CO_SEQ_TB_CANCELA_OBRA_PROPONE IN (601, 621, 641, 661, 701);
+
+      -----------------------------  SOLICITACAO DE SUPERAÇÃO DE ETAPA AÇÃO PREPARATÓRIA  -----------------------------
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 1, co_etapa_proposta = 1, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1, 21, 41, 61, 81);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 2, co_etapa_proposta = 1, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (101, 121, 141, 161, 181);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 4, co_etapa_proposta = 1, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (301, 321, 341, 361, 381);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 5, co_etapa_proposta = 1, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (401, 421, 441, 461, 481);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 6, co_etapa_proposta = 1, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (501, 521, 541, 561, 581);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 7, co_etapa_proposta = 1, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (601, 621, 641, 661, 681);
+
+      -----------------------------  SOLICITACAO DE SUPERAÇÃO DE ETAPA DE INÍCIO DE EXECUÇÃO -----------------------------
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 1, co_etapa_proposta = 2, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (701, 721, 741, 761, 781);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 2, co_etapa_proposta = 2, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (801, 821, 841, 861, 881);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 4, co_etapa_proposta = 2, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (901, 921, 941, 961, 981);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 5, co_etapa_proposta = 2, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1001, 1021, 1041, 1061, 1081);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 6, co_etapa_proposta = 2, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1101, 1121, 1141, 1161, 1181);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 7, co_etapa_proposta = 2, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1201, 1221, 1241, 1261, 1281);
+
+      ----------------------------  SOLICITACAO DE SUPERAÇÃO DE ETAPA DE EXECUÇÃO E CONCLUSÃO ----------------------------
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 1, co_etapa_proposta = 3, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1301, 1321, 1341, 1361, 1381);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 2, co_etapa_proposta = 3, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1401, 1421, 1441, 1461, 1481);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 4, co_etapa_proposta = 3, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1501, 1521, 1541, 1561, 1581);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 5, co_etapa_proposta = 3, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1601, 1621, 1641, 1661, 1681);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 6, co_etapa_proposta = 3, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1701, 1721, 1741, 1761, 1781);
+
+      UPDATE dbsismob.TB_SOLICITACAO_PARCELA
+      SET st_registro_ativo = 'S', co_situacao_solicitacao = 7, co_etapa_proposta = 3, st_ultimo = 'S'
+      WHERE CO_SEQ_SOLICITACAO_PARCELA IN (1801, 1821, 1841, 1861, 1881);
+
+      COMMIT;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('solicitacoes-na-base')">Copiar Script</button>
+</div>
+
+
+## Priorizar todas as propostas:
+
+Prioriza todas as propostas cadastradas até então para poder ser emitido o parecer de habilitação.
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+  <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="priorizar-propostas">
+      <!-- Query/Consulta -->
+      update DBPROPOSTACONVENIO.TB_PROJETO
+      set ST_PRIORIDADE = 'S';
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('priorizar-propostas')">  Copiar Script</button>
+</div>
+
+
+
+## Reverter parecer de superação de etapa:
+
+Altera a situação da proposta para o estado anterior ao de um parecer.
+
+<div class="highlighter-rouge">
+  <pre class="highlight">
+      <!-- Atribuição da Id abaixo -->
+    <code class="textarea" id="reverter-parecer-superacao">
+      <!-- Query/Consulta -->
+      :XXXX;
+      DEFINE var_co_proposta = &XXXX;
+
+      UPDATE DBSISMOB.TB_SOLICITACAO_PARCELA
+      SET CO_SITUACAO_SOLICITACAO = 1
+      WHERE CO_PROPOSTA = &amp;&var_co_proposta;
+
+      UPDATE DBSISMOB.TB_TRAMITE
+      SET ST_REGISTRO_ATIVO = 'N'
+      WHERE CO_TIPO_TRAMITE = 2 AND ST_ULTIMO = 'S' AND CO_PROPOSTA = &amp;&var_co_proposta;
+
+      UPDATE DBSISMOB.TB_TRAMITE
+      SET ST_ABERTO = 'S', CO_PARECER = NULL
+      WHERE ST_ULTIMO = 'S' AND CO_TIPO_TRAMITE = 10 AND CO_PROPOSTA = &amp;&var_co_proposta;
+
+      UPDATE DBSISMOB.TB_PARECER
+      SET ST_REGISTRO_ATIVO ='N'
+      WHERE co_seq_parecer IN (
+      SELECT co_parecer
+      FROM DBSISMOB.TB_TRAMITE
+      WHERE CO_TIPO_TRAMITE = 2 AND ST_ULTIMO = 'S' AND CO_PROPOSTA = &amp;&amp;var_co_proposta);
+
+      UPDATE TB_OBRA
+      SET CO_SITUACAO_OBRA = 0
+      WHERE CO_PROPOSTA = &amp;&var_co_proposta;
+
+      COMMIT;
+      <!-- Fim da Query/Consulta -->
+    </code>
+  </pre>
+  <button class="copiar btn" onclick="copiar('reverter-parecer-superacao')">  Copiar Script</button>
+</div>
+</div>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+    <div class="post pdf shown" id="dumps-e-config" data-url="/sismob/banco-de-dados/dumps-e-config/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Dumps e Configurações</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <h1 id="passos-para-utilizar-o-banco-de-dados-com-docker">Passos para utilizar o banco de dados com docker</h1>
+
+<!-- ## 1. Instalar o [git LFS](https://git-lfs.github.com/)   -->
+
+<!-- ## 2. Fazer pull do repositório do sismob. Confira se dentro da pasta docker/dumps está o arquivo 90-dbsismob.dmp.zip   -->
+<p><strong>1.</strong> Fazer pull do repositório do sismob.</p>
+
+<p><strong>2.</strong> Baixar os arquivos da pasta <a href="https://drive.google.com/open?id=0B-h414mXnBScSGJZOTViVDY5R0k">dump do drive</a> para dentro da pasta docker/dumps</p>
+
+<p><strong>3.</strong> Setar a variável de ambiente <em>$DUMPS_HOME</em> com o caminho para a pasta sismob/docker/dumps do repositório do github (não colocar barra no final)<br />
+Para exportar uma variável no linux basta digitar no terminal: $ export DUMPS_HOME=[CAMINHO PARA DUMPS]</p>
+
+<p><strong>4.</strong> Rodar o scrip <a href="https://github.com/BruceRodrigues/sismob/blob/homologacao/docker/docker.sh">docker.sh</a></p>
+
+<h1 id="dockersh">Docker.sh</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##############################################################
+##################### SISMOB DOCKER ##########################
+##############################################################
+
+Selecione uma opção
+1 - Start
+2 - Restart
+3 - Update
+4 - Reset
+5 - Exit
+
+##############################################################
+##############################################################
+</code></pre>
+</div>
+
+<p><strong>Start.</strong> Inicia o banco de dados utilizando uma pasta local como repositório dos arquivos .dat. Por padrão essa pasta será <em>~/docker-oracle-home/</em>, mas ela pode ser alterada exportando a variável de ambiente <strong>$DOCKER_ORACLE_HOME</strong>. Ao iniciar o banco pela primeira vez, os arquivos dmp.zip serão descompactados utilizando unzip e serão importados um a um. Esse processo pode ser um pouco demorado, mas acontecerá somente quando um banco é iniciado pela primeira vez.</p>
+
+<p><strong>Restart.</strong> Reinicia o container do banco. Mantém todas as modificações feitas na base de dados.</p>
+
+<p><strong>Update.</strong> Força a descompressão dos arquivos dmp.zip da pasta docker/dumps e reseta o banco.</p>
+
+<p><strong>Reset.</strong> Apaga o banco criado e refaz o processo de importação. <strong>FIXME:</strong> Existe um erro ao tentar remover a pasta <em>$DOCKER_ORACLE_HOME</em> pelo script. Por enquanto, remova essa pasta manualmente. <em>$ sudo rm -r [DOCKER_ORACLE_HOME]</em></p>
+
+<p><strong>Exit.</strong> Finaliza a execução do docker.sh.</p>
+
+<h1 id="utilizar-várias-versões-do-banco">Utilizar várias versões do banco</h1>
+
+<p>Se quiser utilizar diferentes versões do banco de dados é necessário alterar a variável de ambiente <strong>$DOCKER_ORACLE_HOME</strong>, setando para uma nova pasta, e executar a opção <em>Restart</em>.</p>
+
+<h1 id="atualizar-dump">Atualizar dump</h1>
+
+<p><strong>1.</strong> Substituir o arquivo .dmp.zip antigo pelo novo dump do respectivo schema. (Manter o mesmo nome do arquivo antigo)</p>
+
+<p><strong>2.</strong> Executar <em>Update</em>.</p>
+
+<h1 id="links-úteis">Links úteis</h1>
+
+<ul>
+  <li><a href="https://hub.docker.com/r/sath89/oracle-12c/">Docker image</a></li>
+  <li><a href="https://oracle-base.com/articles/10g/oracle-data-pump-10g">Oracle Data pump</a></li>
+</ul>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+    <div class="post pdf shown" id="nomenclatura" data-url="/sismob/banco-de-dados/nomenclatura/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Padrão de Nomenclatura</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <h2 id="padrão-de-nomenclatura-a-ser-utilizada-no-sismob">Padrão de nomenclatura a ser utilizada no SISMOB</h2>
+
+<p>O banco de dados deve seguir os padrões definidos pelo DATASUS.</p>
+
+<p>Segue link com o PDF com o detalhe dos padrões:
+https://drive.google.com/open?id=0B-h414mXnBScQ29jUHk4bWxKaGs</p>
+
+<p><strong>Observações específicas do SISMOB</strong></p>
+<ul>
+  <li>Não utilizar o sufixo ou prefixo “DbSismob” no nome das classes JPA. Caso exista uma classe com o mesmo nome e em outro pacote esta deve ser excluída, caso não seja utilizada, ou deve receber o prefixo com o nome do SCHEMA que ela pertence;</li>
+  <li>Nome das tabela - quando possuir vários nomes o primeiro deve ser o mais significativo ou o principal. Ex.: TB_PROPOSTA_ANEXO ou TB_MONITORAMENTO_PROJETO_LICITACAO</li>
+  <li>Se um enum não possuir uma tabela de relacionamento deve ser usado o prefixo “TP_” nas tabelas que recebem o @Enumerated</li>
+</ul>
+
+<p><strong>Orientações para manipulação do banco</strong></p>
+
+<ul>
+  <li>Para criação de chaves, estamos utilizando três tamanhos definidos em changelog-master.xml: small (4), medium (9) e big (12). Use conforme a necessidade da tabela, se esta tende a ter muitos registros, utilize 12, caso contrário, uma tabela com poucos tipos por exemplo, utilize 4.</li>
+  <li>A chave estrangeira precisa ter o mesmo tamanho e tipo da chave primária da tabela a qual ela está referenciando.</li>
+  <li>Para toda chave estrangeira, é necessário a criação de um Index na coluna que possui a FK.</li>
+  <li>Muito cuidado na hora de definir as constraints, existe um padrão para criação do nome de cada uma, e caso seja criada de maneira errada sua manutenção é custosa. Este padrão está definido no documento acima. Abaixo alguns exemplos, utilizando TB_TABELA_ORIGEM e TB_TABELA_DESTINO:</li>
+  <li>PK_TABELAORIGEM (sem TB nem underline)</li>
+  <li>FK_TABELADESTINO_TABELAORIGEM</li>
+  <li>IN_TABELAORIGEM_COTABELADESTINO</li>
+  <li>CK_TABELAORIGEM_STREGISTROATIVO</li>
+  <li>Caso o nome da constraint ultrapasse 30 caracteres, utilizar abreviação conforme definido no documento acima.</li>
+  <li>TODAS as colunas e tabelas do sistema precisam de comentário.</li>
+  <li>É necessário que esteja escrito no comentário da coluna que possui chave primária gerada por sequence (CO_SEQ), o nome da sequence que está sendo utilizada.</li>
+  <li>É necessário que esteja escrito no comentário da coluna que possui chave estrangeira qual tabela e qual chave está sendo referenciada.</li>
+  <li>As tabelas de relacionamento (RL) também possuem um padrão para criação do nome, sendo basicamente RL_TABELA1_TABELA2. Mais informações no documento acima.</li>
+  <li>Toda coluna do tipo ST ou TP precisa ter um valor DEFAULT, ser NOT NULL, ter uma constraint Check que verifica seus possíveis valores e ter explícito no comentário da coluna quais são os possíveis valores.</li>
+  <li>Pela necessidade de ser NOT NULL, o uso de TP é desencorajado, a menos que haja a garantia de que sempre haverá um valor pra essa coluna. Caso contrário, cria-se uma tabela de tipos e usa-se chave estrangeira normalmente.</li>
+  <li>O uso de chave primária composta em tabelas que não são RL é desencorajado, pois possui difícil manutenibilidade.</li>
+  <li>Qualquer dúvida, não havendo o entendimento do documento ou algum problema desconhecido, não hesite em perguntar ao colega.</li>
+</ul>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+
+    
+
+    <div class="post pdf shown" id="configuracao-ambiente" data-url="/sismob/configuracao-ambiente/index.html">
+      <header class="post-header">
+        <h1 class="post-title">Configurações do Ambiente</h1>
+      </header>
+
+      
+
+      <article class="post-content">
+        <h1 id="linux"><strong>Linux</strong></h1>
+
+<h2 align="center">Java 8</h2>
+<h3 align="center">Instalação</h3>
+<p><img src="http://logodatabases.com/wp-content/uploads/2012/03/java-logo-large.png" alt="" width="100px" /></p>
+
+<p>Passo 1</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo add-apt-repository ppa:webupd8team/java
+</code></pre>
+</div>
+<p>Passo 2</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
+</code></pre>
+</div>
+<p>Passo 3</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install oracle-java8-installer
+</code></pre>
+</div>
+<p>Passo 4</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install oracle-java8-set-default
+</code></pre>
+</div>
+
+<h2 align="center">Git</h2>
+<p><img src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="" width="100px" /></p>
+
+<p><strong>Passo 1 - Instalação</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install git
+</code></pre>
+</div>
+<p><strong>Passo 2</strong></p>
+<ul>
+  <li>Logar no github e fazer um fork do repositório <a href="https://github.com/sismob/sismob">sismob</a></li>
+</ul>
+
+<p><strong>Passo 3 - Clonar o projeto sismob:</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>git clone https://github.com/[usuario]/[nome_repositorio]
+</code></pre>
+</div>
+<p><strong>Passo 4 - Criar arquivo para o banco</strong></p>
+<ul>
+  <li>Após clonar o repositório, crie um arquivo chamado database.properties dentro da pasta {DIRETORIO_DO_PROJETO}/sismob.business.impl/src/main/resources/config/
+    <ul>
+      <li>O arquivo criado deverá conter as informações da base de dados usada pela aplicação</li>
+    </ul>
+  </li>
+  <li>Para não gerar .orig:
+    <ul>
+      <li>git config –global mergetool.keepBackup false</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Exemplo para um banco local:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>oracle.jdbc.driverClassName=oracle.jdbc.OracleDriver  
+oracle.jdbc.url=jdbc:oracle:thin:@localhost:1521:xe  
+oracle.jdbc.username=BRIDGE  
+oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM  
+</code></pre>
+</div>
+
+<p><br />
+<img src="https://maven.apache.org/images/maven-logo-black-on-white.png" alt="" width="100px" />
+<br /></p>
+
+<p><strong>Passo 1 - Instalação</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get install maven
+</code></pre>
+</div>
+<ul>
+  <li>Executar o comando
+    <div class="highlighter-rouge"><pre class="highlight"><code>mvn clean install
+</code></pre>
+    </div>
+    <p>(A build irá falhar)</p>
+  </li>
+</ul>
+
+<p><strong>Passo 2 - baixar a configuração</strong></p>
+<ul>
+  <li>Baixar  <a href="https://drive.google.com/drive/u/1/folders/0B_N8pY55c8qNR2FaUVJadmwwX2c">settings.xml</a> na pasta “Programação” no Drive do SISMOB e mover para a pasta .m2 que está na home</li>
+</ul>
+
+<p><strong>Passo 3 - mover a configuração</strong></p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo mv settings.xml ~/.m2/
+</code></pre>
+</div>
+<p>/.m2 é (pasta oculta)</p>
+
+<h2 id="docker">Docker</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>wget -qO- https://get.docker.com/ | sh
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo usermod -aG docker 'Nome do seu usuário do PC'
+</code></pre>
+</div>
+
+<ul>
+  <li>Reiniciar a máquina OU Fazer logoff e login</li>
+  <li>Logar no <a href="https://hub.docker.com/">DockerHub</a> utilizando sua conta do github(criar conta no docker com mesmo nome de usuário)</li>
+  <li>Pedir acesso as images do banco do SISMOB</li>
+  <li>Logar com sua conta no docker e executar no terminal: docker login</li>
+  <li>Fazer pull da imagem do banco no docker: <a href="/sismob/banco-de-dados/dumps-e-config/index.html">Configurando Dumps</a></li>
+</ul>
+
+<h2 id="ide-para-banco-de-dados">IDE para Banco de Dados</h2>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="/sismob/configuracao-ambiente/#home" role="tab">SQLDeveloper</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="/sismob/configuracao-ambiente/#profile" role="tab">DataGrip</a>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel">
+    <br />
+    <h2 align="center">SQLDeveloper</h2>
+      <p align="center"><img src="http://technostixs.com/wp-content/uploads/2014/11/SQLDev.png" alt="SQLDeveloper" width="100px" /></p>
+      <p>  Passo 1 - Baixar Arquivo</p>
+      <p><a href="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html">Download</a></p>
+      <p>Passo 2 - Descompactar para a pasta /opt </p>
+      <p> <code>sudo unzip sqldeveloper-x.zip /opt/</code></p>
+      <p>Passo 3 - abrir sqlDeveloper</p>
+      <p><code>sudo sh /opt/sqldeveloper.sh</code></p>
+      <p>(caso peça o path do java /usr/lib/jvm/java-8-oracle )</p>
+      <p>Passo 4 - Adicionar conexão e configurar com as seguinte diretrizes</p>
+      <p>
+        * Connections -&gt; New Connections -&gt; Connection Type: Advanced <br />
+        * URL: jdbc:oracle:thin:@localhost:1521:XE <br />
+        * Username: DBSISMOB <br />
+        * Password: j5m9jTr5s4mvgvb82MSM <br />
+        * Connect
+      </p>
+
+  </div>
+  <div class="tab-pane" id="profile" role="tabpanel">
+    <br />
+    <h2 align="center">DataGrip</h2>
+    <p align="center"><img src="https://resources.jetbrains.com/assets/marketo/newsletter/january2016/newsletter_promo.png" alt="DataGrip" width="100px" /></p>
+    <ol>
+      <li>  <p> Baixar Arquivo</p>
+        <p><a href="https://www.jetbrains.com/datagrip/download">Download</a></p></li>
+      <li><p>Instalar </p>
+      <p> <code>sh seudir/bin/datagrip.sh</code></p></li>
+      <li><p>Ativar</p>
+      <p>Para ativação clicar em *License server* e colocar o link http://idea.imsxm.com</p></li>
+      <li><p>Adicionar o banco e configurar</p>  
+        <ul>
+          <li><p>Clicar na aba View -&gt; Tool Windows -&gt; Database </p></li>
+          <li><p>Copiar o import desejado abaixo, clicando no botão </p></li>
+          <br />
+            <div class="row">
+              <div class="col-sm-2">
+                <textarea class="textarea" id="import-homologacao" style="display:none;">
+                  #DataSourceSettings#
+                  #LocalDataSource: HOMOLOGACAO_SISMOB
+                  #BEGIN#
+                  <data-source source="LOCAL" name="HOMOLOGACAO_SISMOB" uuid="eddd8f7a-df79-4318-9e59-d1d5ac745c70"><database-info product="Oracle" version="Oracle Database 12c Standard Edition Release 12.1.0.2.0 - 64bit Production" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" /><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@jenkins-mobile.sismob.ufsc.br:1521:xe</jdbc-url><secret-storage>master_key</secret-storage><user-name>BRIDGE</user-name><introspection-schemas>*:BRIDGE,DBCGPAN,DBCNES,DBCORPFNS,DBFAF,DBGERAL,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB</introspection-schemas><driver-properties><property name="v$session.program" value="DataGrip" /></driver-properties></data-source>
+                  #END#
+                </textarea>
+                  <button class="copiar btn btn-primary" onclick="copiar('import-homologacao')">Import do homologação</button>
+              </div>
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2">
+                <textarea class="textarea" id="import-local" style="display:none;">
+                  #DataSourceSettings#
+                  #LocalDataSource: LOCAL
+                  #BEGIN#
+                  <data-source source="LOCAL" name="LOCAL" uuid="5383d532-9e36-47bb-9d4d-31d0bb11480f"><database-info product="Oracle" version="Oracle Database 12c Standard Edition Release 12.1.0.2.0 - 64bit Production" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" /><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url><secret-storage>master_key</secret-storage><user-name>BRIDGE</user-name><introspection-schemas>*:BRIDGE,DBCGPAN,DBCNES,DBCNESRJ,DBCORPFNS,DBFAF,DBGERAL,DBNACIONAL,DBPESSOA,DBPGESCONTA,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB</introspection-schemas><default-dialect>OracleSqlPlus</default-dialect><driver-properties><property name="v$session.program" value="DataGrip" /></driver-properties></data-source>
+                  #END#
+                </textarea>
+                <button class="copiar btn btn-primary" onclick="copiar('import-local')">Import do Banco Local</button>
+              </div>
+              <div class="col-sm-1"></div>
+              <div class="col-sm-2">
+                <textarea class="textarea" id="import-producao" style="display:none;">
+                  #DataSourceSettings#
+                  #LocalDataSource: PROD
+                  #BEGIN#
+                  <data-source source="LOCAL" name="PROD" read-only="true" uuid="3649a763-6913-4e6f-8b0a-5e83005fa465"><database-info product="Oracle" version="Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production&#xa;With the Partitioning, Real Application Clusters, Automatic Storage Management, OLAP,&#xa;Data Mining and Real Application Testing options" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" /><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@srvoradf0.saude.gov:1521/dfpo1.saude.gov</jdbc-url><secret-storage>master_key</secret-storage><user-name>SISMOBWEB</user-name><introspection-schemas>*:DBCORPFNS,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB,SISMOBWEB</introspection-schemas><driver-properties><property name="v$session.program" value="DataGrip" /></driver-properties></data-source>
+                  #END#
+                </textarea>
+                <button class="copiar btn btn-primary" onclick="copiar('import-producao')">Import do Produção</button>
+              </div>
+            </div>
+            <br />
+          <li><p>No DataGrip, na view que foi aberta, clicar no sinal '+' -&gt; Import from clipboard</p></li>
+          <li><p> Configurar o usuário e senha (todo o resto deve já vir setado corretamente por padrão)</p></li>
+        </ul>
+      </li>
+
+      <li><p>(Opcional)</p>
+          <p>Ir na aba Schemas e selecionar <b>somente</b> aqueles schemas úteis, para evitar poluição visual</p>
+          <br />
+          <p><b>Clicar em Ok</b></p></li>
+    </ol>
+
+  </div>
+</div>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="/sismob/configuracao-ambiente/#eclipse" role="tab">Eclipse</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="/sismob/configuracao-ambiente/#intellij" role="tab">IntelliJ</a>
+  </li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="eclipse" role="tabpanel">
+    <h1 align="center">Java EE Eclipse</h1>
+    <h1 align="center"><img src="http://www.eclipse.org/membership/promo/images/eclipsecon-ad-europe2017-400x400.png" alt="eclipse" width="100px" /></h1>
+    <ol>
+      <li><b>Baixar</b></li>
+        <a href="http://www.eclipse.org/downloads/eclipse-packages/">Download</a>
+        <p>Escolher: <b>Eclipse IDE for Java EE Developers</b></p>
+      <li>Descompactar e abrir o eclipse</li>
+      <li><b>Importar projetos: </b></li>
+      File -&gt; Import -&gt; Existing Maven Projects
+      <li>Importar todos os projetos do sismob com exceção do core.processor</li>
+      <li><b>Save actions: </b></li>
+      window -&gt; preferences -&gt; java -&gt; editor -&gt; save actions -&gt; configure
+      <li>Print das telas em: <a href="https://drive.google.com/drive/u/1/folders/0B7kfNsf4ayKQTVl1SzhGUFVjenc">Link</a></li>
+      <li><b>Marcar:</b>
+          <ul>
+            <li>Perform the selected actions on save</li>
+            <li>Format sorce code</li>
+            <li>Format all lines</li>
+            <li>Organize imports</li>
+            <li>Additional actions:
+              <ul>
+                    <li>organizing(remove trailin whitespace - all lines;)  </li>
+                    <li>code style (use blocks - always; and use parentheses - only if necessary)  </li>
+                    <li>member accesses (use this qualifier for field accesses - always; and for methods accesses ) </li>
+                    <li>missing code (add missing annotations)  </li>
+                    <li>unnecessary code (remove unused imports; remove unnecessary casts)  </li>
+                  </ul>
+              </li>
+          </ul>
+      </li>
+      <li>Importar arquivo sismob-formatter que está na pasta do sismob, em window -&gt; preferences -&gt; java -&gt; code style formatter</li>
+      <li>Importar arquivo cleanUp que está na pasta sismob, em Window -&gt; preferences - &gt; java -&gt; cleanUp</li>
+      <li>Importar arquivo `bridge.importorder` que está na pasta sismob, em Window -&gt; preferences - &gt; java -&gt; code style &gt; Organize Imports</li>
+      <li>Instalar Maven Integration JDT APT : Help -&gt; Eclipse Marketplace:
+        <ol>
+          <li>Pesquisar por Jboss  </li>
+          <li>Instalar JBoss Tools  </li>
+          <li>Marcar:
+              <ul>
+                <li>JBoss Maven Integration</li>
+                <li>Maven Integration JDT APT  </li>
+              </ul>
+          </li>
+        </ol>
+      </li>
+      <li>Selecionar o projeto sismob.common.api &gt; Project &gt; Properties &gt; maven &gt; annotation processing &gt; Marcar Automatically configure JDT APT</li>
+      <li>Selecionar o projeto sismob.tools &gt; Project &gt; Properties &gt; Java Build Path &gt; Projects &gt; Adicionar o projeto core.tools</li>
+      <li>Selecionar o projeto sismob.business.impl &gt; Project &gt; Properties &gt; maven &gt; annotation processing &gt; Marcar Automatically configure JDT APT</li>
+      <li>Run &gt; Debug Configurations &gt; New Java Application &gt; Project: sismob.springboot, Main class: br.gov.sismob.application.SismobApplication </li>
+      <li>Windows &gt; Preferences &gt; Maven &gt; Annotation Processing &gt; Marcar Automatically configure JDT APT</li>
+      <li><b>Fechar eclipse</b></li>
+    </ol>
+  </div>
+  <div class="tab-pane" id="intellij" role="tabpanel">
+    <a href="https://www.jetbrains.com/idea/"><h1 align="center">Jet Brains InteliiJ</h1></a>
+    <h1 align="center"><img src="https://seeklogo.com/images/I/intellij-idea-logo-F0395EF783-seeklogo.com.png" alt="" width="100px" /></h1>
+
+    <h1>Em Construção</h1></div>
+</div>
+
+<h2 id="lombok">Lombok</h2>
+<ul>
+  <li><a href="https://projectlombok.org/download.html">Download</a></li>
+  <li>sudo java -jar lombok.jar</li>
+  <li>Selecionar pasta do eclipse e instalar.</li>
+</ul>
+
+<h2 id="jekyll">Jekyll</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-add-repository ppa:brightbox/ruby-ng
+sudo apt-get update
+sudo apt-get install ruby2.3 ruby2.3-dev build-essential
+sudo gem2.3 install bundler
+sudo gem install posix-spawn
+sudo gem install jekyll
+</code></pre>
+</div>
+
+<p>Para servir a documentação em um servidor local: <code class="highlighter-rouge">jekyll serve</code> (a partir da raiz da documentação).</p>
+
+<h2 id="testes-automatizados">Testes automatizados</h2>
+<p>Baixar o chromedriver</p>
+<ul>
+  <li>wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip</li>
+  <li>unzip chromedriver_linux64.zip</li>
+  <li>chmod +x chromedriver</li>
+  <li>sudo mv -f chromedriver /usr/local/share/chromedriver</li>
+  <li>sudo ln -s /usr/local/share/chromedriver /usr/local/bin/chromedriver</li>
+  <li>sudo ln -s /usr/local/share/chromedriver /usr/bin/chromedriver</li>
+</ul>
+
+<p>Baixar a licença do Testbench do vaadin (https://drive.google.com/open?id=0B7kfNsf4ayKQMGVtRVBrSkgyaGc) e mover para a home</p>
+
+<h2 id="sugestões">Sugestões</h2>
+
+<p>Docker without sudo:<br />
+http://askubuntu.com/questions/477551/how-can-i-use-docker-without-sudo</p>
+
+<p>Git credentials para linux:<br />
+http://git-scm.com/docs/git-credential-store</p>
+
+<p>Quick diff (mostra as diferenças do git em relação a última versão na barra lateral do eclipse):</p>
+<ul>
+  <li>No eclipse, Window -&gt; Preferences - Pesquisar por Quick Diff</li>
+  <li>Trocar o “reference source” por “A Git Revision” e escolher as cores conforme preferência.</li>
+</ul>
+
+<p>Content assist (editor do eclipse mais “inteligente”):<br />
+Window -&gt; Preferences -&gt; Java -&gt; Editor -&gt; Content Assist<br />
+Insertion: Completion overwrites<br />
+Fill method arguments and show guessed arguments: Insert best guessed arguments</p>
+
+<h3 id="meld-comparador-para-conflitos-no-git">Meld (Comparador para conflitos no git):</h3>
+<ul>
+  <li>sudo apt-get install meld
+Em caso de conflito ao fazer pull, utilizar o seguinte comando:
+    <ul>
+      <li>git mergetool -t meld<br />
+  Existe uma forma de setar o meld como ferramenta padrão de merge. Caso necessário, perguntar ao oráculo.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="git-alias">Git Alias:</h3>
+
+<p>Configurando alias no git, entrar no diretório onde encontra-se o projeto e seguir os exemplos abaixo:</p>
+
+<p>Adicionando alias de pull no projeto core do SISMOB, repositório master (foi utilizado o alias ‘pullcore’, podendo ser trocado por qualquer outra palavra):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git config alias.pullcore "pull https://github.com/sismob/core"  
+Utilização: git pullcore  
+</code></pre>
+</div>
+
+<p>Adicionando alias de pull no projeto sismob do SISMOB, repositório master (foi utilizado o alias ‘pullsismob’, podendo ser trocado por qualquer outra palavra):</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git config alias.pullsismob "pull https://github.com/sismob/sismob"  
+Utilização: git pullsismob  
+
+Obs 1: Da forma acima, os alias funcionarão apenas nos diretórios e sub-diretórios onde foram executados os comandos (recomendável). Para configuração global, utilizar --global .  
+</code></pre>
+</div>
+
+<h3 id="aumentar-a-memória-do-eclipse">Aumentar a memória do eclipse</h3>
+<p>Abrir o eclipse.ini: sudo cd  /opt/eclipse/eclipse.ini<br />
+		1.1 trocar –launcher.XXMaxPermSize, de 256M para 4096M<br />
+		1.2 trocar -Xms40m para Xms4096m e -Xmx512m para -Xmx4096m</p>
+
+<h3 id="logback">Logback</h3>
+
+<p>O arquivo <code class="highlighter-rouge">logback-spring.xml</code> controla o nível de log. É útil para debugar queries. Os valores dos binding parameters vão aparecer abaixo da query quando a propriedade level for definida como “TRACE” na linha seguinte:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>    &lt;logger name="org.hibernate.type" level="TRACE" /&gt;
+</code></pre>
+</div>
+
+<p>A quantidade de linhas de log aumenta bastante ao mudar o level para “TRACE”. Para voltar ao nível normal de log, basta definir o valor de level para “ERROR” outra vez. Faça Refresh nos projetos e Update Maven Projects sempre que fizer essa alteração.</p>
+
+<h3 id="sonarlint">SonarLint</h3>
+
+<p>O SonarLint é uma extensão do Eclipse que permite receber feedback on-the-fly sobre bugs e qualidade do código que está sendo desenvolvido.
+Para instalar siga os passos:</p>
+<ul>
+  <li>No eclipse, na parte superior clique em ‘Help’ &gt; ‘Eclipse Marketplace’.</li>
+  <li>No campo ‘Find’ digite ‘SonarLint’.</li>
+  <li>Clique em ‘Install’ e siga os passos.</li>
+</ul>
+
+      </article>
+
+      <div class="pdf-separator"></div>
+    </div>
+
+    
+        
+
+    
+
+
+</div>
+
+<script type="text/javascript">
+  var $checkboxes = $('.pdf-select input[type=checkbox]');
+
+  $(document).ready(function() {
+    // Aplicamos o filtro de checkboxes caso venha de uma URL: pdf.html?include={id}
+    var search = window.location.search;
+    var include = search.split('include')[1];
+
+    if (include !== undefined) {
+      include = include.split('=')[1];
+      hideAll();
+      checkByUrl(include);
+    }
+  });
+
+  /**
+   * Mostra/esconde as páginas correspondentes ao clicar nos checkboxes
+   */
+  $checkboxes.on('change', function(e) {
+    var checkbox = e.target;
+    var id = checkbox.value;
+    var checked = checkbox.checked;
+
+    // Não utilizamos o seletor '#' pois IDs podem ter caracteres especiais
+    // Exemplo: RF-REC.recebimento_por_lote
+    var seletor = '[id="'+id+'"]';
+
+    $(seletor)
+      .toggleClass('shown', checked)
+      .toggleClass('hidden', !checked);
+  });
+
+  /**
+   * Desmarca todos os checkboxes e esconde todas as páginas.
+   */
+  function hideAll() {
+    $checkboxes
+      .prop('checked', false)
+      .trigger('change');
+  }
+
+  /**
+   * Marca/Desmarca o checkbox do item com id especificado e todos os seus
+   * filhos, mostrando ou escondendo as páginas correspondentes
+   */
+  function checkById(id, check) {
+    if (check === undefined) {
+      check = true;
+    }
+
+    $('#item-' + id).find('input[type=checkbox]')
+      .prop('checked', check)
+      .trigger('change');
+  }
+
+  /**
+   * Marca o checkbox do item com url especificado e todos os seus filhos,
+   * mostrando as páginas correspondentes
+   */
+  function checkByUrl(url) {
+    $('.pdf-select [data-url="' + url + '"]').find('input[type=checkbox]')
+      .prop('checked', true)
+      .trigger('change');
+  }
+
+  var monthNames = [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+  ];
+
+  /**
+   * Gera o PDF conforme regras definidas na página.
+   */
+  function generate() {
+    var titulo = $('#input-titulo-documento').val();
+    if (titulo.length !== 0) {
+      $('.capa').addClass('visible-print');
+      $('#target-titulo-documento').html(titulo);
+
+      var now = new Date();
+      var day = now.getDate();
+      var monthIndex = now.getMonth();
+      var year = now.getFullYear();
+      $('#target-date-documento').html(day + ' de ' + monthNames[monthIndex] + ' de ' + year);
+    }
+
+    var host = window.location.hostname;
+    if (host.startsWith('localhost') || host.startsWith('127.0.0.1')) {
+      window.print();
+    } else {
+      var html = $('html').clone();
+      html.find('head').append('<base href="'+window.location+'">');
+
+      $('#pdf-form input').val(html.html());
+      $('#pdf-form').submit();
+    }
+  }
+</script>
+
+<form id="pdf-form" action="https://prince.bridge.ufsc.br/build_from_html" method="POST" target="_blank">
+  <input type="hidden" name="body" value="Empty">
+</form>
+
+        </div>
+
+      </div>
+    </div>
+
+    <script src="/js/site.js" type="text/javascript"></script>
+  </body>
+</html>

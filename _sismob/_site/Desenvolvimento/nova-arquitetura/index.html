@@ -1,0 +1,64 @@
+<p>Visando agregar estabilidade ao SISMOB foi criado uma nova forma de desenvolver.</p>
+
+<p>Ela usa conceitos da programação Reativa e Redutiva</p>
+
+<p>que são eles</p>
+
+<h3 id="o-redux-é-composto-de-três-princípios-que-formam-e-definem-o-seu-conceito-eles-são">O Redux é composto de três princípios que formam e definem o seu conceito. Eles são:</h3>
+
+<p><strong>Um único ponto de verdade</strong> – Todo o estado da aplicação é mantido em apenas um único objeto chamado de Store.</p>
+
+<p><strong>O estado é imutável</strong> – O estado da aplicação é inalterável, a unica maneira de afeta-lo é emitindo uma Action com a mudança.</p>
+
+<p><strong>Mudanças são feitas apenas por funções puras</strong> – Reducers recebem as Actions emitidas e aplicam-nas ao estado. Sempre retornando um novo estado.</p>
+
+<p>Todo componente React possui dois atributos principais: estado (state) e propriedades (props).</p>
+
+<h3 id="o-que-é-stateestado">O que é State(Estado)</h3>
+
+<p><strong>Estado</strong> é ser considerado o conjunto de dados mantidos no momento em que sua aplicação está rodando no lado do cliente. Qualquer atualização que envolva alteração desses dados, automaticamente essa mudança irá alterar o estado.</p>
+
+<p><strong>O estado (ou state)</strong> da sua aplicação, pode ser definido como: o lugar onde os dados vem e se transformam ao longo do tempo.</p>
+
+<h3 id="props">Props</h3>
+
+<p>A maioria dos componentes pode ser personalizada com diferentes parâmetros quando eles são criados. Esses parâmetros de criação são chamados props.</p>
+
+<p>Os props são parâmetros que não mudam dinamicamente.</p>
+
+<p>Os seus próprios componentes também podem usar adereços. Isso permite que você faça um único componente que é usado em muitos lugares diferentes em seu aplicativo, com propriedades ligeiramente diferentes em cada local</p>
+
+<p>Em todos os tipos de paradigmas no desenvolvimento de software, passar parâmetros é extremamente comum. Com os componentes do React isso não poderia ser diferente. A diferença é que no React, usamos os <a href="https://facebook.github.io/react/docs/components-and-props.html">props</a>    (abreviação para properties).</p>
+
+<p>Props são Read-Only#</p>
+
+<p>Se você declara um componente como uma função ou uma classe , ele nunca deve modificar seus próprios adereços. Considere esta sumfunção:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="nf">sum</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Essas funções são chamadas de “puras” porque não tentam mudar suas entradas e sempre retornam o mesmo resultado para as mesmas entradas.</p>
+
+<p>Em contraste, esta função é impura porque altera sua própria entrada:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">function</span> <span class="nf">withdraw</span><span class="o">(</span><span class="n">account</span><span class="o">,</span> <span class="n">amount</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">account</span><span class="o">.</span><span class="na">total</span> <span class="o">-=</span> <span class="n">amount</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>O React é bastante flexível, mas tem uma única regra estrita:</p>
+
+<p>Todos os componentes React devem atuar como funções puras em relação aos seus props.</p>
+
+<h2 id="como-será-aplicada-a-nova-arquitetura">Como será aplicada a nova Arquitetura</h2>
+
+<p><strong>View:</strong></p>
+
+<p>Como funciona:
+  A View Recebe Estados por update(Atualização) do StatePresenter e envia Eventos para o StatePresenter.
+<strong>StatePresenter:</strong>
+<strong>StateManager:</strong>
+<strong>DAO(Data Access Object):</strong>
+<strong>Repository(BD):</strong></p>

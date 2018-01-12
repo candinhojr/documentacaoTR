@@ -1,0 +1,58 @@
+<h1 id="passos-para-utilizar-o-banco-de-dados-com-docker">Passos para utilizar o banco de dados com docker</h1>
+
+<p><strong>1.</strong> Fazer pull do repositório do sismob.</p>
+
+<p><strong>2.</strong> Baixar os arquivos da pasta <a href="https://drive.google.com/open?id=0B-h414mXnBScSGJZOTViVDY5R0k">dump do drive</a> para dentro da pasta docker/dumps.
+        Dump DBSISMOB do:
+          <a href="https://drive.google.com/drive/folders/0B7kfNsf4ayKQREYtQThPQUQyamM">v9</a></p>
+
+<p><strong>3.</strong> Setar a variável de ambiente <em>$DUMPS_HOME</em> com o caminho para a pasta sismob/docker/dumps do repositório do github (não colocar barra no final)
+Para exportar uma variável no linux basta digitar no terminal:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">export </span><span class="nv">DUMPS_HOME</span><span class="o">=[</span>CAMINHO PARA DUMPS]
+</code></pre></div></div>
+
+<p><strong>4.</strong> Rodar o scrip <a href="https://github.com/BruceRodrigues/sismob/blob/homologacao/docker/docker.sh">docker.sh</a></p>
+
+<h1 id="dockersh">Docker.sh</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">##############################################################</span>
+<span class="c">##################### SISMOB DOCKER ##########################</span>
+<span class="c">##############################################################</span>
+
+Selecione uma opção
+1 - Start
+2 - Restart
+3 - Update
+4 - Reset
+5 - Exit
+
+<span class="c">##############################################################</span>
+<span class="c">##############################################################</span>
+</code></pre></div></div>
+
+<p><strong>Start.</strong> Inicia o banco de dados utilizando uma pasta local como repositório dos arquivos .dat. Por padrão essa pasta será <em>~/docker-oracle-home/</em>, mas ela pode ser alterada exportando a variável de ambiente <strong>$DOCKER_ORACLE_HOME</strong>. Ao iniciar o banco pela primeira vez, os arquivos dmp.zip serão descompactados utilizando unzip e serão importados um a um. Esse processo pode ser um pouco demorado, mas acontecerá somente quando um banco é iniciado pela primeira vez.</p>
+
+<p><strong>Restart.</strong> Reinicia o container do banco. Mantém todas as modificações feitas na base de dados.</p>
+
+<p><strong>Update.</strong> Força a descompressão dos arquivos dmp.zip da pasta docker/dumps e reseta o banco.</p>
+
+<p><strong>Reset.</strong> Apaga o banco criado e refaz o processo de importação. <strong>FIXME:</strong> Existe um erro ao tentar remover a pasta <em>$DOCKER_ORACLE_HOME</em> pelo script. Por enquanto, remova essa pasta manualmente. <em>$ sudo rm -r [DOCKER_ORACLE_HOME]</em></p>
+
+<p><strong>Exit.</strong> Finaliza a execução do docker.sh.</p>
+
+<h1 id="utilizar-várias-versões-do-banco">Utilizar várias versões do banco</h1>
+
+<p>Se quiser utilizar diferentes versões do banco de dados é necessário alterar a variável de ambiente <strong>$DOCKER_ORACLE_HOME</strong>, setando para uma nova pasta, e executar a opção <em>Restart</em>.</p>
+
+<h1 id="atualizar-dump">Atualizar dump</h1>
+
+<p><strong>1.</strong> Substituir o arquivo .dmp.zip antigo pelo novo dump do respectivo schema. (Manter o mesmo nome do arquivo antigo)</p>
+
+<p><strong>2.</strong> Executar <em>Update</em>.</p>
+
+<h1 id="links-úteis">Links úteis</h1>
+
+<ul>
+  <li><a href="https://hub.docker.com/r/sath89/oracle-12c/">Docker image</a></li>
+  <li><a href="https://oracle-base.com/articles/10g/oracle-data-pump-10g">Oracle Data pump</a></li>
+</ul>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Dumps e Configurações</title>
+  <meta name="description" content="Passos para utilizar o banco de dados com docker">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/sismob/banco-de-dados/dumps-e-config/">
+  <link rel="icon" type="image/png" href="/img/logo-mini.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="/js/search.js" type="text/javascript"></script>
+  <script src="/js/copy-text.js" type="text/javascript"></script>
+  <script src="/js/functions.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="/js/bootstrap.js"type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      <img src="/img/logo-sismob.png">
+      <span class="title-text"></span>
+      <span class="label">Wiki</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="javascript: void" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+            <a href="/about/"><i class="icon icon-about"></i> Sobre</a>
+          
+        
+          
+        
+          
+            <a href="/pdf.html"><i class="icon icon-pdf"></i> Gerar PDF</a>
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="breadcrumb-placeholder">
+  <div class="wrapper breadcrumb-wrapper">
+    <ol class="breadcrumb">
+      <img src="/img/logo-mini.png">
+      <li><a href="/">Home</a></li>
+
+      
+        
+          
+            <li><a title="Banco de Dados" href="/sismob/banco-de-dados/index.html">Banco de Dados</a></li>
+          
+        
+          
+            <li><a title="Dumps e Configurações" href="/sismob/banco-de-dados/dumps-e-config/index.html">Dumps e Configurações</a></li>
+          
+        
+
+      
+    </ol>
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+
+        <div class="sidebar">
+          <div class="sidebar-content">
+            <form action="/search.html">
+  <input type="search" placeholder="Pesquisar..." name="q" id="search-input" autocomplete="off">
+</form>
+
+<ul id="search-results"></ul>
+
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('search-results'),
+    json: '/search.json',
+    noResultsText: 'Nenhum resultado encontrado'
+  });
+</script>
+
+<div class="menu">
+  
+
+
+
+  
+
+  <ul>
+    
+      <li>
+        <a title="Voltar para Home" href="/" class="back-link">
+          <i class="icon icon-back"></i> Voltar
+          <small>(Home)</small>
+        </a>
+      </li>
+    
+
+    <li>
+      <a class="open" title="Banco de Dados" href="/sismob/banco-de-dados/index.html">Banco de Dados</a>
+      <ul>
+        
+          <li >
+          
+            <a title="Consultas Importantes" href="/sismob/banco-de-dados/consultas-importantes/index.html">
+              Consultas Importantes
+            </a>
+          </li>
+        
+          <li class="active">
+          
+            <a title="Dumps e Configurações" href="/sismob/banco-de-dados/dumps-e-config/index.html">
+              Dumps e Configurações
+            </a>
+          </li>
+        
+          <li >
+          
+            <a title="Padrão de Nomenclatura" href="/sismob/banco-de-dados/nomenclatura/index.html">
+              Padrão de Nomenclatura
+            </a>
+          </li>
+        
+      </ul>
+    </li>
+  </ul>
+
+
+</div>
+
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Dumps e Configurações</h1>
+    <p class="post-meta">
+      
+
+<!-- <a class="btn" href="https://github.com/sismob/sismob/blob/master/sismob.testers/_sismob/banco-de-dados/dumps-e-config/index.markdown">
+  <i class="icon icon-git"></i> Código fonte desta página
+</a> -->
+
+      <a class="btn" href="/pdf.html?include=/sismob/banco-de-dados/dumps-e-config/index.html"><i class="icon icon-pdf"></i> Gerar PDF desta página</a>
+      
+        <span class="label" title="Data da última modificação">Alterado em 30/08/2017</span>
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="passos-para-utilizar-o-banco-de-dados-com-docker">Passos para utilizar o banco de dados com docker</h1>
+
+<!-- ## 1. Instalar o [git LFS](https://git-lfs.github.com/)   -->
+
+<!-- ## 2. Fazer pull do repositório do sismob. Confira se dentro da pasta docker/dumps está o arquivo 90-dbsismob.dmp.zip   -->
+<p><strong>1.</strong> Fazer pull do repositório do sismob.</p>
+
+<p><strong>2.</strong> Baixar os arquivos da pasta <a href="https://drive.google.com/open?id=0B-h414mXnBScSGJZOTViVDY5R0k">dump do drive</a> para dentro da pasta docker/dumps</p>
+
+<p><strong>3.</strong> Setar a variável de ambiente <em>$DUMPS_HOME</em> com o caminho para a pasta sismob/docker/dumps do repositório do github (não colocar barra no final)<br />
+Para exportar uma variável no linux basta digitar no terminal: $ export DUMPS_HOME=[CAMINHO PARA DUMPS]</p>
+
+<p><strong>4.</strong> Rodar o scrip <a href="https://github.com/BruceRodrigues/sismob/blob/homologacao/docker/docker.sh">docker.sh</a></p>
+
+<h1 id="dockersh">Docker.sh</h1>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##############################################################
+##################### SISMOB DOCKER ##########################
+##############################################################
+
+Selecione uma opção
+1 - Start
+2 - Restart
+3 - Update
+4 - Reset
+5 - Exit
+
+##############################################################
+##############################################################
+</code></pre>
+</div>
+
+<p><strong>Start.</strong> Inicia o banco de dados utilizando uma pasta local como repositório dos arquivos .dat. Por padrão essa pasta será <em>~/docker-oracle-home/</em>, mas ela pode ser alterada exportando a variável de ambiente <strong>$DOCKER_ORACLE_HOME</strong>. Ao iniciar o banco pela primeira vez, os arquivos dmp.zip serão descompactados utilizando unzip e serão importados um a um. Esse processo pode ser um pouco demorado, mas acontecerá somente quando um banco é iniciado pela primeira vez.</p>
+
+<p><strong>Restart.</strong> Reinicia o container do banco. Mantém todas as modificações feitas na base de dados.</p>
+
+<p><strong>Update.</strong> Força a descompressão dos arquivos dmp.zip da pasta docker/dumps e reseta o banco.</p>
+
+<p><strong>Reset.</strong> Apaga o banco criado e refaz o processo de importação. <strong>FIXME:</strong> Existe um erro ao tentar remover a pasta <em>$DOCKER_ORACLE_HOME</em> pelo script. Por enquanto, remova essa pasta manualmente. <em>$ sudo rm -r [DOCKER_ORACLE_HOME]</em></p>
+
+<p><strong>Exit.</strong> Finaliza a execução do docker.sh.</p>
+
+<h1 id="utilizar-várias-versões-do-banco">Utilizar várias versões do banco</h1>
+
+<p>Se quiser utilizar diferentes versões do banco de dados é necessário alterar a variável de ambiente <strong>$DOCKER_ORACLE_HOME</strong>, setando para uma nova pasta, e executar a opção <em>Restart</em>.</p>
+
+<h1 id="atualizar-dump">Atualizar dump</h1>
+
+<p><strong>1.</strong> Substituir o arquivo .dmp.zip antigo pelo novo dump do respectivo schema. (Manter o mesmo nome do arquivo antigo)</p>
+
+<p><strong>2.</strong> Executar <em>Update</em>.</p>
+
+<h1 id="links-úteis">Links úteis</h1>
+
+<ul>
+  <li><a href="https://hub.docker.com/r/sath89/oracle-12c/">Docker image</a></li>
+  <li><a href="https://oracle-base.com/articles/10g/oracle-data-pump-10g">Oracle Data pump</a></li>
+</ul>
+
+  </article>
+
+</div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <script src="/js/site.js" type="text/javascript"></script>
+  </body>
+</html>

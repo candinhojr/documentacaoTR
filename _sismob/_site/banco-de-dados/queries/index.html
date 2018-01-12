@@ -1,0 +1,64 @@
+<p>Todas as queries escritas que fazem projeção para algum DTO devem ser implementadas em uma classe própria e utilizar o padrão QueryCommand.</p>
+
+<h2 id="estrutura-da-classe">Estrutura da classe</h2>
+<p>Todas as classes queries devem obrigatoriamente estender SimpleJpaDslQueryCommand ou PostProcessJpaDslQueryCommand (para queries que exigem alguma nova operação após a projeção dos resultados).</p>
+
+<p>Todas as queries devem possuir uma classe estática interna para representar seu filtro, essa classe deve ser um simples [POJO] (https://pt.wikipedia.org/wiki/Plain_Old_Java_Objects).</p>
+
+<p>Todos os path’s utilizados para fazer joins devem sempre ser declarados como atributos da classe query. Dessa forma a query fica mais clara de se entender e mais simples para fazer manutenção/alterações.</p>
+
+<h2 id="nomeclatura">Nomeclatura</h2>
+<ul>
+  <li>Classes de filtro devem sempre se chamar <strong>Filter</strong></li>
+  <li>Classes de query devem sempre iniciar com o nome do DTO que ela faz projeção seguido da palavra <strong>Query</strong>.</li>
+</ul>
+
+<h2 id="restrições">Restrições</h2>
+<ul>
+  <li>Classes queries não devem ser injetáveis.</li>
+  <li>Para manter a coesão, classes queries não devem utilizar serviços, apenas fazem seleção e projeção de informações. Se um DTO possui outros DTO’s como atributos, este deve ser montado pelo serviço, utilizando diferentes queries.</li>
+  <li>Queries não devem ser chamadas dentro de loops.</li>
+</ul>
+
+<h2 id="exemplo">Exemplo</h2>
+
+<p>Query para o DTO DadosPessoaisForm.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DadosPessoaisFormQuery</span> <span class="kd">extends</span> <span class="n">SimpleJpaDslQueryCommand</span><span class="o">&lt;</span><span class="n">DadosPessoaisFormQuery</span><span class="o">.</span><span class="na">Filter</span><span class="o">,</span> <span class="n">DadosPessoaisForm</span><span class="o">&gt;</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="n">QAtorPapel</span> <span class="n">atorPapel</span> <span class="o">=</span> <span class="n">QAtorPapel</span><span class="o">.</span><span class="na">atorPapel</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">QAtor</span> <span class="n">ator</span> <span class="o">=</span> <span class="n">QAtor</span><span class="o">.</span><span class="na">ator</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">QAtorPessoaFisica</span> <span class="n">atorPessoaFisica</span> <span class="o">=</span> <span class="n">QAtorPessoaFisica</span><span class="o">.</span><span class="na">atorPessoaFisica</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">QDadosPessoais</span> <span class="n">dadosPessoais</span> <span class="o">=</span> <span class="n">QDadosPessoais</span><span class="o">.</span><span class="na">dadosPessoais</span><span class="o">;</span>
+
+	<span class="c1">//Classe filtro utilizada na seleção</span>
+	<span class="nd">@Data</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Filter</span> <span class="o">{</span>
+		<span class="kd">private</span> <span class="n">Long</span> <span class="n">atorPapelId</span><span class="o">;</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">query</span><span class="o">(</span><span class="n">JPQLQuery</span> <span class="n">query</span><span class="o">)</span> <span class="o">{</span>
+		<span class="c1">//Joins feitos utilizando os path's declarados como atributos</span>
+		<span class="n">query</span><span class="o">.</span><span class="na">from</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">atorPapel</span><span class="o">);</span>
+		<span class="n">query</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">atorPapel</span><span class="o">.</span><span class="na">tbAtor</span><span class="o">(),</span> <span class="k">this</span><span class="o">.</span><span class="na">ator</span><span class="o">);</span>
+		<span class="n">query</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">ator</span><span class="o">.</span><span class="na">tbAtorPessoaFisica</span><span class="o">(),</span> <span class="k">this</span><span class="o">.</span><span class="na">atorPessoaFisica</span><span class="o">);</span>
+		<span class="n">query</span><span class="o">.</span><span class="na">join</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">atorPessoaFisica</span><span class="o">.</span><span class="na">tbDadosPessoais</span><span class="o">(),</span> <span class="k">this</span><span class="o">.</span><span class="na">dadosPessoais</span><span class="o">);</span>
+
+		<span class="c1">//Seleção da query utilizando o filtro</span>
+		<span class="k">if</span> <span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">filter</span><span class="o">.</span><span class="na">atorPapelId</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+			<span class="n">query</span><span class="o">.</span><span class="na">where</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">atorPapel</span><span class="o">.</span><span class="na">coSeqAtorPapel</span><span class="o">.</span><span class="na">eq</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">filter</span><span class="o">.</span><span class="na">atorPapelId</span><span class="o">));</span>
+		<span class="o">}</span>
+	<span class="o">}</span>
+
+	<span class="c1">//Projeção dos dados</span>
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="n">Select</span><span class="o">&lt;</span><span class="n">DadosPessoaisForm</span><span class="o">&gt;</span> <span class="nf">select</span><span class="o">()</span> <span class="o">{</span>
+		<span class="n">MDadosPessoaisForm</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">MDadosPessoaisForm</span><span class="o">.</span><span class="na">meta</span><span class="o">;</span>
+		<span class="n">Select</span><span class="o">&lt;</span><span class="n">DadosPessoaisForm</span><span class="o">&gt;</span> <span class="n">select</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Select</span><span class="o">&lt;&gt;(</span><span class="n">DadosPessoaisForm</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+		<span class="n">select</span><span class="o">.</span><span class="na">as</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">dadosPessoais</span><span class="o">.</span><span class="na">nome</span><span class="o">,</span> <span class="n">meta</span><span class="o">.</span><span class="na">nome</span><span class="o">);</span>
+		<span class="k">return</span> <span class="n">select</span><span class="o">;</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>

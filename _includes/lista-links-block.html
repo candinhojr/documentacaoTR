@@ -1,0 +1,5 @@
+<div class="link-block">
+{% for subitem in page.nav_item.subitems %}
+<a title="{{ subitem.title }}" href="{{ site.baseurl }}{{ subitem.url }}">{{ subitem.title }}</a>
+{% endfor %}
+</div>

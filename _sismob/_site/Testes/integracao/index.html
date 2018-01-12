@@ -1,0 +1,47 @@
+<h1 id="configuração">Configuração</h1>
+
+<ul>
+  <li>Criar um arquivo chamado <code class="highlighter-rouge">tests.properties</code> dentro da pasta <code class="highlighter-rouge">{PROJECT_DIR}/sismob.business.impl/src/main/resources/config/</code>.</li>
+  <li>O arquivo criado deverá conter as informações da base de dados usada pelos testes</li>
+</ul>
+
+<p>Exemplo:</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">hsqldb</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">driverClassName</span><span class="o">=</span><span class="n">oracle</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">OracleDriver</span>
+<span class="n">hsqldb</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">url</span><span class="o">=</span><span class="nl">jdbc:oracle:thin:</span><span class="nd">@localhost</span><span class="o">:</span><span class="mi">1521</span><span class="o">:</span><span class="n">xe</span>
+<span class="n">hsqldb</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">username</span><span class="o">=</span><span class="n">BRIDGE</span>
+<span class="n">hsqldb</span><span class="o">.</span><span class="na">jdbc</span><span class="o">.</span><span class="na">password</span><span class="o">=</span><span class="n">j5m9jTr5s4mvgvb82MSM</span>
+</code></pre></div></div>
+
+<h1 id="convenções">Convenções</h1>
+
+<ul>
+  <li>Os testes automatizados devem ser colocados no mesmo projeto e pacote da classe que ele está testando, dentro da pasta <code class="highlighter-rouge">src/test/java</code>;</li>
+  <li>Todas as classes de testes deverão de nomeadas da seguinte forma: [nome da classe onde estão os métodos a serem testados] + “Test”;</li>
+  <li>Todos os teste devem funcionar de forma independente;</li>
+  <li>As condições para rodar um teste deverão estar em uma classe “Condition” separada, dessa forma ela pode ser reutilizada em outras classes de testes.</li>
+</ul>
+
+<h1 id="executando-os-testes">Executando os testes</h1>
+
+<h3 id="via-maven">Via Maven</h3>
+
+<ul>
+  <li>Para compilar o sistema sem executar os testes: <code class="highlighter-rouge">mvn clean install</code> (testes são desabilitados por padrão)</li>
+  <li>Para rodar enquanto compila o sistema: <code class="highlighter-rouge">mvn clean install -D skipTests=false</code></li>
+  <li>Para rodar somente uma classe de testes: <code class="highlighter-rouge">mvn -Dtest=[Classe] test</code></li>
+  <li>Para rodar somente um teste específico de uma classe: <code class="highlighter-rouge">mvn -Dtest=[Classe]#[nome do método] test</code></li>
+</ul>
+
+<h3 id="via-eclipse">Via Eclipse</h3>
+
+<p>Com uma classe de testes ou pacote a ser testado selecionado ou aberto no eclipse:</p>
+
+<ul>
+  <li>Debug As &gt; JUnit Test</li>
+</ul>
+
+<h1 id="links-úteis">Links úteis</h1>
+<ul>
+  <li><a href="http://joel-costigliola.github.io/assertj/index.html">assertJ</a></li>
+  <li><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#testing-introduction">Spring test</a></li>
+</ul>

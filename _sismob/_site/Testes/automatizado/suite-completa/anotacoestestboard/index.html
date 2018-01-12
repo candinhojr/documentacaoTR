@@ -1,0 +1,65 @@
+<p>Segue nessa sessão a alternativa para se fazer as anotações em java para poder Popular com um texto mais ubíquo para os leitores.</p>
+
+<p>Como é definido o TestBoard?</p>
+
+<p><img src="../img/tesboard screenshot.png" alt="" /></p>
+
+<h4 id="título-uid">Título UID</h4>
+
+<p>Nesta parte encontra-se o título utilizado para Identificar o CDT(Caso de Teste), dentro da planilha de Casos de Teste, nós usamos esse título no espaço que fica reservado na coluna Cenário.</p>
+
+<h4 id="passos">Passos</h4>
+
+<p>Nesta parte encontra-se todos passos, desde o login por exemplo até o ambiente agradável para que o resultado esperado seja atingido, dentro da planilha de Casos de Teste, nós usamos esses passos no espaço que fica reservado na coluna Passos.</p>
+
+<h4 id="asserts">Asserts</h4>
+
+<p>Nesta parte encontra-se todos os Resultados Esperados, ou seja, o comportamento que esperamos que a sequência de passos vai trazer para o teste abordado em questão.</p>
+
+<h3 id="como-fazer-essas-anotações-serem-validadas-no-meu-cdt">Como fazer essas anotações serem validadas no meu CDT?</h3>
+
+<p>Simples, na sua IDE de desenvolvimento de testes automatizados você pode ir no CDT específico que deseja trazer essas anotações em ordem e utilizar o estilo de comentário abaixo com suas específicas notações:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/*
+* @titulo Título do Cenário do CDT
+*
+* @passo Seguência de passos para...
+* @passo .. atingir o Cenário esperado para...
+* @passo ...chegar no resultado esperado
+*
+* @assert Resultado Esperado
+*/
+</code></pre></div></div>
+
+<h2 id="como-vai-ficar-no-testboard">Como vai ficar no TestBoard</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Título UID</th>
+      <th>Passos</th>
+      <th>Resultado Esperado</th>
+      <th>Resultado do teste</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Título do Cenário do CDT</td>
+      <td>1. Seguência de passos para…</td>
+      <td>Resultado Esperado</td>
+      <td>Sucesso</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>2. .. atingir o Cenário esperado para…</td>
+      <td> </td>
+      <td>ou</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>3. …chegar no resultado esperado</td>
+      <td> </td>
+      <td>Falha</td>
+    </tr>
+  </tbody>
+</table>

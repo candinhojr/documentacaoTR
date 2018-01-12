@@ -1,0 +1,30 @@
+---
+layout: search
+---
+
+<form action="/search.html" method="get">
+  <label for="search-box" class="label label-primary">Pesquisar</label>
+  <input type="search" placeholder="Pesquisar..." name="query" id="search-box" autocomplete="off">
+</form>
+
+<div class="searchLoader" id="loading"></div>
+
+<ul id="resultados"></ul>
+
+<script>
+  window.store = {
+    {% for post in site.sismob %}
+      "{{ post.url | slugify }}": {
+        "title" : "{{ post.title | xml_escape }}",
+        "author": "{{ post.author | xml_escape }}",
+        "category": "{{ post.type | xml_escape }}",
+        "content": {{ post.content | strip_html | strip_newlines | jsonify }},
+        "url": "{{ post.url | xml_escape }}"
+      }
+
+      {% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+  };
+
+  hide('resultados');
+</script>

@@ -1,0 +1,35 @@
+<p>Migração é uma forma de modificar a estrutura do banco de dados. Utilizamos o <a href="http://www.liquibase.org/">liquibase</a> para migração.</p>
+
+<h1 id="criando-uma-nova-migração">Criando uma nova migração</h1>
+
+<p>No terminal e a partir da raiz do projeto, execute:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>sh sismob.tools/migrate.sh <span class="o">{</span>ddl dml pos-ddl<span class="o">}</span> <span class="o">[</span>NOME_DA_MIGRACAO]
+</code></pre></div></div>
+
+<p>O comando irá gerar os arquivos:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sismob.business.impl/src/main/resources/db/migrations/current/{ddl,dml,pos-ddl}/yyyyMMddhhmmss_nome_da_migracao.xml
+sismob.business.impl/src/main/resources/db/migrations/current/{ddl,dml,pos-ddl}/yyyyMMddhhmmss_nome_da_migracao.sql
+</code></pre></div></div>
+
+<p>Modifique o arquivo <code class="highlighter-rouge">.sql</code> com as alterações desejadas. O arquivo <code class="highlighter-rouge">.xml</code> não deve incluir outros comandos de migração.</p>
+
+<h1 id="tipos-de-migração">Tipos de migração</h1>
+
+<ul>
+  <li><strong>DDL</strong>: Migração estrutural. Ex.: criação, remoção ou alteração de tabelas e colunas;</li>
+  <li><strong>DML</strong>: Migração de dados. Ex.: inserção, atualização ou remoção de tuplas;</li>
+  <li><strong>Pós-DDL</strong>: Migração estrutural idêntica ao DDL, porém roda <strong>após</strong> as migrações de dados (DML).</li>
+</ul>
+
+<p>A ordem de migração é: todos os arquivos DDL, todos os arquivos DML e, por fim, todos os arquivos Pós-DDL. <em>Este padrão é utilizado devido à exigências de brasília</em>.</p>
+
+<h1 id="padrão-de-nomenclatura">Padrão de nomenclatura</h1>
+
+<p>Todas as migrações devem estar dentro da pasta <code class="highlighter-rouge">sismob.business.impl/src/main/resources/db/migrations/current/[tipo da migração]</code>. A migração consiste de dois arquivos:</p>
+
+<ul>
+  <li>Um arquivo <strong>SQL</strong> de nome <code class="highlighter-rouge">[TIMESTAMP]_[NOME_DA_MIGRACAO].sql</code> contendo as modificações a serem realizadas;</li>
+  <li>Um arquivo <strong>XML</strong> de nome <code class="highlighter-rouge">[TIMESTAMP]_[NOME_DA_MIGRACAO].xml</code> contendo o changeset do liquibase e a inclusão do SQL correspondente. <strong>Este arquivo não deve conter outros comandos do liquibase</strong>, apenas a inclusão do SQL. Este arquivo é gerado automaticamente pelo bash <code class="highlighter-rouge">migrate.sh</code>.</li>
+</ul>

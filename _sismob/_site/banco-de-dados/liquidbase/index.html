@@ -1,0 +1,7 @@
+<p>Comandos para gerar o XML a partir da base de dados</p>
+
+<p>1 - dentro da pasta liquibase do projeto (sismob.tools/liquibase)</p>
+
+<p>1.1 - para exportar a estrutura e os dados</p>
+
+<p><strong>liquibase –changeLogFile=./changelog.xml –diffTypes=”sequences, tables, views, columns, indexes, foreignkeys, primarykeys, uniqueconstraints, data” –dataOutputDirectory=./data generateChangeLog</strong></p>

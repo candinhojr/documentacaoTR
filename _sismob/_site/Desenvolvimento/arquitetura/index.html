@@ -1,0 +1,87 @@
+<h2 id="modelo-de-projeto---mvp--pt_br">Modelo de Projeto - <a href="http://github.com">MVP</a> | <a href="https://pt.wikipedia.org/wiki/Model-view-presenter">PT_BR</a></h2>
+
+<p><img src="img/MVP.png" alt="" /></p>
+
+<h3 id="definições">Definições</h3>
+
+<p><strong>Nodos:</strong> Nodos são classes que representam folhas na árvore de navegação. Todos os nodos são instanciados durante a fase de boot da aplicação e nunca são liberados da memória. <strong>Uma instância de nodo pode possuir n filhos, mas somente um pai.</strong> É possível que na árvore de navegação exista mais de uma folha para o mesmo tipo de nodo, desde que seus pais sejam diferentes.</p>
+
+<p><strong>Presenters:</strong> Apresentadores são classes que fazem o intermédio da camada de visão com a camada de modelo. Não devem possuir lógica de negócio e chamadas da visão para o apresentador nunca devem esperar por um retorno.</p>
+
+<p><strong>Views:</strong> Views são classes que representam como a página é apresentada ao usuário do sistema. Não devem conter lógica de negócios e não podem fazer chamadas diretas para a camada de modelo.</p>
+
+<p><strong>ViewParameters:</strong> ViewParameters são classes utilizadas para configurar como a visão deve ser apresentada. Sua criação é feita no apresentador utilizando um serviço, mas sua utilização é feita pela visão. Um ViewParameters só é criado quando seu respectivo apresentador é criado (initialize = true).</p>
+
+<p><strong>Services:</strong> Serviços são classes responsáveis por aplicar as regras de negócio e, se necessário, fazer requisições ao banco de dados. Seus resultados sempre são retornados ao apresentador.</p>
+
+<p><strong>Forms:</strong> Forms são <a href="https://en.wikipedia.org/wiki/Data_transfer_object">DTOs</a> utilizados pela visão para <strong>preencher os dados apresentados.</strong></p>
+
+<h3 id="fluxo-de-navegação">Fluxo de navegação</h3>
+
+<p><img src="sismob-navigation.png" alt="" /></p>
+
+<ul>
+  <li>1 - Usuário interage com um componente que irá levá-lo a outra página do sistema.</li>
+  <li>2 - O componente interagido avisa a visão sobre a interação do usuário.</li>
+  <li>3 - A visão repassa a requisição ao seu respectivo apresentador.</li>
+  <li>4 - O apresentador utiliza o nodo de origem para recuperar o nodo destino.</li>
+  <li>5 - O nodo destino é enviado ao <a href="https://github.com/sismob/sismob/blob/master/core/core.view.impl/src/br/gov/core/view/impl/application/CoreApplicationImpl.java">CoreApplication</a> para que ele inicie o processo de navegação através do método <em>navigateTo</em>. O primeiro passo é publicar na url todos os parâmetros utilizados pelo apresentador atual, isso é feito chamando o método <em>publishParameters(CoreURL)</em>.</li>
+  <li>6 - A partir do nodo destino o <a href="https://github.com/sismob/sismob/blob/master/core/core.view.impl/src/br/gov/core/view/impl/application/CoreApplicationImpl.java">CoreApplication</a> instância o apresentador do nodo e faz a chamada do método <em>applyParameters(CoreURL)</em>.</li>
+  <li>7 - Se necessário, o apresentador faz requisições ao serviço para validar regras ou recuperar registros do banco de dados.</li>
+  <li>8 - O serviço utiliza o <em>EntityManager</em> para criar uma conexão e executar uma transação na base de dados.</li>
+  <li>9 - O apresentador envia para a view o que ela precisa para se desenhar através do <em>ViewParameters</em> e logo em seguida envia para ela o <em>form</em> para preencher os componentes de acordo com os registros salvos no banco de dados.</li>
+</ul>
+
+<h3 id="applyparameters">ApplyParameters</h3>
+
+<div style="text-align:center;"> <img src="img/apply-parameters.png" width="370px" /> </div>
+<p></p>
+
+<p>O método <em>applyParameters(CoreURL, boolean)</em> do presenter é chamado a partir do seu nodo, quando o presenter é uma nova instância.</p>
+
+<p><strong>checkParentPresenters(CoreURL):</strong> Método utilizado para verificar se os presenters necessários para a execução do nodo corrente foram corretamente inicializados.</p>
+
+<p><strong>createUrlBinder(CoreURL):</strong> Método vazio que pode ser sobrescrito para instanciar um objeto do tipo <a href="https://github.com/sismob/sismob/blob/master/core/core.presenter.impl/src/main/java/br/gov/core/presenter/impl/binder/UrlBinder.java">UrlBinder</a>.</p>
+
+<p><strong>readUrl(CoreURL):</strong> Método utilizado para ler os parâmetros publicados na url e, se necessário, salva-los em atributos para uso posterior.</p>
+
+<p><strong>beforeInitialize(CoreURL, boolean):</strong> Método executado antes da inicialização do apresentador. Um apresentador só é inicializado somente quando uma nova instancia sua é criada, o que ocorre somente quando o nodo daquele apresentador é adicionado na árvore de navegação.</p>
+
+<p><strong>initialize(CoreURL, boolean):</strong> Método abstrato utilizado para inicializar o apresentador. Instancia objetos que precisam estar prontos antes do <em>refreshData</em>. Os métodos <em>getViewParameters</em> e <em>render</em> normalmente são chamados durante a inicialização do apresentador.</p>
+
+<p><strong>afterInitialize(CoreURL, boolean):</strong> Método  vazio que pode ser sobrescrito para instanciar objetos que precisam ser criados antes do <em>refreshData</em> e depois do <em>initialize</em>.</p>
+
+<p><strong>validateInitialization:</strong> Verifica se os objetos necessários para o correto funcionamento do apresentador foram criados.</p>
+
+<p><strong>refreshData(CoreURL):</strong> Verifica se a tela precisa ser atualizada e executa o método <em>refresh</em>, se necessário. Normalmente o método refresh é responsável por fazer a requisição ao serviço pedindo os dados salvos no banco de dados e repassando-os à visão, para que ela preencha os campos criados.</p>
+
+<p><strong>bindParentView(CoreURL, boolean):</strong> Envia ao presenter pai a view corrente para ela ser desenhada na tela.</p>
+
+<p><strong>keepGoing:</strong> Último método do <em>applyParameters</em>, responsável por fazer as últimas verificações e dizer se o fluxo de execução pode seguir adiante ou deve ser interrompido.</p>
+
+<h3 id="publishparameters">PublishParameters</h3>
+
+<div style="text-align:center;"> <img src="img/publish-parameters.png" width="370px" /> </div>
+<p></p>
+<p>O método <em>publishParameters(CoreURL)</em> é chamadado a partir do nodo, que repassa a chamada para o <em>CoreApplication</em>.</p>
+
+<p><strong>newURL(CoreApplication):</strong> Método chamado pelo nodo, que utiliza o <em>CoreApplication</em> passado como parâmetro para criar uma CoreURL e iterar sobre os apresentadores atachados.</p>
+
+<p><strong>for presenter in presenters atachados:</strong> Para cada apresentador atachado no <em>CoreApplication</em> é verificado se esse apresentador faz parte da árvore de navegação destino, se sim, o método <em>publishParameters(CoreURL)</em> do apresentador é chamado para que ele publique seus parâmetros na nova url. Todos os parâmetros não publicados são perdidos.</p>
+
+<h3 id="exemplos">Exemplos</h3>
+
+<p><strong>Exemplo do <em>publishParameters</em> ao clicar no botão de emitir parecer de uma solicitação na lista de propostas e obras</strong></p>
+
+<p><img src="img/exemplo-publish-parameters.png" alt="" /></p>
+
+<h3 id="links-úteis">Links úteis</h3>
+
+<ul>
+  <li>
+    <p><a href="https://vaadin.com/docs/-/part/framework/introduction/intro-overview.html"><img src="img/vaadin-logo.png" alt="Vaadin" /></a></p>
+  </li>
+  <li>
+    <p><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/"><img src="img/spring-by-pivotal.png" width="20%" /></a></p>
+  </li>
+</ul>

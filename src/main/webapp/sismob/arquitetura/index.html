@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Arquitetura</title>
+  <meta name="description" content="Modelo de Projeto - MVP | PT_BR">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/sismob/arquitetura/">
+  <link rel="icon" type="image/png" href="/img/logo-mini.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <script src="//code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="/js/search.js" type="text/javascript"></script>
+  <script src="/js/copy-text.js" type="text/javascript"></script>
+  <script src="/js/functions.js" type="text/javascript"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="/js/bootstrap.js"type="text/javascript"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      <img src="/img/logo-sismob.png">
+      <span class="title-text"></span>
+      <span class="label">Wiki</span>
+    </a>
+
+    <nav class="site-nav">
+      <a href="javascript: void" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+            <a href="/about/"><i class="icon icon-about"></i> Sobre</a>
+          
+        
+          
+        
+          
+            <a href="/pdf.html"><i class="icon icon-pdf"></i> Gerar PDF</a>
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="breadcrumb-placeholder">
+  <div class="wrapper breadcrumb-wrapper">
+    <ol class="breadcrumb">
+      <img src="/img/logo-mini.png">
+      <li><a href="/">Home</a></li>
+
+      
+        
+          
+            <li><a title="Arquitetura" href="/sismob/arquitetura/index.html">Arquitetura</a></li>
+          
+        
+
+      
+    </ol>
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+
+        <div class="sidebar">
+          <div class="sidebar-content">
+            <form action="/search.html">
+  <input type="search" placeholder="Pesquisar..." name="q" id="search-input" autocomplete="off">
+</form>
+
+<ul id="search-results"></ul>
+
+<script>
+  SimpleJekyllSearch({
+    searchInput: document.getElementById('search-input'),
+    resultsContainer: document.getElementById('search-results'),
+    json: '/search.json',
+    noResultsText: 'Nenhum resultado encontrado'
+  });
+</script>
+
+<div class="menu">
+  
+
+
+
+  <ul>
+    
+      <li>
+        <a href="/">WIKI</a>
+      </li>
+    
+      <li>
+        <a href="/sismob/processos/index.html">Processos</a>
+      </li>
+    
+      <li>
+        <a href="/sismob/arquitetura/index.html">Arquitetura</a>
+      </li>
+    
+      <li>
+        <a href="/sismob/An%C3%A1lise/index.html">Análise</a>
+      </li>
+    
+      <li>
+        <a href="/sismob/Desenvolvimento/index.html">Desenvolvimento</a>
+      </li>
+    
+      <li>
+        <a href="/sismob/Testes/index.html">Testes</a>
+      </li>
+    
+      <li>
+        <a href="/sismob/banco-de-dados/index.html">Banco de Dados</a>
+      </li>
+    
+      <li>
+        <a href="/sismob/configuracao-ambiente/index.html">Configurações do Ambiente</a>
+      </li>
+    
+  </ul>
+
+
+</div>
+
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Arquitetura</h1>
+    <p class="post-meta">
+      
+
+<!-- <a class="btn" href="https://github.com/sismob/sismob/blob/master/sismob.testers/_sismob/arquitetura/index.markdown">
+  <i class="icon icon-git"></i> Código fonte desta página
+</a> -->
+
+      <a class="btn" href="/pdf.html?include=/sismob/arquitetura/index.html"><i class="icon icon-pdf"></i> Gerar PDF desta página</a>
+      
+        <span class="label" title="Data da última modificação">Alterado em 30/08/2017</span>
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    <h2 id="modelo-de-projeto---mvp--pt_br">Modelo de Projeto - <a href="http://github.com">MVP</a> | <a href="https://pt.wikipedia.org/wiki/Model-view-presenter">PT_BR</a></h2>
+
+<p><img src="img/MVP.png" alt="" /></p>
+
+<h3 id="definições">Definições</h3>
+
+<p><strong>Nodos:</strong> Nodos são classes que representam folhas na árvore de navegação. Todos os nodos são instanciados durante a fase de boot da aplicação e nunca são liberados da memória. <strong>Uma instância de nodo pode possuir n filhos, mas somente um pai.</strong> É possível que na árvore de navegação exista mais de uma folha para o mesmo tipo de nodo, desde que seus pais sejam diferentes.</p>
+
+<p><strong>Presenters:</strong> Apresentadores são classes que fazem o intermédio da camada de visão com a camada de modelo. Não devem possuir lógica de negócio e chamadas da visão para o apresentador nunca devem esperar por um retorno.</p>
+
+<p><strong>Views:</strong> Views são classes que representam como a página é apresentada ao usuário do sistema. Não devem conter lógica de negócios e não podem fazer chamadas diretas para a camada de modelo.</p>
+
+<p><strong>ViewParameters:</strong> ViewParameters são classes utilizadas para configurar como a visão deve ser apresentada. Sua criação é feita no apresentador utilizando um serviço, mas sua utilização é feita pela visão. Um ViewParameters só é criado quando seu respectivo apresentador é criado (initialize = true).</p>
+
+<p><strong>Services:</strong> Serviços são classes responsáveis por aplicar as regras de negócio e, se necessário, fazer requisições ao banco de dados. Seus resultados sempre são retornados ao apresentador.</p>
+
+<p><strong>Forms:</strong> Forms são <a href="https://en.wikipedia.org/wiki/Data_transfer_object">DTOs</a> utilizados pela visão para <strong>preencher os dados apresentados.</strong></p>
+
+<h3 id="fluxo-de-navegação">Fluxo de navegação</h3>
+
+<p><img src="sismob-navigation.png" alt="" /></p>
+
+<ul>
+  <li>1 - Usuário interage com um componente que irá levá-lo a outra página do sistema.</li>
+  <li>2 - O componente interagido avisa a visão sobre a interação do usuário.</li>
+  <li>3 - A visão repassa a requisição ao seu respectivo apresentador.</li>
+  <li>4 - O apresentador utiliza o nodo de origem para recuperar o nodo destino.</li>
+  <li>5 - O nodo destino é enviado ao <a href="https://github.com/sismob/sismob/blob/master/core/core.view.impl/src/br/gov/core/view/impl/application/CoreApplicationImpl.java">CoreApplication</a> para que ele inicie o processo de navegação através do método <em>navigateTo</em>. O primeiro passo é publicar na url todos os parâmetros utilizados pelo apresentador atual, isso é feito chamando o método <em>publishParameters(CoreURL)</em>.</li>
+  <li>6 - A partir do nodo destino o <a href="https://github.com/sismob/sismob/blob/master/core/core.view.impl/src/br/gov/core/view/impl/application/CoreApplicationImpl.java">CoreApplication</a> instância o apresentador do nodo e faz a chamada do método <em>applyParameters(CoreURL)</em>.</li>
+  <li>7 - Se necessário, o apresentador faz requisições ao serviço para validar regras ou recuperar registros do banco de dados.</li>
+  <li>8 - O serviço utiliza o <em>EntityManager</em> para criar uma conexão e executar uma transação na base de dados.</li>
+  <li>9 - O apresentador envia para a view o que ela precisa para se desenhar através do <em>ViewParameters</em> e logo em seguida envia para ela o <em>form</em> para preencher os componentes de acordo com os registros salvos no banco de dados.</li>
+</ul>
+
+<h3 id="applyparameters">ApplyParameters</h3>
+
+<div style="text-align:center;"> <img src="img/apply-parameters.png" width="370px" /> </div>
+<p></p>
+
+<p>O método <em>applyParameters(CoreURL, boolean)</em> do presenter é chamado a partir do seu nodo, quando o presenter é uma nova instância.</p>
+
+<p><strong>checkParentPresenters(CoreURL):</strong> Método utilizado para verificar se os presenters necessários para a execução do nodo corrente foram corretamente inicializados.</p>
+
+<p><strong>createUrlBinder(CoreURL):</strong> Método vazio que pode ser sobrescrito para instanciar um objeto do tipo <a href="https://github.com/sismob/sismob/blob/master/core/core.presenter.impl/src/main/java/br/gov/core/presenter/impl/binder/UrlBinder.java">UrlBinder</a>.</p>
+
+<p><strong>readUrl(CoreURL):</strong> Método utilizado para ler os parâmetros publicados na url e, se necessário, salva-los em atributos para uso posterior.</p>
+
+<p><strong>beforeInitialize(CoreURL, boolean):</strong> Método executado antes da inicialização do apresentador. Um apresentador só é inicializado somente quando uma nova instancia sua é criada, o que ocorre somente quando o nodo daquele apresentador é adicionado na árvore de navegação.</p>
+
+<p><strong>initialize(CoreURL, boolean):</strong> Método abstrato utilizado para inicializar o apresentador. Instancia objetos que precisam estar prontos antes do <em>refreshData</em>. Os métodos <em>getViewParameters</em> e <em>render</em> normalmente são chamados durante a inicialização do apresentador.</p>
+
+<p><strong>afterInitialize(CoreURL, boolean):</strong> Método  vazio que pode ser sobrescrito para instanciar objetos que precisam ser criados antes do <em>refreshData</em> e depois do <em>initialize</em>.</p>
+
+<p><strong>validateInitialization:</strong> Verifica se os objetos necessários para o correto funcionamento do apresentador foram criados.</p>
+
+<p><strong>refreshData(CoreURL):</strong> Verifica se a tela precisa ser atualizada e executa o método <em>refresh</em>, se necessário. Normalmente o método refresh é responsável por fazer a requisição ao serviço pedindo os dados salvos no banco de dados e repassando-os à visão, para que ela preencha os campos criados.</p>
+
+<p><strong>bindParentView(CoreURL, boolean):</strong> Envia ao presenter pai a view corrente para ela ser desenhada na tela.</p>
+
+<p><strong>keepGoing:</strong> Último método do <em>applyParameters</em>, responsável por fazer as últimas verificações e dizer se o fluxo de execução pode seguir adiante ou deve ser interrompido.</p>
+
+<h3 id="publishparameters">PublishParameters</h3>
+
+<div style="text-align:center;"> <img src="img/publish-parameters.png" width="370px" /> </div>
+<p></p>
+<p>O método <em>publishParameters(CoreURL)</em> é chamadado a partir do nodo, que repassa a chamada para o <em>CoreApplication</em>.</p>
+
+<p><strong>newURL(CoreApplication):</strong> Método chamado pelo nodo, que utiliza o <em>CoreApplication</em> passado como parâmetro para criar uma CoreURL e iterar sobre os apresentadores atachados.</p>
+
+<p><strong>for presenter in presenters atachados:</strong> Para cada apresentador atachado no <em>CoreApplication</em> é verificado se esse apresentador faz parte da árvore de navegação destino, se sim, o método <em>publishParameters(CoreURL)</em> do apresentador é chamado para que ele publique seus parâmetros na nova url. Todos os parâmetros não publicados são perdidos.</p>
+
+<h3 id="exemplos">Exemplos</h3>
+
+<p><strong>Exemplo do <em>publishParameters</em> ao clicar no botão de emitir parecer de uma solicitação na lista de propostas e obras</strong></p>
+
+<p><img src="img/exemplo-publish-parameters.png" alt="" /></p>
+
+<h3 id="links-úteis">Links úteis</h3>
+
+<ul>
+  <li>
+    <p><a href="https://vaadin.com/docs/-/part/framework/introduction/intro-overview.html"><img src="img/vaadin-logo.png" alt="Vaadin" /></a></p>
+  </li>
+  <li>
+    <p><a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/"><img src="img/spring-by-pivotal.png" width="20%" /></a></p>
+  </li>
+</ul>
+
+  </article>
+
+</div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <script src="/js/site.js" type="text/javascript"></script>
+  </body>
+</html>

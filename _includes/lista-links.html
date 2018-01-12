@@ -1,0 +1,7 @@
+<ul class="post-list">
+  {% for post in site.sismob %}
+    {% if ((post.published == true) and (post.type == include.type) and (post.modulo == include.modulo))  %}
+      <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+    {% endif %}
+  {% endfor %}
+</ul>

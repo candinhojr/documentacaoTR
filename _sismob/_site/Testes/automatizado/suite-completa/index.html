@@ -1,0 +1,88 @@
+<p><img src="img/test suite object.png" alt="Meszaros - xUnit Patterns" /></p>
+
+<h2 id="entendendo-a-generalização-abstrata-da-suite-completa">Entendendo a Generalização Abstrata da Suite Completa</h2>
+
+<p>Abaixo você vê o modelo de como funciona a generalização(Herança e composição) do pacote TestBoard</p>
+
+<p><img src="img/Fluxo.jpg" alt="" /></p>
+
+<h3 id="suite-completa">Suite Completa</h3>
+
+<p>A Classe SuiteCompleta.java engloba no seu contexto, a centralização de todos os módulos que serão testados.</p>
+
+<p>No exemplo abaixo de código da classe, temos que a anotação @SuiteClasses recebe uma Lista de todos os possíveis módulos serão inseridos.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="cm">/**
+ *
+ * @desc Suite completa de testes automatizados funcionais para o sistema Sismob 2.*
+ *
+ */</span>
+
+<span class="c1">//@formatter:off</span>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="n">Suite</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@WebDriver</span><span class="o">(</span><span class="n">DriverManager</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="nd">@GroupSemantic</span><span class="o">(</span><span class="n">key</span> <span class="o">=</span> <span class="s">"build"</span><span class="o">,</span> <span class="n">value</span> <span class="o">=</span> <span class="n">VersionInfo</span><span class="o">.</span><span class="na">buildDefault</span><span class="o">)</span>
+
+<span class="c1">// Onde a lista de possíveis módulos será inserida</span>
+<span class="nd">@SuiteClasses</span><span class="o">({</span>
+	<span class="n">CadastroDePropostaSuite</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+	<span class="n">CancelamentoSuite</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+	<span class="n">MonitoramentoSuite</span><span class="o">.</span><span class="na">class</span>
+<span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SuiteCompleta</span> <span class="o">{</span>
+
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="módulos">Módulos</h3>
+
+<p>Esse conjunto tem por sua classe a nomenclatura que engloba seu módulo, o mesmo obtido na documentação, hoje ela é oriúnda de uma parte do E-SUS, portanto cada módulo tem sua comum nomenclatura definida dessa forma: ‘MóduloEmQuestãoSuite.java’</p>
+
+<p>A classe recebe uma anotação @Artefato com o atributo Enumerador de MODULO para …</p>
+
+<p>e na anotação @SuiteClasses vão ser inseridas as anotações de todos os grupos de Cenários(Pacotes dos módulos) que foram listados na planilha de Casos de Teste.</p>
+
+<p>Exemplo: CadastroDePropostaSuite.java</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="nd">@RunWith</span><span class="o">(</span><span class="n">SuiteTestRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="c1">// Identificação da parâmetro como MODULO pelo testrunner</span>
+<span class="nd">@Artefato</span><span class="o">(</span><span class="n">ArtefatoEnum</span><span class="o">.</span><span class="na">MODULO</span><span class="o">)</span>
+<span class="c1">// Lista de Grupos de cenários que envolvem o módulo Cadastro de Proposta</span>
+<span class="nd">@SuiteClasses</span><span class="o">({</span>
+  <span class="n">AbrangenciaSuite</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+  <span class="n">AmbientesExistentesSuite</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+  <span class="n">AmbientesSituacaoFinalSuite</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+  <span class="n">AmbientesSuite</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+  <span class="n">AnexosSuite</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+  <span class="n">AreaTotalSuite</span><span class="o">.</span><span class="na">class</span> <span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CadastroDePropostaSuite</span> <span class="o">{</span>
+
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h3 id="grupos-de-cenários">Grupos de Cenários</h3>
+
+<p>Esse conjunto tem um pacote com o nome do Módulo, onde todas as classes que estão contidas são os Grupos de Cenários de Cada Módulo. Dentro dos Grupos de Cenários estão contidas uma lista de com todos os CDT’s referentes aquele grupo de Cenários.</p>
+
+<p>Veja abaixo um exemplo:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@RunWith</span><span class="o">(</span><span class="n">SuiteTestRunner</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="c1">// Identificação da parâmetro como CENARIO pelo testrunner, onde Ele Validará como Grupo de Cenário</span>
+<span class="nd">@Artefato</span><span class="o">(</span><span class="n">ArtefatoEnum</span><span class="o">.</span><span class="na">CENARIO</span><span class="o">)</span>
+
+<span class="c1">// Lista de Casos de Testes(CDT's) que envolvem o grupo de cenário Anexos do Modulo Cadastro de Proposta</span>
+<span class="nd">@SuiteClasses</span><span class="o">({</span>
+	<span class="n">CDT_Verificar_Checkbox_Declaracao_Comprovacao_Posse</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+	<span class="n">CDT_Verificar_Numero_Min_Fotografias</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+	<span class="n">CDT_Verificar_Obrigatoriedade_Checkbox</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+	<span class="n">CDT_Verificar_Reforma_Nao_Existem_Docs</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+	<span class="n">CDT_Verificar_Todos_Campos_Anexos</span><span class="o">.</span><span class="na">class</span><span class="o">,</span>
+	<span class="n">CDT_Verificar_Um_Documento_Obrigatorio_Declaracao</span><span class="o">.</span><span class="na">class</span> <span class="o">})</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">AnexosSuite</span> <span class="o">{</span>
+
+<span class="o">}</span>
+</code></pre></div></div>

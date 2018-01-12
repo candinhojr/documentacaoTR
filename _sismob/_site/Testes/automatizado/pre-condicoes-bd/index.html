@@ -1,0 +1,130 @@
+<h2 id="pré-condições-do-banco-de-dados-para-casos-de-teste">Pré-condições do banco de dados para casos de teste</h2>
+<p><br />
+Na execução de casos de testes pode ser necessário garantir que determinados objetos existam no banco de dados e estejam em um estado específico, para que um determinado caso de teste possa ser executado. Por exemplo, para a realização de um teste de emissão de parecer de prorrogação de prazo para uma obra, no ínicio da execução do caso de teste deve existir uma obra com uma solicitação de prorrogação de prazo aguardando análise.</p>
+
+<p>Com o intuito de agilizar a execução de casos de testes com estas características, uma estrutura de suporte existe e está disponível para a elaboração dos mesmos. Assim, casos de testes que dependam de pré-condições específicas sempre poderão ser executados, não importando se a funcionalidade do sistema que trata das pré-condições está funcionando ou não.
+<br /><br /></p>
+
+<p><strong>Mas e como isto funciona?</strong></p>
+
+<p>É muito simples! Na criação de um caso de testes (CDT) você pode também definir um <strong>caso de testes de preparação do banco de dados</strong>. Neste último, você deve detalhar todas as condições necessárias para a execução do CDT sendo desenvolvido. Quando o seu CDT for executado, todas as pré-condições por você definidas serão utilizadas pelo serviço de pré-condições para efetuar uma busca no banco de dados. Caso a proposta/usuário (ou qualquer outro objeto em questão) seja encontrado no BD, o seu CDT poderá utilizar o mesmo para a execução.
+<br /><br /></p>
+
+<p><strong>Mas e se não houver nenhuma proposta/usuário com as pré-condições definidas?</strong></p>
+
+<p>Aqui é onde a mágica acontece! Se nenhum objeto atender as pré-condições por você definidas, um novo objeto será inserido no banco de dados sem a necessidade de execução dos fluxos do sistema!
+<br /><br /></p>
+
+<p><strong>Que bacana! Mas afinal, como eu uso este serviço?</strong></p>
+
+<p>Como mencionado, a obtenção dos objetos necessários para um CDT é realizada em um caso de testes de preparação do banco de dados. Tudo (ou quase tudo) que você precisa saber é detalhado a seguir.</p>
+
+<hr />
+
+<h3 id="construção-dos-casos-de-testes">Construção dos casos de testes</h3>
+
+<p>Primeiro, o caso de testes de preparação do banco de dados deve ser criado (seção 1). Em seguida, algumas alterações devem ser feitas no CDT (seção 2).
+<br /><br /></p>
+
+<p><strong>1. Caso de testes de preparação do banco de dados</strong></p>
+
+<p>Para a implementação deste, primeiro crie uma classe filha de <code class="highlighter-rouge">SetupBD</code>. É uma boa prática colocar esta classe de preparação do BD em um sub-pacote <code class="highlighter-rouge">setup</code> dentro do pacote onde o CDT será desenvolvido. Ao criar tal classe, existem dois métodos com os quais você deve se preocupar: <code class="highlighter-rouge">prepararProposta()</code> e <code class="highlighter-rouge">prepararUsuario()</code>. Estes métodos são os locais onde devem ser definidas as pré-condições do caso de testes. Abaixo há um exemplo da preparação para um CDT de <em>emissão de um parecer favorável para uma solicitação de cancelamento de uma obra de construção do programa ‘Requalifica UBS’</em>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BD_SolicitacaoDeCancelamento</span> <span class="kd">extends</span> <span class="n">SetupBD</span> <span class="o">{</span>
+
+  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepararProposta</span><span class="o">()</span> <span class="o">{</span>
+    <span class="c1">//@formatter:off</span>
+    <span class="n">SetupBD</span><span class="o">.</span><span class="na">setProposta</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">precondicaoPropostaService</span><span class="o">.</span><span class="na">getProposta</span><span class="o">(</span>
+                <span class="n">PrecondicaoTipoObra</span><span class="o">.</span><span class="na">CONSTRUCAO</span><span class="o">,</span>
+                <span class="n">PrecondicaoPrograma</span><span class="o">.</span><span class="na">REQUALIFICA_UBS</span><span class="o">,</span>
+                <span class="n">PrecondicaoFundo</span><span class="o">.</span><span class="na">FMS_FLORIANOPOLIS_SC</span><span class="o">,</span>
+                <span class="n">PrecondicaoSolicitacao</span><span class="o">.</span><span class="na">CANCELAMENTO</span><span class="o">(</span><span class="n">SituacaoSolicitacao</span><span class="o">.</span><span class="na">AGUARDANDO_ANALISE</span><span class="o">));</span>
+    <span class="c1">//@formatter:on</span>
+  <span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">prepararUsuario</span><span class="o">()</span> <span class="o">{</span>
+        <span class="c1">//@formatter:off</span>
+		<span class="n">SetupBD</span><span class="o">.</span><span class="na">setUsuario</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">precondicaoUsuarioService</span><span class="o">.</span><span class="na">getUsuario</span><span class="o">(</span>
+                <span class="n">PrecondicaoPapel</span><span class="o">.</span><span class="na">PARECERISTA</span><span class="o">,</span>
+                <span class="n">PrecondicaoFundoUsuario</span><span class="o">.</span><span class="na">FMS_FLORIANOPOLIS_SC</span><span class="o">);</span>
+        <span class="c1">//@formatter:on</span>
+	<span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><strong>PS:</strong> É interessante utilizar as anotações <code class="highlighter-rouge">@formatter:off</code> e <code class="highlighter-rouge">@formatter:on</code> e colocar cada pré-condição em uma linha diferente.</p>
+
+<p>Na preparação de uma proposta, o serviço de propostas (<code class="highlighter-rouge">precondicaoPropostaService</code>) deve ser utilizado. O método <code class="highlighter-rouge">getProposta(...)</code> é o responsável por retornar a proposta necessária para o CDT. Você pode passar por parâmetro quantas pré-condições forem necessárias, e em qualquer ordem. <strong>É importante lembrar que se você informar pré-condições conflitantes (por exemplo, uma proposta em situação incompleta com uma solicitação de prorrogação de prazo aguardando análise), o CDT pode não executar ou pode ter um comportamento inesperado.</strong> Neste exemplo, um usuário com papel de parecerista também é buscado utilizando o serviço de usuários (<code class="highlighter-rouge">precondicaoUsuarioService</code>), pois o mesmo será utilizado para efetuar o login no sistema e para emitir o parecer da solicitação. Outro ponto importante é que, caso você não necessite de todos os objetos de preparação do BD, então os métodos de preparação desnecessários devem permanecer vazios.</p>
+
+<p>Todas as pré-condições disponíveis estão no pacote <code class="highlighter-rouge">br.gov.saude.sismob.spring.conditions</code>. Detalhes estão disponíveis mais abaixo.
+<br /><br /></p>
+
+<p><strong>2. Caso de teste de funcionalidade do sistema</strong></p>
+
+<p>Com o caso de testes de preparação do BD criado, você pode elaborar o CDT de funcionalidade do sistema. Na classe do CDT é necessário adicionar a anotação <code class="highlighter-rouge">@Setup</code> indicando a classe do caso de testes de preparação do BD, como mostrado abaixo. É necessário declarar atributos para os objetos que você preparou no outro caso de testes (<code class="highlighter-rouge">Usuario</code> e <code class="highlighter-rouge">PropostaDTO</code>). Declare apenas o que for necessário. No método <code class="highlighter-rouge">iniciarVariaveis()</code> estes atributos devem ser definidos através dos métodos estáticos <code class="highlighter-rouge">getProposta()</code> e <code class="highlighter-rouge">getUsuario()</code> da classe <code class="highlighter-rouge">SetupBD</code>. Agora, basta você elaborar o CDT utilizando o número da proposta e/ou informações do usuário das pré-condições!</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Setup</span><span class="o">(</span><span class="n">BD_SolicitacaoDeCancelamento</span><span class="o">.</span><span class="na">class</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">EmitirParecerSolicitacaoCancelamento</span> <span class="kd">extends</span> <span class="n">CasoDeTesteSismob</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="n">LoginFluxo</span> <span class="n">login</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">HomeTecnicoPage</span> <span class="n">home</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">ListaDePropostasEObrasPage</span> <span class="n">listaPropostasObras</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">Usuario</span> <span class="n">usuario</span><span class="o">;</span>
+	<span class="kd">private</span> <span class="n">PropostaDTO</span> <span class="n">proposta</span><span class="o">;</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">iniciarVariaveis</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">login</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LoginFluxo</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">webDriver</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">home</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HomeTecnicoPage</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">webDriver</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">listaPropostasObras</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListaDePropostasEObrasPage</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">webDriver</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">usuario</span> <span class="o">=</span> <span class="n">SetupBD</span><span class="o">.</span><span class="na">getUsuario</span><span class="o">();</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">proposta</span> <span class="o">=</span> <span class="n">SetupBD</span><span class="o">.</span><span class="na">getProposta</span><span class="o">();</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">passos</span><span class="o">()</span> <span class="o">{</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">login</span><span class="o">.</span><span class="na">com</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">usuario</span><span class="o">);</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">home</span><span class="o">.</span><span class="na">obrasButton</span><span class="o">().</span><span class="na">clicar</span><span class="o">();</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">listaPropostasObras</span><span class="o">.</span><span class="na">pesquisaPropostaTextField</span><span class="o">().</span><span class="na">preencher</span><span class="o">(</span><span class="k">this</span><span class="o">.</span><span class="na">proposta</span><span class="o">.</span><span class="na">getNumeroProposta</span><span class="o">());</span>
+		<span class="k">this</span><span class="o">.</span><span class="na">listaPropostasObras</span><span class="o">.</span><span class="na">pesquisarButton</span><span class="o">().</span><span class="na">clicar</span><span class="o">();</span>
+		<span class="c1">// TODO Continua...</span>
+	<span class="o">}</span>
+
+	<span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="kt">void</span> <span class="nf">asserts</span><span class="o">()</span> <span class="o">{</span>
+		<span class="c1">// TODO Aqui vão as verificações necessárias</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="pré-condições-disponíveis">Pré-condições disponíveis</h3>
+
+<h4 id="proposta">Proposta</h4>
+<ul>
+  <li><code class="highlighter-rouge">PrecondicaoSituacaoProposta</code>: <code class="highlighter-rouge">INCOMPLETA</code>, <code class="highlighter-rouge">AGUARDANDO_ANALISE</code>, <code class="highlighter-rouge">FAVORAVEL</code>, …</li>
+  <li><code class="highlighter-rouge">PrecondicaoSituacaoObra</code>: <code class="highlighter-rouge">ACAO_PREPARATORIA</code>, <code class="highlighter-rouge">INICIO_EXECUCAO</code>, <code class="highlighter-rouge">EXECUCAO_CONCLUSAO</code>, …</li>
+  <li><code class="highlighter-rouge">PrecondicaoEtapaProposta</code>: <code class="highlighter-rouge">HABILITACAO</code>, <code class="highlighter-rouge">ACAO_PREPARATORIA</code>, <code class="highlighter-rouge">INICIO_EXECUCAO</code>, …</li>
+  <li><code class="highlighter-rouge">PrecondicaoSituacaoMonitoramento</code>: <code class="highlighter-rouge">ATUALIZADO</code>, <code class="highlighter-rouge">NAO_MONITORADO</code>, <code class="highlighter-rouge">EM_ATRASO_30</code>, …</li>
+  <li><code class="highlighter-rouge">PrecondicaoTipoObra</code>: <code class="highlighter-rouge">AMPLIACAO</code>, <code class="highlighter-rouge">CONSTRUCAO</code>, <code class="highlighter-rouge">REFORMA</code></li>
+  <li><code class="highlighter-rouge">PrecondicaoTipoRecurso</code>: <code class="highlighter-rouge">EMENDA</code>, <code class="highlighter-rouge">PROGRAMA</code></li>
+  <li><code class="highlighter-rouge">PrecondicaoTipoProposta</code>: <code class="highlighter-rouge">ANTIGA</code>, <code class="highlighter-rouge">NOVA</code></li>
+  <li><code class="highlighter-rouge">PrecondicaoPrograma</code>: <code class="highlighter-rouge">REQUALIFICA_UBS</code>, <code class="highlighter-rouge">OFICINA_ORTOPEDICA</code>, <code class="highlighter-rouge">UNIDADE_DE_PRONTO_ATENDIMENTO</code>, …</li>
+  <li><code class="highlighter-rouge">PrecondicaoSolicitacao</code>: <code class="highlighter-rouge">SUPERACAO_ACAO_PREPARATORIA</code>, <code class="highlighter-rouge">PRORROGACAO</code>, <code class="highlighter-rouge">CANCELAMENTO</code>, …</li>
+  <li><code class="highlighter-rouge">PrecondicaoEsferaFundo</code>: <code class="highlighter-rouge">ESTADUAL</code>, <code class="highlighter-rouge">MUNICIPAL</code></li>
+  <li><code class="highlighter-rouge">PrecondicaoFundo</code>: <code class="highlighter-rouge">FMS_FLORIANOPOLIS_SC</code>, <code class="highlighter-rouge">FMS_SAO_PAULO_SP</code>, <code class="highlighter-rouge">FES_SC</code>, …</li>
+</ul>
+
+<h4 id="usuário">Usuário</h4>
+<ul>
+  <li><code class="highlighter-rouge">PrecondicaoPapel</code>: <code class="highlighter-rouge">TECNICO</code>, <code class="highlighter-rouge">PARECERISTA</code>, <code class="highlighter-rouge">LEITOR</code>, …</li>
+  <li><code class="highlighter-rouge">PrecondicaoFundoUsuario</code>: <code class="highlighter-rouge">FMS_FLORIANOPOLIS_SC</code>, <code class="highlighter-rouge">FMS_SAO_PAULO_SP</code>, <code class="highlighter-rouge">FES_SC</code>, …</li>
+</ul>
+
+<hr />
+
+<p>Caso você encontre bugs, problemas, necessite de novas funcionalidades ou ainda tenha dúvidas, não deixe de comunicar à galera do automatizado!</p>

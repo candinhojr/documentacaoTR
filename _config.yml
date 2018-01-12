@@ -1,0 +1,28 @@
+# Site settings
+title: ""
+email:
+description: Wiki Sismob
+baseurl: "" # the subpath of your site, e.g. /blog/
+urlbase: "/sismob"
+
+github_repo:     https://github.com/sismob/sismob
+github_repo_sub: sismob.testers/
+
+version: 2.0
+
+exclude: [target, pom.xml, WEB-INF, src]
+
+# Build settings
+encoding: utf-8
+timezone: America/Sao_Paulo
+markdown: kramdown
+redcarpet:
+  extensions:
+    - with_toc_data
+    - html_toc
+    - tables
+    - fenced_code_blocks
+
+collections:
+  sismob:
+    output: true

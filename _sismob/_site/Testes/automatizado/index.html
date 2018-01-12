@@ -1,0 +1,70 @@
+<h2 id="teste-dinâmico">Teste Dinâmico</h2>
+
+<p>A unidade é executada e a saída é observada.</p>
+
+<p><img src="../img/teste-dinamico.png" alt="" /></p>
+
+<h3 id="atividades-em-um-teste-de-software">Atividades em um Teste de Software</h3>
+
+<p><strong>1.</strong> Selecionar as entradas.
+<strong>2.</strong> Calcular a saída esperada
+<strong>3.</strong> Configurar o ambiente de execução do programa
+<strong>4.</strong> Executar o programa
+<strong>5.</strong> Analisar o resultado do teste</p>
+
+<h4 id="problemas-que-aumentam-o-custo-de-manutenção-dos-testes">Problemas que aumentam o custo de manutenção dos testes:</h4>
+
+<p>§ O teste não comunica a sua intenção, ou seja, o que
+ele está tentando fazer.
+§ O teste tem vários caminhos de execução, ao invés de
+ter uma sequência linear de comandos.
+§ Duplicação de código em diferentes testes.</p>
+
+<p>Independente do processo, os testes devem ser bem
+escritos.
+¤ Padrões de Testes
+¤ Anti-padrões de testes (test smells): descrevem
+problemas recorrentes que os padrões ajudam a
+resolver.</p>
+
+<h2 id="conceitos-relacionados--meszaros">Conceitos relacionados  <a href="http://xunitpatterns.com/gerardmeszaros.html">(Meszaros)</a></h2>
+
+<p><strong>SUT (System Under Test)</strong>
+É qualquer coisa que está sendo testada.
+Nos testes de unidade o SUT é uma classe ou métodos.
+Nos testes de aceitação o SUT é todo o sistema ou um
+subsistema.</p>
+
+<p><strong>Test Fixture</strong>
+Qualquer coisa necessária para exercitar o SUT.</p>
+
+<h2 id="testes-automatizados">Testes Automatizados</h2>
+
+<p><strong>Cada teste é projetado em 4 fases:</strong></p>
+<ol>
+  <li>Configuração das Fixtures (Fixture Setup)</li>
+  <li>Exercício do SUT</li>
+  <li>Verificação do Resultado</li>
+  <li>Destruição das Fixtures</li>
+</ol>
+
+<p><strong>1. Configuração das Fixtures (Fixture Setup)</strong>
+O SUT é criado e colocado no estado requerido para
+ser executado, ou seja, as fixtures necessárias para que
+o SUT exiba o comportamento esperado são
+configuradas.</p>
+
+<p><strong>2. Exercício do SUT (Exercise SUT)</strong>
+É executado um único comportamento do SUT que
+precisa ser verificado.</p>
+
+<p><strong>3. Verificação do Resultado (Result Verification)</strong>
+Verifica se a saída esperada foi obtida ou se o teste
+falhou.</p>
+
+<p><strong>4. Destruição das Fixtures (Fixture Teardown)</strong>
+Destrói as fixtures e coloca o sistema no estado que
+estava antes do teste.</p>
+
+<p><strong>Referências</strong>
+<strong>Autor</strong>: Patricia Vilhain -  <a href="https://planos.inf.ufsc.br/modulos/programas/visualizar.php?disciplina=INE5448">INE5448 - Tópicos Especiais em Aplicações Tecnológicas I</a></p>

@@ -1,0 +1,114 @@
+<h1 id="o-que-é">O que é</h1>
+<p>Test Review é uma maneira de levantarmos os <strong>Casos de Teste</strong> de uma tarefa específica, em maioria, antes da mesma ser desenvolvidada. Com isso, é proporcionado ao desenvolvedor todos os cenários que aquela tarefa pode impactar e assim, fazer com que a mesma tenha mais qualidade antes mesmo do <strong>Tester</strong> da equipe pegar a tarefa.</p>
+
+<p>Além disso, o <strong>Test Review</strong> também serve como uma forma de realizarmos <strong>testes pareados</strong> e de <strong>nivelação de conhecimento</strong>.</p>
+
+<h1 id="como-é-realizado">Como é realizado</h1>
+<p>A cada versão desenvolvidada, é criado uma planilha no drive (<a href="https://drive.google.com/drive/u/0/folders/0B3y7IPs9l6rHS1MxQ1lXYzVNOTA">disponível aqui</a>) contendo todas as tarefas planejadas daquela versão, sendo que cada equipe é responsável pelas suas respectivas tarefas, tendo seu dever mantê-la atualizada a cada nova tarefa recebida.</p>
+
+<p>Todos os <strong>casos de teste</strong> devem estar disponíveis quando o prazo para o desenvolvimento da versão foi encerrado, ou seja, <strong>duas semanas</strong> antes de sua efetiva entrega.</p>
+
+<p>É <strong>extremamente importante</strong> que todo <strong>Test Review</strong> de uma tarefa seja visto por algum outro membro, interno da equipe ou não, para assim os cenários serem validados.</p>
+
+<p>Para cada tarefa, é necessário <strong>duplicar</strong> a aba “<strong>Modelo</strong>”, renomear a nova aba para o <strong>número da tarefa</strong> e então inserir a tarefa na lista de tarefas da equipe na aba “<strong>Tarefas</strong>”. <strong>Importante</strong> manter a lista de tarefas da equipe ordenada de forma <strong>crescente</strong> e botar um <strong>hiperlink</strong> para a aba que se encontra o <strong>test review</strong> da tarefa.</p>
+
+<p>Para uma melhor manuntenção do <strong>Test Review</strong> é <strong>essencial</strong> que os <strong>casos de testes</strong> sigam as <strong>convenções de escrita</strong>.</p>
+
+<h1 id="convenções">Convenções</h1>
+
+<h3 id="colunas">Colunas</h3>
+<p>O aba “<strong>Modelo</strong>” já possui a maior parte das configurações necessárias para criar o <strong>caso de teste</strong>, sendo que são 6 colunas para a descrição do <strong>CDT</strong> e 2 colunas para os <strong>Pré-Requisitos</strong>;</p>
+
+<p><strong>Casos de Teste:</strong></p>
+<ul>
+  <li><strong>Id:</strong> Identificação númerica do CDT.</li>
+  <li><strong>Cenário:</strong> Uma breve descrição do que se espera do cenário em questão.</li>
+  <li><strong>Passos:</strong> O que é necessário realizar no sistema para poder realizar a comparação de está correto ou não.</li>
+  <li><strong>Resultados esperados:</strong> Tudo que precisa ser validado no sistema, ou o que o sistema precisa fazer, para considerar que o cenário em questão seja dado como correto.</li>
+  <li><strong>Situação:</strong> Estado atual do cenário, se está correto ou não.</li>
+  <li><strong>Observações:</strong> Qualquer observação que seja relevante para o cenário, ou uma descrição do erro, caso o mesmo esta incorreto.</li>
+</ul>
+
+<p><strong>Pré-requisitos:</strong></p>
+<ul>
+  <li><strong>Nome:</strong> Uma breve descrição do que o pré-requisito se trata.</li>
+  <li><strong>Descrição:</strong> Descrição detalhada de uma condição que é necessária para realizar alguns dos cenários descritos.</li>
+</ul>
+
+<h3 id="formatação-e-nomenclaturas">Formatação e Nomenclaturas</h3>
+<ul>
+  <li><strong>Id</strong>
+    <ol>
+      <li>Númerico, sequencial, só deve estar preenchido caso exista o cenário;</li>
+      <li>Negrito e centralizado.
+<br /><br /></li>
+    </ol>
+  </li>
+  <li><strong>Cenário</strong>
+    <ol>
+      <li>Deve ser direto e objetivo;</li>
+      <li>Negrito e centralizado.
+<br /><img src="img/Cenario.png" />
+<br /><br /></li>
+    </ol>
+  </li>
+  <li><strong>Passos</strong>
+    <ol>
+      <li>Devem ser precisos, de fácil entendimento, usualmente apenas ação no sistema por passo. Ações mais simples podem ser concatenadas em apenas um passo.</li>
+      <li>Cada passo de cada cenário deve seguir o padrão: <font color="red">[NÚMERO EM NEGRITO]<font color="blue">.<font color="Magenta3">[ESPAÇO] <font color="green">[DESCRIÇÃO DO PASSO]<font color="Firebrick3">[PONTO E VÍRGULA] / [PONTO FINAL (caso seja o último passo)]</font>;</font></font></font></font></li>
+      <li>Referências aos módulos, botões, labels, qualquer coisa pertencente ao sistema deve estar entre aspas e em negrito, utilizando somente a primeira inicial em maiúscula;</li>
+      <li>Alinhado a esquerda.
+<br /><img src="img/Passos.png" />
+<br /><br /></li>
+    </ol>
+  </li>
+  <li><strong>Resultados esperados</strong>
+    <ol>
+      <li>Devem ser precisos, de fácil entendimento, usualmente apenas UMA verificação por item.</li>
+      <li>Deve sempre referenciar o passo em que é feito a verificação e ser sequencial: <font color="red">[NÚMERO EM NEGRITO].<font color="blue">[SEQUÊNCIA] - <font color="Magenta3">[ESPAÇO] <font color="green">[DESCRIÇÃO DO RESULTADO ESPERADO]<font color="Firebrick3">[PONTO E VÍRGULA] / [PONTO FINAL (caso seja o último passo)]</font>;</font></font></font></font></li>
+      <li>Referências aos módulos, botões, labels, qualquer coisa pertencente ao sistema deve estar entre aspas e em negrito, utilizando somente a primeira inicial em maiúscula;</li>
+      <li>Deve pular uma linha ao realizar a verificação de um resultado esperado de passos diferentes;</li>
+      <li>Alinhado a esquerda.
+<br /><img src="img/ResultadoEsperado.png" />
+<br /><br /></li>
+    </ol>
+  </li>
+  <li><strong>Situação</strong>
+    <ol>
+      <li>Deve representar a situação do cenário;</li>
+      <li>Selecionar apenas uma das opções disponíveis;</li>
+      <li>Centralizado.
+<br /><br /></li>
+    </ol>
+  </li>
+  <li><strong>Observações</strong>
+    <ol>
+      <li>Uma observação</li>
+      <li>Centralizado.
+<br /><br /></li>
+    </ol>
+  </li>
+  <li><strong>Nomes das pré-condições</strong>
+    <ol>
+      <li>Preferencialmente iniciar com a palavre <strong>PRE_</strong></li>
+      <li>Utilizar as mesmas regras da coluna <strong>‘Cenário’</strong>
+  <br /><img src="img/NomePreCondicao.png" />
+<br /><br /></li>
+    </ol>
+  </li>
+  <li><strong>Pré-condições</strong>
+    <ol>
+      <li>Utilizar as mesmas regras da coluna <strong>‘Passos’</strong>.
+  <br /><img src="img/PreCondicao.png" /></li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="exemplos">Exemplos</h3>
+<p>Alguns exemplos mais completos e detalhados podem ser observados nos <strong>test review</strong> das tarefas:</p>
+<ul>
+  <li><a href="https://docs.google.com/spreadsheets/d/1QD5TGL-g3zjWCTsitvHQjYMDVsiq97WIdi740-RenIc/edit#gid=1041594082">4054</a></li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1QD5TGL-g3zjWCTsitvHQjYMDVsiq97WIdi740-RenIc/edit#gid=1832879817">4126</a></li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1QD5TGL-g3zjWCTsitvHQjYMDVsiq97WIdi740-RenIc/edit#gid=1506460450">4151</a></li>
+  <li><a href="https://docs.google.com/spreadsheets/d/1QD5TGL-g3zjWCTsitvHQjYMDVsiq97WIdi740-RenIc/edit#gid=749853348">4184</a></li>
+</ul>

@@ -1,0 +1,31 @@
+<h2 id="como-colocarconfigurar-ids-nos-componentes-de-uma-tela">Como colocar/configurar ID’s nos componentes de uma tela</h2>
+
+<h3 id="por-que-configurar-id-no-componente">Por que configurar ID no componente?</h3>
+
+<p>É uma boa prática para poder facilitar a captura de elementos/componentes na tela, com a configuração de id podemos resumir melhor nossa construção do código de PageObjects.</p>
+
+<h3 id="1-procurando-o-componente">1. Procurando o Componente</h3>
+
+<p>Na tela do seu browser, você pode Inspecionar o elemento desejado que está sem id e pela sua herança, ir de pai em pai procurando uma id que contenha o texto como id=”…ViewImpl” no final de seu cadastro.</p>
+
+<p><img src="" alt="" /></p>
+
+<p>Esse id provavelmente será a classe JAVA ou classe que invoca o componente que possui o id desejado,</p>
+
+<h4 id="caso-seja-uma-label">Caso seja uma label:</h4>
+
+<p>Vai ter a conotação do tipo</p>
+
+<p><strong>Label ou VaadinLabel</strong></p>
+
+<p>Veja exemplo:</p>
+
+<p><img src="img/label-code.png" alt="" /></p>
+
+<p>O que é necessário realizar é apenas referenciar o objeto, com a chamada do método <strong>setId(<em>Nome do ID que vai ser configurado</em>)</strong> conforme exemplo abaixo:</p>
+
+<p><img src="img/label-code-with-id.png" alt="" /></p>
+
+<h4 id="caso-seja-um-textfield">Caso seja um TextField:</h4>
+
+<h6 id="ps-sendo-assim-você-capturar-seu-elemento-usando-o-id-sem-precisar-ter-que-encontrar-um-xpath-instável">P.S: Sendo assim, você capturar seu elemento usando o id, sem precisar ter que encontrar um xpath instável.</h6>

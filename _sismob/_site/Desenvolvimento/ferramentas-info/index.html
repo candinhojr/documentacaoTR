@@ -1,0 +1,20 @@
+<p>Para quem precisar dos códigos <em>UNICODE</em> para escrever no <code class="highlighter-rouge">messages.properties</code> pode utilizar os links abaixo como ajuda.</p>
+
+<p><a href="https://unicode-table.com/en/#00C0">Unicode character page</a></p>
+
+<p>http://online-toolz.com/tools/character-functions.php</p>
+
+<p>SQLs para habilitar as emendas.</p>
+
+<hr />
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">UPDATE</span> <span class="n">DBPROPOSTAFNS</span><span class="p">.</span><span class="n">TB_OBJETO</span>
+<span class="k">SET</span> <span class="n">NU_ANO_EXERCICIO</span> <span class="o">=</span> <span class="s1">'2017'</span><span class="p">;</span>
+
+<span class="k">UPDATE</span> <span class="n">DBPROPOSTAFNS</span><span class="p">.</span><span class="n">TB_EMENDA</span>
+<span class="k">SET</span> <span class="n">CO_MUNICIPIO_IBGE</span> <span class="o">=</span> <span class="s1">'420540'</span><span class="p">,</span> <span class="o">//</span> <span class="o">&lt;</span><span class="c1">-- este é o IBGE do município</span>
+<span class="n">NU_ANO_EXERCICIO</span> <span class="o">=</span> <span class="s1">'2017'</span><span class="p">;</span>
+
+<span class="k">UPDATE</span> <span class="n">DBCORPFNS</span><span class="p">.</span><span class="n">TB_PESSOA_FNS</span>
+<span class="k">SET</span> <span class="n">CO_MUNICIPIO_IBGE</span> <span class="o">=</span> <span class="s1">'420540'</span><span class="p">;</span> <span class="o">//</span> <span class="o">&lt;</span><span class="c1">-- este é o IBGE do município</span>
+
+</code></pre></div></div>
