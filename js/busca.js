@@ -1,13 +1,60 @@
 (function() {
+  // Guardando todos os resultados em uma variável global
+
+  // Inicializando o lunr com os campos em que irá pesquisar.
+  var idx = lunr(function () {
+  this.field('id');
+  // um boost de 10 para indicar que os matches neste campo são mais importantes.
+  this.field('title', { boost: 10 });
+  this.field('author');
+  this.field('category');
+  this.field('content');
+  });
+
+  var store = []
+  $.get('/search.json', function(data) {
+  store = data
+
+  for (var key in store) { // Adciona dados ao lunar
+    idx.add({
+      'id': key,
+      'title': store[key].title,
+      'author': store[key].author,
+      'category': store[key].category,
+      'content': store[key].content
+    });
+  }
+
+  /*
+    Executando  a pesquisa
+
+    Se houver um termo de pesquisa,
+    precisamos configurar e configurar o lunr.js.
+    Isso envolve dizer sobre os campos que estamos interessados
+    e adicionar os dados de busca do JSON. Uma vez configurado, podemos realizar a pesquisa:
+  */
+
+    var searchTerm = getQueryVariable('query');
+
+    if (searchTerm) {
+      document.getElementById('search-box').setAttribute("value", searchTerm);
+
+      var results = idx.search(searchTerm); // Obtém o Lunr para realizar uma pesquisa
+      displaySearchResults(results, store); // Isso é escrito na primeira seção
+    }
+})
+
+/*
+  Exibição dos resultados
+*/
+
   function displaySearchResults(results, store) {
     var searchResults = document.getElementById('resultados');
 
-    searchResults.innerHTML = '<h5 class="label label-primary"> A Busca retornou <b>' + results.length + '</b> resultado(s) </h3>';
-
-    if (results.length) { // Are there any results?
+    if (results.length) { // Existem alguns resultados?
+      searchResults.innerHTML = '<h5 class="label label-primary"> A pesquisa retornou <b>' + results.length + '</b> resultado(s) </h5>';
       var appendString = '';
-
-      for (var i = 0; i < results.length; i++) {  // Iterate over the results
+      for (var i = 0; i < results.length; i++) {  // Iterando sobre os resultados
         var item = store[results[i].ref];
         appendString += '<li><a href="' + item.url + '"><h3>' + item.title + '</h3></a>';
         appendString += '<p>' + item.content.substring(0, 150) + '...</p></li>';
@@ -18,6 +65,16 @@
       searchResults.innerHTML += '<div align="center"><img src="/img/searchNoResults.png"></div>';
     }
   }
+
+/*
+  Obtendo o termo de pesquisa
+
+  Vamos adicionar uma função getParameterByName  para fazer a leitura dos parâmetros GET
+  Basicamente manipular a seqüência de consulta para dividi-la em variáveis.
+
+  É usado o  getParameterByName para obter o termo de pesquisa:
+*/
+
 
   function getQueryVariable(variable) {
     var query = window.location.search.substring(1);
@@ -32,41 +89,34 @@
     }
   }
 
-  var searchTerm = getQueryVariable('query');
+      //Função para a cada palavra digitada no campo de pesquisa fazer uma iteração sobre o json e trazer resultados
+  $('[name=query]').keydown(function() {
+    var searchTerm = $(this).val();
+    var results = idx.search(searchTerm);
 
-  if (searchTerm) {
-    document.getElementById('search-box').setAttribute("value", searchTerm);
-
-    // Initalize lunr with the fields it will be searching on. I've given title
-    // a boost of 10 to indicate matches on this field are more important.
-    var idx = lunr(function () {
-      this.field('id');
-      this.field('title', { boost: 10 });
-      this.field('author');
-      this.field('category');
-      this.field('content');
-    });
-
-    for (var key in window.store) { // Add the data to lunr
-      idx.add({
-        'id': key,
-        'title': window.store[key].title,
-        'author': window.store[key].author,
-        'category': window.store[key].category,
-        'content': window.store[key].content
-      });
-
-      var results = idx.search(searchTerm); // Get lunr to perform a search
-      displaySearchResults(results, window.store); // We'll write this in the next section
+    var appendString = ''
+    for (var i = 0; i < 10; i++) {  // Iterate over the results
+      var item = store[results[i].ref];
+      appendString += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
     }
-  }
+    $('#search-results').html(appendString)
+  })
 })();
 
+/*
+  Funções para executar um bloqueio de carregamento enquanto as pesquisar não foram carregadas na tela
+*/
 function hide(elemento) {
-    document.getElementById(elemento).style.display = 'none'; //esconde a página até que seja carregada
+    var elem = document.getElementById(elemento)
+    if (elem) {
+      elem.style.display = 'none'; //esconde a página até que seja carregada
+    }
 }
 
 window.onload = function () {
-    document.getElementById('resultados').style.display = 'block';
+    var elem = document.getElementById('resultados')
+    if (elem) {
+      elem.style.display = 'block';
+    }
     hide('loading');
 }
