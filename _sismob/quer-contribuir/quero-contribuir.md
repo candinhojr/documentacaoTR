@@ -32,26 +32,30 @@ ordem: 20
 </div>
 <p>...<img src="https://image.flaticon.com/icons/svg/407/407120.svg" alt="" width="50px"> e o que sua imaginação permitir</p>
 
-A wiki está em um branch do Sismob
+A wiki está em um Repositório do Laboratório BRIDGE
 
 
 <div class="highlighter-rouge">
   <p>Clonar Repositório</p>
   <pre class="highlight">
-  <p><code id="clonesis" class="textarea">git clone https://github.com/sismob/sismob</code></p>
+    <code id="clonesis" class="textarea">
+git clone https://github.com/laboratoriobridge/sismob-wiki
+    </code>
   </pre>
-  <button type="button" name="button" class="btn btn-primary" onclick="copiar('clonesis')">Copiar script</button>
+  <input id="buttonclone" type="button" name="button" class="btn btn-primary" onclick="copiar('clonesis', 'buttonclone')" value="Copiar script">
   <p></p>
   <br>
-  <p><b>Fazer um fetch, Pegar branch wiki do repositório sismob:</b></p>
+  <p><b>Fazer atualizar as alterações, é necessário que seja realizado um pull(Puxar) em linha de código na pasta clonada:</b></p>
   <pre class="highlight">
-  <p><code id="fetchsis">git fetch https://github.com/sismob/sismob wiki:wiki</code></p>
+  <code id="fetchsis">
+git pull https://github.com/laboratoriobridge/sismob-wiki
+  </code>
   </pre>
-  <button type="button" name="button" class="btn btn-primary" onclick="copiar('fetchsis')">Copiar script</button>
+  <input id="buttonfetch" type="button" name="button" class="btn btn-primary" onclick="copiar('fetchsis', 'buttonfetch')" value="Copiar script">
 </div>
 <br>
 <p>Baixar ZIP do github:</p>
-<button type="button" name="button" class="btn btn-info" ><a style="color:white;" href="https://github.com/sismob/sismob/archive/wiki.zip">Baixar Zip</a></button>
+<button type="button" name="button" class="btn btn-info" ><a style="color:white;" href="https://github.com/laboratoriobridge/sismob-wiki/archive/master.zip">Baixar Zip</a></button>
 
 ### Através dela, você pode usar uma IDE ou editor de texto que mais é agradável para você.
 
