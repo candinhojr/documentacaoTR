@@ -11,12 +11,13 @@ function copiar(id, botao){
   console.log("#"+botao);
   var copyTextarea = document.querySelector("#"+id).innerText;
   var textarea = document.createElement("textarea");
+
   textarea.value = copyTextarea;
   document.body.appendChild(textarea);
-  // console.log(textarea);
   textarea.select();
 
   try {
+    $('textarea').attr('class','zueira-hide');
     var successful = document.execCommand('copy');
     var msg = successful ? 'O script foi copiado!' : 'O script não foi copiado!';
     $('#'+botao).attr('data-content', msg)

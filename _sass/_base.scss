@@ -329,3 +329,10 @@ label {
 #resultados .label b {
   color: #007bff;
 }
+
+.zueira-hide {
+  height: 0;
+  position: absolute;
+  left: -2000px;
+  top: -1000px;
+}

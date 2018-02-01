@@ -5,12 +5,6 @@ modulo: banco-de-dados
 type: consultas-importantes
 codigo: consultas-importantes
 ---
-<style media="screen">
-  textarea {
-    height: 0; 
-  }
-</style>
-
 <div id="accordion">
   <div class="card">
     <div class="card-header" id="headingOne">
