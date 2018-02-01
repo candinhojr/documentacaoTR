@@ -7,7 +7,7 @@ codigo: consultas-importantes
 ---
 <style media="screen">
   textarea {
-    display: none;
+    height: 0; 
   }
 </style>
 
