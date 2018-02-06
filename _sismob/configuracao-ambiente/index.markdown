@@ -27,43 +27,39 @@ ordem: 8
     <h1 align="center"><img src="http://logodatabases.com/wp-content/uploads/2012/03/java-logo-large.png" alt="" width="100px"></h1>
     <p></p>
     <p>Passo 1</p>
-    <p><code>sudo add-apt-repository ppa:webupd8team/java</code></p>
+    <p><code class="powershell">sudo add-apt-repository ppa:webupd8team/java</code></p>
     <p>Passo 2</p>
-    <p><code>sudo apt-get update</code></p>
+    <p><code class="shell">sudo apt-get update</code></p>
     <p>Passo 3</p>
-    <p><code>sudo apt-get install oracle-java8-installer</code></p>
+    <p><code class="shell">sudo apt-get install oracle-java8-installer</code></p>
     <p>Passo 4</p>
-    <p><code>sudo apt-get install oracle-java8-set-default</code></p>
+    <p><code class="shell">sudo apt-get install oracle-java8-set-default</code></p>
 
 
     <h2 align="center">Git</h2>
     <h1 align="center"><img src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" alt="" width="100px"></h1>
 
     <p>Passo 1 - Instalação</p>
-    <p><code>sudo apt-get install git</code></p>
+    <p><code class="bash">sudo apt-get install git</code></p>
     <p>Passo 2</p>
     <p>* Logar no github e fazer um fork do repositório <a href="https://github.com/sismob/sismob">sismob</a></p>
     <p>Passo 3 - Clonar o projeto sismob:</p>
-    <p><code>git clone https://github.com/[usuario]/[nome_repositorio]</code></p>
+    <p><code class="shell">git clone https://github.com/[usuario]/[nome_repositorio]</code></p>
     <p>Passo 4 - Criar arquivo para o banco</p>
     <p>* Após clonar o repositório, crie um arquivo chamado <b>database.properties</b> dentro da pasta {DIRETORIO_DO_PROJETO}/sismob.business.impl/src/main/resources/config/</p>
       <p>- O arquivo criado deverá conter as informações da base de dados usada pela aplicação</p>
 
       <p>Exemplo para um banco local:</p>
-      <div class="highlighter-rouge">
         <pre class="highlight">
             <!-- Atribuição da Id abaixo -->
-          <code class="textarea" id="database-properties"  >
-      <!-- Conteúdo do Arquivo -->
+          <code class="textarea java" id="database-properties"  >
 oracle.jdbc.driverClassName=oracle.jdbc.OracleDriver
 oracle.jdbc.url=jdbc:oracle:thin:@localhost:1521:xe
 oracle.jdbc.username=BRIDGE
 oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
-      <!-- Fim da Conteúdo do Arquivo  -->
           </code>
         </pre>
         <input id="myButton1" type="button" class="copiar btn"  onclick="copiar('database-properties', 'myButton1')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
-      </div>
       <br>
       <p>* Para não gerar .orig:</p>
       <p><code>git config --global mergetool.keepBackup false</code></p>
