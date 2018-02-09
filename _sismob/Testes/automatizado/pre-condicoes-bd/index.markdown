@@ -48,7 +48,7 @@ public class BD_SolicitacaoDeCancelamento extends SetupBD {
                 PrecondicaoTipoObra.CONSTRUCAO,
                 PrecondicaoPrograma.REQUALIFICA_UBS,
                 PrecondicaoFundo.FMS_FLORIANOPOLIS_SC,
-                PrecondicaoSolicitacao.CANCELAMENTO(SituacaoSolicitacao.AGUARDANDO_ANALISE));
+                PrecondicaoSolicitacao.CANCELAMENTO(SituacaoSolicitacao.AGUARDANDO_ANALISE)));
     //@formatter:on
   }
 
@@ -57,7 +57,7 @@ public class BD_SolicitacaoDeCancelamento extends SetupBD {
         //@formatter:off
 		SetupBD.setUsuario(this.precondicaoUsuarioService.getUsuario(
                 PrecondicaoPapel.PARECERISTA,
-                PrecondicaoFundoUsuario.FMS_FLORIANOPOLIS_SC);
+                PrecondicaoFundoUsuario.FMS_FLORIANOPOLIS_SC));
         //@formatter:on
 	}
 }
@@ -72,7 +72,7 @@ Todas as pré-condições disponíveis estão no pacote `br.gov.saude.sismob.spr
 
 **2. Caso de teste de funcionalidade do sistema**
 
-Com o caso de testes de preparação do BD criado, você pode elaborar o CDT de funcionalidade do sistema. Na classe do CDT é necessário adicionar a anotação `@Setup` indicando a classe do caso de testes de preparação do BD, como mostrado abaixo. É necessário declarar atributos para os objetos que você preparou no outro caso de testes (`Usuario` e `PropostaDTO`). Declare apenas o que for necessário. No método `iniciarVariaveis()` estes atributos devem ser definidos através dos métodos estáticos `getProposta()` e `getUsuario()` da classe `SetupBD`. Agora, basta você elaborar o CDT utilizando o número da proposta e/ou informações do usuário das pré-condições!
+Com o caso de testes de preparação do BD criado, você pode elaborar o CDT de funcionalidade do sistema. Na classe do CDT é necessário adicionar a anotação `@Setup` indicando a classe do caso de testes de preparação do BD, como mostrado abaixo. É necessário declarar atributos para os objetos que você preparou no outro caso de testes (`UsuarioDTO` e `PropostaDTO`). Declare apenas o que for necessário. No método `iniciarVariaveis()` estes atributos devem ser definidos através dos métodos estáticos `getProposta()` e `getUsuario()` da classe `SetupBD`. Agora, basta você elaborar o CDT utilizando o número da proposta e/ou informações do usuário das pré-condições!
 
 ```java
 @Setup(BD_SolicitacaoDeCancelamento.class)
@@ -81,7 +81,7 @@ public class EmitirParecerSolicitacaoCancelamento extends CasoDeTesteSismob {
 	private LoginFluxo login;
 	private HomeTecnicoPage home;
 	private ListaDePropostasEObrasPage listaPropostasObras;
-	private Usuario usuario;
+	private UsuarioDTO usuario;
 	private PropostaDTO proposta;
 
 	@Override

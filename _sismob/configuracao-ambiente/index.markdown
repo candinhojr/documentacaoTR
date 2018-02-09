@@ -72,17 +72,17 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
     <p>* Executar o comando</p>
     <p><code>mvn clean install</code> (A build irá falhar)</p>
 
-    <p>Passo 2 - baixar a configuração</p>****
-    <p>Baixar  <a href="https://drive.google.com/drive/u/1/folders/0B_N8pY55c8qNR2FaUVJadmwwX2c">settings.xml</a> na pasta “Programação” no Drive do SISMOB e mover para a pasta .m2 que está na home</p>*
-    <p>Passo 3 - mover a configuração**</p>
-    <p><code>sudo mv settings.xml ~/.m2/</code>/.m2 é (pasta oculta)</p>
+    <p>Passo 2 - Baixar o arquivo de configuração</p>****
+    <p>Baixar  <a href="https://drive.google.com/drive/u/1/folders/0B_N8pY55c8qNR2FaUVJadmwwX2c">settings.xml</a> na pasta “Programação” no Drive do SISMOB</p>*
+    <p>Passo 3 - Mover o arquivo de configuração para a pasta oculta do maven (.m2)**</p>
+    <p><code>sudo mv settings.xml ~/.m2/</code></p>
 
     <h1 align="center"><img src="https://peerigon.github.io/talks/2016-10-18-webandwine-introduction-to-docker/assets/large_v-trans.png" alt="Docker" width="100px"></h1>
     <p><code>wget -qO- https://get.docker.com/ | sh</code></p>
 
     <p><code>sudo usermod -aG docker 'Nome do seu usuário do PC'</code></p>
     <p><ul>
-      <li>Reiniciar a máquina OU Fazer logoff e login</li>
+      <li>Reiniciar a máquina OU Fazer logout e logar novamente</li>
       <li>Logar no <a href="https://hub.docker.com/">DockerHub</a> utilizando sua conta do github(criar conta no docker com mesmo nome de usuário)</li>
       <li>Pedir acesso as images do banco do SISMOB</li>
       <li>Logar com sua conta no docker e executar no terminal: <br> <code>docker login</code></li>
@@ -108,8 +108,8 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
         <br>
         <h2 align="center">SQLDeveloper</h2>
           <p align="center"><img src="http://technostixs.com/wp-content/uploads/2014/11/SQLDev.png" alt="SQLDeveloper" width="100px"></p>
-          <p>  Passo 1 - Baixar Arquivo</p>
-          <p><a href="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html">Download</a></p>
+          <p>Passo 1 - Baixar o SQLDeveloper</p>
+          <p>Fazer o download da ferramenta <a href="http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html">aqui</a> (é necessário logar no site da Oracle para fazer o download. Caso você não possua cadastro, crie um)</p>
           <p>Passo 2 - Descompactar para a pasta /opt </p>
           <p> <code>sudo unzip sqldeveloper-x.zip /opt/</code></p>
           <p>Passo 3 - abrir sqlDeveloper</p>
@@ -210,53 +210,45 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
         <h1 align="center">Java EE Eclipse</h1>
         <h1 align="center"><img src="http://www.eclipse.org/membership/promo/images/eclipsecon-ad-europe2017-400x400.png" alt="eclipse" width="100px"></h1>
         <ol>
-          <li><b>Baixar</b></li>
-            <a href="http://www.eclipse.org/downloads/eclipse-packages/">Download</a>
-            <p>Escolher: <b>Eclipse IDE for Java EE Developers</b></p>
-          <li>Descompactar e abrir o eclipse</li>
-          <li><b>Importar projetos: </b></li>
-          File -> Import -> Existing Maven Projects
-          <li>Importar todos os projetos do sismob com exceção do core.processor</li>
-          <li><b>Save actions: </b></li>
-          window -> preferences -> java -> editor -> save actions -> configure
-          <li>Print das telas em: <a href="https://drive.google.com/drive/u/1/folders/0B7kfNsf4ayKQTVl1SzhGUFVjenc">Link</a></li>
-          <li><b>Marcar:</b>
+          <li>Faça o download do Eclipse <a href="http://www.eclipse.org/downloads/eclipse-packages/" target="_blank">clicando aqui</a>. Selecione <b>Eclipse IDE for Java EE Developers</b></li>
+          <li>Descompacte/instale o Eclipse e em seguida execute-o</li>
+          <li>Vá em <b>Window -> Preferences -> Java -> Editor -> Save Actions</b> e marque:
               <ul>
                 <li>Perform the selected actions on save</li>
                 <li>Format sorce code</li>
                 <li>Format all lines</li>
                 <li>Organize imports</li>
-                <li>Additional actions:
-                  <ul>
-                        <li>organizing(remove trailin whitespace - all lines;)  </li>
-                        <li>code style (use blocks - always; and use parentheses - only if necessary)  </li>
-                        <li>member accesses (use this qualifier for field accesses - always; and for methods accesses ) </li>
-                        <li>missing code (add missing annotations)  </li>
-                        <li>unnecessary code (remove unused imports; remove unnecessary casts)  </li>
-                      </ul>
-                  </li>
+                <li>Additional actions</li>
               </ul>
           </li>
-          <li>Importar arquivo sismob-formatter que está na pasta do sismob, em window -> preferences -> java -> code style formatter</li>
-          <li>Importar arquivo cleanUp que está na pasta sismob, em Window -> preferences - > java -> cleanUp</li>
-          <li>Importar arquivo `bridge.importorder` que está na pasta sismob, em Window -> preferences - > java -> code style > Organize Imports</li>
-          <li>Instalar Maven Integration JDT APT : Help -> Eclipse Marketplace:
+          <li>Na mesma tela clique em 'Configure...' e selecione as seguintes configurações (print das telas <a href="https://drive.google.com/drive/u/1/folders/0B7kfNsf4ayKQTVl1SzhGUFVjenc" target="_blank">aqui</a>):
+              <ul>
+                <li>Code Organizing (Remove trailin whitespace - All lines)  </li>
+                <li>Code Style (Use blocks in if/while/for/do statements - Always; Use parentheses in expressions - Only if necessary)</li>
+                <li>Member Accesses (Use 'this' qualifier for field accesses - Always; Use 'this' qualifier for method accesses - Always)</li>
+                <li>Missing Code (Add missing annotations)  </li>
+                <li>Unnecessary Code (Remove unused imports; Remove unnecessary casts)</li>
+              </ul>
+          </li>
+          <li>Vá em <b>Window -> Preferences -> Java -> Code Style > Formatter</b> clique em 'Import...' e selecione o arquivo 'sismob-formatter.xml' na pasta do projeto</li>
+          <li>Vá em <b>Window -> Preferences -> Java -> Code Style > Clean Up</b>  clique em 'Import...' e selecione o arquivo 'java_cleanup.xml' na pasta do projeto</li>
+          <li>Vá em <b>Window -> Preferences -> Java -> Code Style > Organize Imports</b>  clique em 'Import...' e selecione o arquivo 'bridge.importorder' na pasta do projeto</li>
+          <li>Vá em <b>Help -> Eclipse Marketplace</b> para instalar o Maven Integration JDT APT
             <ol>
-              <li>Pesquisar por Jboss  </li>
-              <li>Instalar JBoss Tools  </li>
-              <li>Marcar:
+              <li>Pesquise por 'Jboss' e clique em 'Install', marcando apenas as opções:
                   <ul>
                     <li>JBoss Maven Integration</li>
-                    <li>Maven Integration JDT APT  </li>
+                    <li>Maven Integration JDT APT</li>
                   </ul>
               </li>
             </ol>
           </li>
-          <li>Selecionar o projeto sismob.common.api > Project > Properties > maven > annotation processing > Marcar Automatically configure JDT APT</li>
-          <li>Selecionar o projeto sismob.tools > Project > Properties > Java Build Path > Projects > Adicionar o projeto core.tools</li>
-          <li>Selecionar o projeto sismob.business.impl > Project > Properties > maven > annotation processing > Marcar Automatically configure JDT APT</li>
-          <li>Run > Debug Configurations > New Java Application > Project: sismob.springboot, Main class: br.gov.sismob.application.SismobApplication </li>
-          <li>Windows > Preferences > Maven > Annotation Processing > Marcar Automatically configure JDT APT</li>
+          <li>Vá em <b>File -> Import -> Existing Maven Projects</b> e selecione a pasta do sismob para importar os projetos. Selecione todos, <b>exceto o core.processor</b>, e aguarde a importação</li>
+          <li>Selecione o projeto <b>sismob.common.api</b> e vá em <b>Project > Properties > Maven > Annotation Processing</b>. Selecione a opção 'Enable project specific settings' e em seguida marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar</li>
+          <li>Selecione o projeto <b>sismob.tools</b> e vá em <b>Project > Properties > Java Build Path > Projects</b>. Adicione o projeto <b>core.tools</b>. Clique em 'OK' para salvar e fechar</li>
+          <li>Selecione o projeto <b>sismob.business.impl</b> e vá em <b>Project > Properties > Maven > Annotation Processing</b>. Selecione a opção 'Enable project specific settings' e em seguida marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar</li>
+          <li>Vá em <b>Window > Preferences > Maven > Annotation Processing</b>. Marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar</li>
+          <li>Run > Debug Configurations > New Java Application > Project: sismob.springboot, Main class: br.gov.sismob.application.SismobApplication</li>
           <li><b>Fechar eclipse</b></li>
         </ol>
       </div>
@@ -291,7 +283,7 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
       <br><code>jekyll serve</code> ou <code>jekyll s</code> (a partir da raiz da documentação).</p>
 
 
-    <h1 align="center">Testes automatizados</h1>
+    <h1 align="center">Testes automatizados com Selenium</h1>
     <h1 align="center"><img src="http://shipit.resultadosdigitais.com.br/images/posts/acceptance-tests.png" alt="" width="100px"></h1>
     <p><b>Passo 1 - Baixar o chromedriver</b></p>
     <p><code>wget -N http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip</code></p>
@@ -344,12 +336,12 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
 
 
       <h1 align="center">Aumentar memória do eclipse</h1>
-      <p>Abrir o eclipse.ini: </p>
-      <p><code>sudo cd  /opt/eclipse/eclipse.ini</code></p>
-      <ol>
-        <li>trocar --launcher.XXMaxPermSize, de 256M para 4096M</li>
-        <li>trocar -Xms40m para Xms4096m e -Xmx512m para -Xmx4096m</li>
-      </ol>
+      <p>Abra o arquivo 'eclipse.ini' na pasta onde você instalou o Eclipse. Em seguida, faça as seguintes modificações:
+        <ol>
+          <li>Procure pela linha com <b>-Xms{TAMANHO}m</b> e troque-a por <b>-Xms4096m</b></li>
+          <li>Procure pela linha com <b>-Xmx{TAMANHO}m</b> e troque-a por <b>-Xmx4096m</b></li>
+        </ol>
+      </p>
 
 
     <h1 align="center">LogBack</h1>
