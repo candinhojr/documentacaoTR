@@ -212,7 +212,7 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
         <ol>
           <li>Faça o download do Eclipse <a href="http://www.eclipse.org/downloads/eclipse-packages/" target="_blank">clicando aqui</a>. Selecione <b>Eclipse IDE for Java EE Developers</b></li>
           <li>Descompacte/instale o Eclipse e em seguida execute-o</li>
-          <li>Vá em <b>Window -> Preferences -> Java -> Editor -> Save Actions</b> e marque:
+          <li>Vá em <b>Window > Preferences > Java > Editor > Save Actions</b> e marque:
               <ul>
                 <li>Perform the selected actions on save</li>
                 <li>Format sorce code</li>
@@ -230,26 +230,26 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
                 <li>Unnecessary Code (Remove unused imports; Remove unnecessary casts)</li>
               </ul>
           </li>
-          <li>Vá em <b>Window -> Preferences -> Java -> Code Style > Formatter</b> clique em 'Import...' e selecione o arquivo 'sismob-formatter.xml' na pasta do projeto</li>
-          <li>Vá em <b>Window -> Preferences -> Java -> Code Style > Clean Up</b>  clique em 'Import...' e selecione o arquivo 'java_cleanup.xml' na pasta do projeto</li>
-          <li>Vá em <b>Window -> Preferences -> Java -> Code Style > Organize Imports</b>  clique em 'Import...' e selecione o arquivo 'bridge.importorder' na pasta do projeto</li>
-          <li>Vá em <b>Help -> Eclipse Marketplace</b> para instalar o Maven Integration JDT APT
+          <li>Vá em <b>Window > Preferences > Java > Code Style > Formatter</b> clique em 'Import...' e selecione o arquivo 'sismob-formatter.xml' na pasta do projeto</li>
+          <li>Vá em <b>Window > Preferences > Java > Code Style > Clean Up</b>  clique em 'Import...' e selecione o arquivo 'java_cleanup.xml' na pasta do projeto</li>
+          <li>Vá em <b>Window > Preferences > Java > Code Style > Organize Imports</b>  clique em 'Import...' e selecione o arquivo 'bridge.importorder' na pasta do projeto</li>
+          <li>Vá em <b>Help > Eclipse Marketplace</b> para instalar o Maven Integration JDT APT
             <ol>
-              <li>Pesquise por 'Jboss' e clique em 'Install', marcando apenas as opções:
+              <li>Pesquise por 'Jboss', procure o item 'JBoss Tools' clique em 'Install'. Em seguida marque apenas as seguintes opções e confirme:
                   <ul>
                     <li>JBoss Maven Integration</li>
-                    <li>Maven Integration JDT APT</li>
+                    <li>Maven Integration for Eclipse JDT APT</li>
                   </ul>
               </li>
+              <li>Após a instalação, clique em OK na mensagem que aparecerá para reiniciar o Eclipse.</li>
             </ol>
           </li>
-          <li>Vá em <b>File -> Import -> Existing Maven Projects</b> e selecione a pasta do sismob para importar os projetos. Selecione todos, <b>exceto o core.processor</b>, e aguarde a importação</li>
+          <li>Vá em <b>File > Import > Maven > Existing Maven Projects</b> e selecione a pasta do sismob para importar os projetos. Selecione todos, <b>exceto o core.processor</b>, e aguarde a importação</li>
           <li>Selecione o projeto <b>sismob.common.api</b> e vá em <b>Project > Properties > Maven > Annotation Processing</b>. Selecione a opção 'Enable project specific settings' e em seguida marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar</li>
           <li>Selecione o projeto <b>sismob.tools</b> e vá em <b>Project > Properties > Java Build Path > Projects</b>. Adicione o projeto <b>core.tools</b>. Clique em 'OK' para salvar e fechar</li>
           <li>Selecione o projeto <b>sismob.business.impl</b> e vá em <b>Project > Properties > Maven > Annotation Processing</b>. Selecione a opção 'Enable project specific settings' e em seguida marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar</li>
           <li>Vá em <b>Window > Preferences > Maven > Annotation Processing</b>. Marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar</li>
-          <li>Run > Debug Configurations > New Java Application > Project: sismob.springboot, Main class: br.gov.sismob.application.SismobApplication</li>
-          <li><b>Fechar eclipse</b></li>
+          <li>Vá em <b>Run > Debug Configurations</b>. Clique com o botão direito em 'Java Application' e selecione 'New'. Em <b>Project</b> selecione sismob.springboot e em <b>Main class</b> procure pela classe br.gov.sismob.application.SismobApplication. Dê um nome para a configuração (SISMOB) clique em 'Apply' e feche a janela.</li>
         </ol>
       </div>
       <div class="tab-pane" id="intellij" role="tabpanel">

@@ -8,23 +8,25 @@ codigo: dumps-e-config
 
 # Passos para utilizar o banco de dados com docker
 
-**1.** Fazer pull do repositório do sismob.
 
-**2.** Baixar os arquivos da pasta [dump do drive](https://drive.google.com/open?id=0B-h414mXnBScSGJZOTViVDY5R0k) para dentro da pasta docker/dumps.
-        Dump DBSISMOB do:
-          [v9](https://drive.google.com/drive/folders/0B7kfNsf4ayKQREYtQThPQUQyamM)
+1. Fazer pull do repositório do sismob.
+2. Baixar os arquivos das <b>outras bases</b> <a href="https://drive.google.com/open?id=0B-h414mXnBScSGJZOTViVDY5R0k" target="_blank">nesse link</a> para dentro da pasta <b>sismob/docker/dumps</b>.
+3. Baixar o arquivo da <b>base do Sismob</b> <a href="https://drive.google.com/drive/folders/0B7kfNsf4ayKQREYtQThPQUQyamM" target="_blank">nesse link</a> para dentro da pasta <b>sismob/docker/dumps</b>.
+4. Setar a variável de ambiente <b>$DUMPS_HOME</b> com o caminho para a pasta <b>sismob/docker/dumps</b> do repositório do github (não colocar barra no final). Para exportar uma variável no linux basta digitar no terminal:
 
-**3.** Setar a variável de ambiente *$DUMPS_HOME* com o caminho para a pasta sismob/docker/dumps do repositório do github (não colocar barra no final)
-Para exportar uma variável no linux basta digitar no terminal:
-``` sh
-$ export DUMPS_HOME=[CAMINHO PARA DUMPS]
-```
+	``` sh
+	$ export DUMPS_HOME=[CAMINHO PARA DUMPS]
+	```
 
-**4.** Rodar o scrip [docker.sh](https://github.com/BruceRodrigues/sismob/blob/homologacao/docker/docker.sh)
+5. Rodar o script [docker.sh](https://github.com/BruceRodrigues/sismob/blob/homologacao/docker/docker.sh) na pasta <b>sismob/docker</b>:
+
+	```sh
+	$ sh docker.sh
+	```
 
 # Docker.sh
 
-```bash
+```sh
 ##############################################################
 ##################### SISMOB DOCKER ##########################
 ##############################################################
@@ -40,15 +42,15 @@ Selecione uma opção
 ##############################################################
 ```
 
-**Start.** Inicia o banco de dados utilizando uma pasta local como repositório dos arquivos .dat. Por padrão essa pasta será *~/docker-oracle-home/*, mas ela pode ser alterada exportando a variável de ambiente **$DOCKER_ORACLE_HOME**. Ao iniciar o banco pela primeira vez, os arquivos dmp.zip serão descompactados utilizando unzip e serão importados um a um. Esse processo pode ser um pouco demorado, mas acontecerá somente quando um banco é iniciado pela primeira vez.
+1. **Start:** Inicia o banco de dados utilizando uma pasta local como repositório dos arquivos .dat. Por padrão essa pasta será *~/docker-oracle-home/*, mas ela pode ser alterada exportando a variável de ambiente **$DOCKER_ORACLE_HOME**. Ao iniciar o banco pela primeira vez, os arquivos dmp.zip serão descompactados utilizando unzip e serão importados um a um. Esse processo pode ser um pouco demorado, mas acontecerá somente quando um banco é iniciado pela primeira vez.
 
-**Restart.** Reinicia o container do banco. Mantém todas as modificações feitas na base de dados.
+2. **Restart.** Reinicia o container do banco. Mantém todas as modificações feitas na base de dados.
 
-**Update.** Força a descompressão dos arquivos dmp.zip da pasta docker/dumps e reseta o banco.
+3. **Update:** Força a descompressão dos arquivos dmp.zip da pasta docker/dumps e reseta o banco.
 
-**Reset.** Apaga o banco criado e refaz o processo de importação. **FIXME:** Existe um erro ao tentar remover a pasta *$DOCKER_ORACLE_HOME* pelo script. Por enquanto, remova essa pasta manualmente. *$ sudo rm -r [DOCKER_ORACLE_HOME]*
+4. **Reset:** Apaga o banco criado e refaz o processo de importação. <span style="color: red">**FIXME:** Existe um erro ao tentar remover a pasta *$DOCKER_ORACLE_HOME* pelo script. Por enquanto, remova essa pasta manualmente. *$ sudo rm -r [DOCKER_ORACLE_HOME]*</span>
 
-**Exit.** Finaliza a execução do docker.sh.
+5. **Exit:** Finaliza a execução do docker.sh.
 
 # Utilizar várias versões do banco
 
@@ -56,9 +58,8 @@ Se quiser utilizar diferentes versões do banco de dados é necessário alterar 
 
 # Atualizar dump
 
-**1.** Substituir o arquivo .dmp.zip antigo pelo novo dump do respectivo schema. (Manter o mesmo nome do arquivo antigo)
-
-**2.** Executar *Update*.
+1. Substituir o arquivo .dmp.zip antigo pelo novo dump do respectivo schema (manter o mesmo nome do arquivo antigo).
+2. Executar *Update*.
 
 # Links úteis
 
