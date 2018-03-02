@@ -1023,7 +1023,7 @@ COMMIT;
     </div>
   </div>
   <div class="card">
-    <div class="card-header" id="headingTwenty">
+    <div class="card-header" id="headingTwentyOne">
       <h5 class="mb-0">
         <div class="row">
           <div class="col-md-8">
@@ -1037,7 +1037,7 @@ COMMIT;
         </div>
       </h5>
     </div>
-    <div id="collapseTwentyOne" class="collapse" aria-labelledby="headingTwenty" data-parent="#accordion">
+    <div id="collapseTwentyOne" class="collapse" aria-labelledby="headingTwentyOne" data-parent="#accordion">
       <div class="card-body">
         Insere uma pessoa na base DBPESSOA. Após a inserção da pessoa, a mesma pode acessar o SISMOB através da opção 'Primeiro acesso' na página de login. É necessário substituir <code>NUMERO_CPF</code> e <code>NOME_PESSOA</code> pelo CPF e o nome da pessoa, respectivamente.
 
@@ -1074,9 +1074,56 @@ INSERT INTO DBPESSOA.TB_PESSOA (
       </div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-header" id="headingTwentyTwo">
+      <h5 class="mb-0">
+        <div class="row">
+          <div class="col-md-8">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwentyTwo" aria-expanded="true" aria-controls="collapseTwentyTwo">
+              Atualizar a sequence da DBPROPOSTACONVENIO.TB_PROJETO
+            </button>
+          </div>
+          <div class="col-md-2">
+            <input id="myButton18" type="button" class="copiar btn"  onclick="copiar('reverter-parecer-superacao', 'myButton18')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
+          </div>
+        </div>
+      </h5>
+    </div>
+    <div id="collapseTwentyTwo" class="collapse" aria-labelledby="headingTwentyTwo" data-parent="#accordion">
+      <div class="card-body">
+        Atualiza a sequence da DBPROPOSTACONVENIO.TB_PROJETO para que ela fique depois do último registro inserido na tabela. Deve ser executada após o reset do banco.
+
+<pre>
+<!-- Atribuição da Id abaixo -->
+<code class="textarea sql" id="reverter-parecer-superacao"  >
+DECLARE
+LAST_NUMBER_SEQ NUMBER(10) := 0;
+MAX_CO_PROCESSO NUMBER(10) := 0;
+BEGIN
+
+SELECT
+    MAX(CO_SEQ_PROCESSO) INTO MAX_CO_PROCESSO
+FROM
+    DBPROPOSTACONVENIO.TB_PROJETO;
+    
+SELECT
+    DBPROPOSTACONVENIO.SQ_PROCESSO_COSEQPROCESSO.currval INTO LAST_NUMBER_SEQ
+FROM
+    dual;
+
+EXECUTE IMMEDIATE 'ALTER SEQUENCE DBPROPOSTACONVENIO.SQ_PROCESSO_COSEQPROCESSO INCREMENT BY ' || (MAX_CO_PROCESSO - LAST_NUMBER_SEQ);
+SELECT DBPROPOSTACONVENIO.SQ_PROCESSO_COSEQPROCESSO.nextval INTO LAST_NUMBER_SEQ from dual;
+EXECUTE IMMEDIATE 'ALTER SEQUENCE DBPROPOSTACONVENIO.SQ_PROCESSO_COSEQPROCESSO INCREMENT BY 1';
+
+END;
+</code>
+</pre>
+      </div>
+    </div>
+  </div>
 <!-- Modelo -->
   <div class="card" style="display:none;">
-    <div class="card-header" id="headingTwentyOne">
+    <div class="card-header" id="headingTwentyThree">
       <h5 class="mb-0">
         <div class="col-md-8">
           <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwentyTwo" aria-expanded="true" aria-controls="collapseTwentyTwo">
@@ -1088,7 +1135,7 @@ INSERT INTO DBPESSOA.TB_PESSOA (
         </div>
       </h5>
     </div>
-    <div id="collapseTwentyTwo" class="collapse" aria-labelledby="headingTwentyOne" data-parent="#accordion">
+    <div id="collapseTwentyTwo" class="collapse" aria-labelledby="headingTwentyThree" data-parent="#accordion">
       <div class="card-body">
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
       </div>
