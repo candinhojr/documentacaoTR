@@ -343,7 +343,7 @@ WHERE atorPapel.DT_FIM < DATA_DE_HOJE (DD/MM/AAAA)’';
         <div class="row">
           <div class="col-md-8">
             <button class="btn btn-link" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="true" aria-controls="collapseEleven">
-              Criar programas e emendas para um município específico:
+              Criar programas e emendas para um município/estado específico:
             </button>
           </div>
           <div class="col-md-2">
@@ -356,20 +356,18 @@ WHERE atorPapel.DT_FIM < DATA_DE_HOJE (DD/MM/AAAA)’';
       <div class="card-body">
         Cria 5 programas e 5 programas com 5 emendas cada no FMS de Florianópolis.
 
-        Caso queira adicionar emendas para outros municipios é necessario trocar apenas os valores de  <code>CNPJ_FUNCDO_FLORIPA</code>
-        e o <code>CO_MUNICIPIO_IBGE_FLORIPA</code> que podem ser encontrados na tabela <code>TB_PESSOA_ENTIDADE</code>
+        Caso queira adicionar emendas para outros municipios é necessario trocar apenas os valores de  <code>CNPJ_FUNDO_FLORIPA</code>
+        e o <code>CO_MUNICIPIO_IBGE_FLORIPA</code> que podem ser encontrados na tabela <code>TB_ATOR_PESSOA_ENTIDADE</code>
 
 <pre>
 <!-- Atribuição da Id abaixo -->
 <code class="textarea sql" id="criar-programas-emendas"  >
 <!-- Query/Consulta -->
 ALTER TRIGGER DBCORPFNS.TRA_RLPRGESTOBJETOESFERA DISABLE;
-INSERT INTO DBCORPFNS.RL_PROGRAMA_ACAO (CO_PROGRAMA, CO_ACAO, NU_ANO_EXERCICIO) VALUES ('UFSC', 'UFSC', '2018');
 DECLARE
 CNPJ_FUNCDO_FLORIPA VARCHAR2(14) := '08935681000191';
 CO_MUNICIPIO_IBGE_FLORIPA VARCHAR2(6) := '420540';
 CO_SEQ_ACAO_ID VARCHAR(4) := 'UFSC';
-ANO VARCHAR(4) := '2018';
 QUANTIDADE_OBJETOS_PROGRAMA NUMBER(2):= 5;
 QUANTIDADE_OBJETOS_EMENDA NUMBER(2):= 5;
 QUANTIDADE_EMENDAS NUMBER(2):= 5;
@@ -377,6 +375,21 @@ VALOR NUMBER(10) := 1234567890;
 VALOR_EMENDA NUMBER(10) := VALOR / QUANTIDADE_EMENDAS;
 ID_PARLAMENTAR VARCHAR(4):= '5265';
 BEGIN
+
+DECLARE ANO VARCHAR(4);
+BEGIN
+SELECT to_char(sysdate, 'YYYY') INTO ANO from dual;
+
+DECLARE COUNT_ACAO NUMBER;
+BEGIN
+SELECT COUNT(*) INTO COUNT_ACAO FROM DBCORPFNS.RL_PROGRAMA_ACAO WHERE CO_PROGRAMA = CO_SEQ_ACAO_ID AND CO_ACAO = CO_SEQ_ACAO_ID;
+
+IF COUNT_ACAO > 0 THEN
+    UPDATE DBCORPFNS.RL_PROGRAMA_ACAO SET NU_ANO_EXERCICIO = ANO WHERE CO_PROGRAMA = CO_SEQ_ACAO_ID AND CO_ACAO = CO_SEQ_ACAO_ID;
+ELSE
+    INSERT INTO DBCORPFNS.RL_PROGRAMA_ACAO (CO_PROGRAMA, CO_ACAO, NU_ANO_EXERCICIO) VALUES (CO_SEQ_ACAO_ID, CO_SEQ_ACAO_ID, ANO);
+END IF;
+END;
 
 FOR TIPO_PROPOSTA IN (SELECT * FROM DBPROPOSTAFNS.TB_TIPO_PROPOSTA) LOOP
 FOR I IN 1..QUANTIDADE_OBJETOS_PROGRAMA LOOP
@@ -488,6 +501,7 @@ END;
 END;
 END LOOP;
 END LOOP;
+END;
 END;
 <!-- Fim da Query/Consulta -->
 </code>
@@ -1008,12 +1022,64 @@ COMMIT;
       </div>
     </div>
   </div>
+  <div class="card">
+    <div class="card-header" id="headingTwenty">
+      <h5 class="mb-0">
+        <div class="row">
+          <div class="col-md-8">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwentyOne" aria-expanded="true" aria-controls="collapseTwentyOne">
+              Inserir pessoa física na DBPESSOA para solicitação de acesso ao sismob
+            </button>
+          </div>
+          <div class="col-md-2">
+            <input id="myButton18" type="button" class="copiar btn"  onclick="copiar('reverter-parecer-superacao', 'myButton18')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
+          </div>
+        </div>
+      </h5>
+    </div>
+    <div id="collapseTwentyOne" class="collapse" aria-labelledby="headingTwenty" data-parent="#accordion">
+      <div class="card-body">
+        Insere uma pessoa na base DBPESSOA. Após a inserção da pessoa, a mesma pode acessar o SISMOB através da opção 'Primeiro acesso' na página de login. É necessário substituir <code>NUMERO_CPF</code> e <code>NOME_PESSOA</code> pelo CPF e o nome da pessoa, respectivamente.
+
+<pre>
+<!-- Atribuição da Id abaixo -->
+<code class="textarea sql" id="reverter-parecer-superacao"  >
+INSERT INTO DBPESSOA.TB_PESSOA_FISICA (
+    NU_CPF,
+    DT_NASCIMENTO,
+    NO_MAE,
+    TP_SEXO,
+    TP_SITUACAO_CPF,
+    SG_SEXO
+) VALUES (
+    'NUMERO_CPF',
+    '11/11/77',
+    'MINHA MAE',
+    1,
+    0,
+    'M'
+);
+
+INSERT INTO DBPESSOA.TB_PESSOA (
+    NU_CPF_CNPJ_PESSOA,
+    NO_PESSOA,
+    ST_REGISTRO_ATIVO
+) VALUES (
+    'NUMERO_CPF',
+    'NOME_PESSOA',
+    'S'
+);
+</code>
+</pre>
+      </div>
+    </div>
+  </div>
 <!-- Modelo -->
   <div class="card" style="display:none;">
     <div class="card-header" id="headingTwentyOne">
       <h5 class="mb-0">
         <div class="col-md-8">
-          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwentyOne" aria-expanded="true" aria-controls="collapseTwentyOne">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwentyTwo" aria-expanded="true" aria-controls="collapseTwentyTwo">
 
           </button>
         </div>
@@ -1022,7 +1088,7 @@ COMMIT;
         </div>
       </h5>
     </div>
-    <div id="collapseTwentyOne" class="collapse" aria-labelledby="headingTwentyOne" data-parent="#accordion">
+    <div id="collapseTwentyTwo" class="collapse" aria-labelledby="headingTwentyOne" data-parent="#accordion">
       <div class="card-body">
         Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
       </div>
