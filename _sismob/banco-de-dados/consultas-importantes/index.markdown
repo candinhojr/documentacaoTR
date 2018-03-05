@@ -978,7 +978,7 @@ COMMIT;
             </button>
           </div>
           <div class="col-md-2">
-            <input id="myButton18" type="button" class="copiar btn"  onclick="copiar('reverter-parecer-superacao', 'myButton18')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
+            <input id="myButton18" type="button" class="copiar btn"  onclick="copiar('code-twenty', 'myButton18')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
           </div>
         </div>
       </h5>
@@ -989,7 +989,7 @@ COMMIT;
 
 <pre>
 <!-- Atribuição da Id abaixo -->
-<code class="textarea sql" id="reverter-parecer-superacao"  >
+<code class="textarea sql" id="code-twenty"  >
 :XXXX;
 DEFINE var_co_proposta = &XXXX;
 
@@ -1032,7 +1032,7 @@ COMMIT;
             </button>
           </div>
           <div class="col-md-2">
-            <input id="myButton18" type="button" class="copiar btn"  onclick="copiar('reverter-parecer-superacao', 'myButton18')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
+            <input id="myButton19" type="button" class="copiar btn"  onclick="copiar('code-twenty-one', 'myButton19')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
           </div>
         </div>
       </h5>
@@ -1043,7 +1043,7 @@ COMMIT;
 
 <pre>
 <!-- Atribuição da Id abaixo -->
-<code class="textarea sql" id="reverter-parecer-superacao"  >
+<code class="textarea sql" id="code-twenty-one"  >
 INSERT INTO DBPESSOA.TB_PESSOA_FISICA (
     NU_CPF,
     DT_NASCIMENTO,
@@ -1084,7 +1084,7 @@ INSERT INTO DBPESSOA.TB_PESSOA (
             </button>
           </div>
           <div class="col-md-2">
-            <input id="myButton18" type="button" class="copiar btn"  onclick="copiar('reverter-parecer-superacao', 'myButton18')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
+            <input id="myButton20" type="button" class="copiar btn"  onclick="copiar('code-twenty-two', 'myButton20')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
           </div>
         </div>
       </h5>
@@ -1095,7 +1095,7 @@ INSERT INTO DBPESSOA.TB_PESSOA (
 
 <pre>
 <!-- Atribuição da Id abaixo -->
-<code class="textarea sql" id="reverter-parecer-superacao"  >
+<code class="textarea sql" id="code-twenty-two"  >
 DECLARE
 LAST_NUMBER_SEQ NUMBER(10) := 0;
 MAX_CO_PROCESSO NUMBER(10) := 0;
@@ -1116,6 +1116,40 @@ SELECT DBPROPOSTACONVENIO.SQ_PROCESSO_COSEQPROCESSO.nextval INTO LAST_NUMBER_SEQ
 EXECUTE IMMEDIATE 'ALTER SEQUENCE DBPROPOSTACONVENIO.SQ_PROCESSO_COSEQPROCESSO INCREMENT BY 1';
 
 END;
+</code>
+</pre>
+      </div>
+    </div>
+  </div>
+    <div class="card">
+    <div class="card-header" id="headingTwentyThree">
+      <h5 class="mb-0">
+        <div class="row">
+          <div class="col-md-8">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwentyThree" aria-expanded="true" aria-controls="collapseTwentyThree">
+              Remover todas as indicações de objetos
+            </button>
+          </div>
+          <div class="col-md-2">
+            <input id="myButton20" type="button" class="copiar btn"  onclick="copiar('code-twenty-three', 'myButton20')" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" title="Aviso" value="Copiar Script">
+          </div>
+        </div>
+      </h5>
+    </div>
+    <div id="collapseTwentyThree" class="collapse" aria-labelledby="headingTwentyThree" data-parent="#accordion">
+      <div class="card-body">
+        Remove todas as indicações de objetos do banco de dados para que a consulta de objetos no cadastro de proposta não demore muito tempo para ser executada. Após a execução desta, é necessário inserir objetos no banco novamente.
+
+<pre>
+<!-- Atribuição da Id abaixo -->
+<code class="textarea sql" id="code-twenty-three"  >
+DELETE FROM
+    DBPROPOSTAFNS.TB_INDICACAO_OBJETO;
+
+INSERT INTO
+    DBPROPOSTAFNS.TB_INDICACAO_OBJETO (CO_SEQ_INDIC_OBJETO, VL_OBJETO, DS_USUARIO, DS_IP_USUARIO)
+VALUES
+    (1, 1, 'TESTE', '127.0.0.1');
 </code>
 </pre>
       </div>
