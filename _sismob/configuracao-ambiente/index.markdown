@@ -211,7 +211,14 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
         <h1 align="center"><img src="http://www.eclipse.org/membership/promo/images/eclipsecon-ad-europe2017-400x400.png" alt="eclipse" width="100px"></h1>
         <ol>
           <li>Faça o download do Eclipse <a href="http://www.eclipse.org/downloads/eclipse-packages/" target="_blank">clicando aqui</a>. Selecione <b>Eclipse IDE for Java EE Developers</b></li>
-          <li>Descompacte/instale o Eclipse e em seguida execute-o</li>
+          <li>Descompacte/instale o Eclipse. Caso você não possua um atalho do eclipse no menu de programas, siga os passos disponíveis <a href="https://askubuntu.com/questions/80013/how-to-pin-eclipse-to-the-unity-launcher" target="_blank">neste link</a>.</li>
+          <li>É recomendável aumentar a quantidade de memória RAM utilizada no Eclipse. Para isso faça o seguinte:</li>
+              <ol>
+                <li>Abra o arquivo 'eclipse.ini' na pasta onde você instalou o Eclipse;</li>
+                <li>Procure pela linha com <b>-Xms{TAMANHO}m</b> e troque-a por <b>-Xms4096m</b>;</li>
+                <li>Procure pela linha com <b>-Xmx{TAMANHO}m</b> e troque-a por <b>-Xmx4096m</b>;</li>
+                <li>Salve e feche o arquivo.</li>
+              </ol>
           <li>Vá em <b>Window > Preferences > Java > Editor > Save Actions</b> e marque:
               <ul>
                 <li>Perform the selected actions on save</li>
@@ -221,6 +228,7 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
                 <li>Additional actions</li>
               </ul>
           </li>
+          <li>Execute o Eclipse</li>
           <li>Na mesma tela clique em 'Configure...' e selecione as seguintes configurações (print das telas <a href="https://drive.google.com/drive/u/1/folders/0B7kfNsf4ayKQTVl1SzhGUFVjenc" target="_blank">aqui</a>):
               <ul>
                 <li>Code Organizing (Remove trailin whitespace - All lines)  </li>
@@ -333,16 +341,6 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
     <p>Utilização: git pullsismob</p>
 
     <p>Obs 1: Da forma acima, os alias funcionarão apenas nos diretórios e sub-diretórios onde foram executados os comandos (recomendável). Para configuração global, utilizar <code>--global</code>.</p>
-
-
-      <h1 align="center">Aumentar memória do eclipse</h1>
-      <p>Abra o arquivo 'eclipse.ini' na pasta onde você instalou o Eclipse. Em seguida, faça as seguintes modificações:
-        <ol>
-          <li>Procure pela linha com <b>-Xms{TAMANHO}m</b> e troque-a por <b>-Xms4096m</b></li>
-          <li>Procure pela linha com <b>-Xmx{TAMANHO}m</b> e troque-a por <b>-Xmx4096m</b></li>
-        </ol>
-      </p>
-
 
     <h1 align="center">LogBack</h1>
 
