@@ -8,6 +8,11 @@ ordem: 6
 
 {% include lista-links-block.html %}
 
+<p></p>
+
+
+
+[O que realmente significa teste exploratório?](#técnicas-baseadas-na-experiência-ou-teste-exploratório)
 
 ###  Porque é necessário testar?
 
@@ -185,9 +190,9 @@ Os testes baseados na experiência são testes derivados da intuição e conheci
 Possivelmente a técnica mais amplamente aplicada é a de supor (adivinhar) onde estão os erros. Uma
 abordagem estruturada da técnica de dedução de erros é enumerar uma lista de possíveis erros e construir testes com objetivo de atacar/cobrir estes erros. Esta abordagem sistemática é chamada de ataque de falha.
 
-Estas listas de defeitos e falhas podem ser construídas com base na experiência, dados de defeitos/falhas disponíveis e do conhecimento comum de como o software falha. Teste **exploratório** ocorre simultaneamente à modelagem, execução e registro de teste, e baseia-se nos objetivos de teste, onde é realizado em um tempo predefinido. É uma abordagem muito usual, em locais onde a especificação é rara ou inadequada e existe grande pressão por conta de prazo, ou para
-aprimorar/complementar um teste mais formal. Pode servir como uma checagem do processo de teste,
-assegurando que os defeitos mais importantes sejam encontrados.
+Estas listas de defeitos e falhas podem ser construídas com base na experiência, dados de defeitos/falhas disponíveis e do conhecimento comum de como o software falha. Teste **exploratório** ocorre simultaneamente à modelagem, execução e registro de teste, e baseia-se nos objetivos de teste, onde é realizado em um tempo predefinido. É uma abordagem muito usual, em locais onde a especificação é rara ou inadequada e existe grande pressão por conta de prazo, ou para aprimorar/complementar um teste mais formal. Pode servir como uma checagem do processo de teste, assegurando que os defeitos mais importantes sejam encontrados.
+
+Ou seja, temos que Exploratório seja uma técnica utilizada para teste manual e não um tipo te teste em si.
 
 ### Referências
 

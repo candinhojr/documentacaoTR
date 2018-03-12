@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Automatizado
+title: Teste Automatizado
 type: modulo
 modulo: testes
 codigo: automatizado
