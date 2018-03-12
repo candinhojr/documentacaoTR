@@ -2,7 +2,7 @@
 layout: post
 title: Acesso ao Sistema
 type: modulo
-modulo: teste-manual
+modulo: testemanual
 codigo: acessosistema
 ---
 
