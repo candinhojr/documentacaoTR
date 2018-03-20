@@ -144,11 +144,11 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
                 <div class="row">
                   <div class="col-sm-2">
                     <textarea class="textarea" id="import-homologacao"  style="display:none;">
-                    #DataSourceSettings#
-                    #LocalDataSource: HOMOLOGA
-                    #BEGIN#
-                    <data-source source="LOCAL" name="HOMOLOGA" uuid="a9ab2ee1-c139-4735-8e06-2ffd24beb7ff"><database-info product="Oracle" version="Oracle Database 12c Standard Edition Release 12.1.0.2.0 - 64bit Production" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@homologacao.sismob.ufsc.br:1521:xe</jdbc-url><secret-storage>master_key</secret-storage><user-name>DBSISMOB</user-name><introspection-schemas>*:DBCGPAN,DBCNES,DBCNESRJ,DBCORPFNS,DBFAF,DBGERAL,DBNACIONAL,DBPESSOA,DBPGESCONTA,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB</introspection-schemas><driver-properties><property name="v$session.program" value="DataGrip"/></driver-properties></data-source>
-                    #END#
+#DataSourceSettings#
+#LocalDataSource: HOMOLOGA
+#BEGIN#
+<data-source source="LOCAL" name="HOMOLOGA" uuid="a9ab2ee1-c139-4735-8e06-2ffd24beb7ff"><database-info product="Oracle" version="Oracle Database 12c Standard Edition Release 12.1.0.2.0 - 64bit Production" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@homologacao.sismob.ufsc.br:1521:xe</jdbc-url><secret-storage>master_key</secret-storage><user-name>DBSISMOB</user-name><introspection-schemas>*:DBCGPAN,DBCNES,DBCNESRJ,DBCORPFNS,DBFAF,DBGERAL,DBNACIONAL,DBPESSOA,DBPGESCONTA,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB</introspection-schemas><driver-properties><property name="v$session.program" value="DataGrip"/></driver-properties></data-source>
+#END#
                     </textarea>
                       <button class="copiar btn btn-primary"  onclick="copiar('import-homologacao')">Import do homologação</button>
                   </div>
@@ -157,11 +157,11 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
                   <p></p>
                   <div class="col-sm-2">
                     <textarea class="textarea" id="import-local"  style="display:none;">
-                      #DataSourceSettings#
-                      #LocalDataSource: LOCAL
-                      #BEGIN#
-                      <data-source source="LOCAL" name="LOCAL" uuid="5383d532-9e36-47bb-9d4d-31d0bb11480f"><database-info product="Oracle" version="Oracle Database 12c Standard Edition Release 12.1.0.2.0 - 64bit Production" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url><secret-storage>master_key</secret-storage><user-name>BRIDGE</user-name><introspection-schemas>*:BRIDGE,DBCGPAN,DBCNES,DBCNESRJ,DBCORPFNS,DBFAF,DBGERAL,DBNACIONAL,DBPESSOA,DBPGESCONTA,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB</introspection-schemas><default-dialect>OracleSqlPlus</default-dialect><driver-properties><property name="v$session.program" value="DataGrip"/></driver-properties></data-source>
-                      #END#
+#DataSourceSettings#
+#LocalDataSource: LOCAL
+#BEGIN#
+<data-source source="LOCAL" name="LOCAL" uuid="5383d532-9e36-47bb-9d4d-31d0bb11480f"><database-info product="Oracle" version="Oracle Database 12c Standard Edition Release 12.1.0.2.0 - 64bit Production" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url><secret-storage>master_key</secret-storage><user-name>BRIDGE</user-name><introspection-schemas>*:BRIDGE,DBCGPAN,DBCNES,DBCNESRJ,DBCORPFNS,DBFAF,DBGERAL,DBNACIONAL,DBPESSOA,DBPGESCONTA,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB</introspection-schemas><default-dialect>OracleSqlPlus</default-dialect><driver-properties><property name="v$session.program" value="DataGrip"/></driver-properties></data-source>
+#END#
                     </textarea>
                     <button class="copiar btn btn-primary"  onclick="copiar('import-local')">Import do Banco Local</button>
                   </div>
@@ -170,11 +170,11 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
                   <br>
                   <div class="col-sm-2">
                     <textarea class="textarea" id="import-producao" style="display:none;" >
-                      #DataSourceSettings#
-                      #LocalDataSource: PROD
-                      #BEGIN#
-                      <data-source source="LOCAL" name="PROD" read-only="true" uuid="3649a763-6913-4e6f-8b0a-5e83005fa465"><database-info product="Oracle" version="Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production&#xa;With the Partitioning, Real Application Clusters, Automatic Storage Management, OLAP,&#xa;Data Mining and Real Application Testing options" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@srvoradf0.saude.gov:1521/dfpo1.saude.gov</jdbc-url><secret-storage>master_key</secret-storage><user-name>SISMOBWEB</user-name><introspection-schemas>*:DBCORPFNS,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB,SISMOBWEB</introspection-schemas><driver-properties><property name="v$session.program" value="DataGrip"/></driver-properties></data-source>
-                      #END#
+#DataSourceSettings#
+#LocalDataSource: PROD
+#BEGIN#
+<data-source source="LOCAL" name="PROD" read-only="true" uuid="3649a763-6913-4e6f-8b0a-5e83005fa465"><database-info product="Oracle" version="Oracle Database 11g Enterprise Edition Release 11.2.0.4.0 - 64bit Production&#xa;With the Partitioning, Real Application Clusters, Automatic Storage Management, OLAP,&#xa;Data Mining and Real Application Testing options" jdbc-version="4.0" driver-name="Oracle JDBC driver" driver-version="12.1.0.2.0"><extra-name-characters>$#</extra-name-characters><identifier-quote-string>&quot;</identifier-quote-string></database-info><case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/><driver-ref>oracle</driver-ref><synchronize>true</synchronize><auto-commit>false</auto-commit><jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver><jdbc-url>jdbc:oracle:thin:@srvoradf0.saude.gov:1521/dfpo1.saude.gov</jdbc-url><secret-storage>master_key</secret-storage><user-name>SISMOBWEB</user-name><introspection-schemas>*:DBCORPFNS,DBPROPOSTACONVENIO,DBPROPOSTAFNS,DBPROPOSTASAS,DBSISMOB,SISMOBWEB</introspection-schemas><driver-properties><property name="v$session.program" value="DataGrip"/></driver-properties></data-source>
+#END#
                     </textarea>
                     <button class="copiar btn btn-primary"  onclick="copiar('import-producao')">Import do Produção</button>
                   </div>
