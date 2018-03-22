@@ -6,6 +6,75 @@ type: dumps-e-config
 codigo: dumps-e-config
 ---
 
+# Passos para utilizar o banco de dados na V2.9
+
+## Criação da imagem docker e container
+
+1. Garantir que o Git LFS esteja instalado na máquina:
+		### Debian ###
+			- `echo 'deb http://http.debian.net/debian wheezy-backports main' > /etc/apt/sources.list.d/wheezy-backports-main.list`
+
+		1. `curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
+		2. `sudo apt-get install git-lfs`
+		3. `git lfs install`
+
+
+
+		### Mac OSX ###
+
+		1. Voce precisará de `brew update` para pegar todas as formulas
+		2. `brew install git-lfs`
+		3. `git lfs install`
+
+		### Ubuntu ###
+
+		- Semelhante ao Debian 7, o Ubuntu 12 e versões similares do Wheezy precisam ter um repositório PPA instalado para obter o git >= 1.8.2
+
+			1. `sudo apt-get install software-properties-common` para instalar o  add-apt-repository (or `sudo apt-get install python-software-properties` Se você tem o Ubuntu <= 12.04)
+			2. `sudo add-apt-repository ppa:git-core/ppa`
+				O script curl abaixo chama apt-get update, se você não estiver usando, não se esqueça de ligar
+			3. `sudo apt-get update` antes de instalar o git-lfs.
+
+		1. `curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash`
+		2. `sudo apt-get install git-lfs`
+		3. `git lfs install`
+
+
+		ou pelo instalável .debian
+
+		https://packagecloud.io/github/git-lfs
+
+2. Executar pull do projeto após a instalação do Git LFS
+3. Executar o arquivo docker/build.sh que criará a imagem base com instalação Oracle + Dumps de Schemas terceiros
+4. Executar o arquivo ./run.sh para criar a instância da imagem (container) e realizar a migração de todos os objetos do DBSISMOB
+
+## Acesso Oracle
+
+Porta: 1521  
+SID: XE  
+
+Login: SISMOB  
+Senha: SISMOB  
+
+Login: SYSTEM  
+Senha: oracle  
+
+Login: SYS (sysdba)  
+Senha: oracle  
+
+## Tipos de dados
+
+| Tipo de dado Oracle |  Tipo de dado Java |
+|:-------------------:|:------------------:|
+| NUMBER(19,0)        |  Long              |
+| NUMBER(10,0)        |  Integer           |
+| NUMBER(5,0)         |  Short             |
+| VARCHAR(*)          |  String            |
+| CHAR(*)             |  String            |
+| CLOB                |  String @Lob       |
+| DATE                |  Date              |
+
+
 # Passos para utilizar o banco de dados com docker
 
 
