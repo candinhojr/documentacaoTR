@@ -1,0 +1,7 @@
+<!-- Cria a lista de itens[páginas] que foram selecionados  -->
+{% for item in include.nav %}
+  <li id="summary-{{ item.id }}"><a href="#{{ item.id }}">{{ item.page['title'] }}</a></li>
+  {% if item.subitems %}
+      {% include pdf-summary.html nav=item.subitems %}
+  {% endif %}
+{% endfor %}

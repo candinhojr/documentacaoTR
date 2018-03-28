@@ -34,7 +34,7 @@
   display: block;
 }
 
-.pdf.hidden {
+.pdf.hidden, .pdf-summary li.hidden {
   display: none;
 }
 
@@ -86,4 +86,24 @@
   }
 
   page-break-after: always;
+}
+
+.page-break {
+  page-break-after: always;
+}
+
+// Gera os pontos na linha do sumário e faz a paginação pelo Prince para a lista criada
+.pdf-summary {
+  a::after {
+    content: leader('.') target-counter(attr(href), page);
+  }
+}
+
+
+.summary-ask {
+  border: solid 2px #005baa;
+  width: 50%;
+  text-align: right;
+  padding: 1%;
+  margin-left: 50%;
 }
