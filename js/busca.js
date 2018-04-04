@@ -95,10 +95,11 @@
     var results = idx.search(searchTerm);
 
     var appendString = ''
-    for (var i = 0; i < 10; i++) {  // Iterate over the results
+    for (var i = 0; i < results.length && i < 10; i++) {  // Iterate over the results
       var item = store[results[i].ref];
       appendString += '<li><a href="' + item.url + '">' + item.title + '</a></li>';
     }
+    console.log(appendString)
     $('#search-results').html(appendString)
   })
 })();
