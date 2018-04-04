@@ -68,6 +68,84 @@ Encontrar e consertar defeitos não ajuda se o sistema construído não atende �
 
 ## Tipos de Teste
 
+
+<table style="font-weight: 300;">
+<tbody>
+<tr>
+<td width="163"><strong>Tipo de Teste</strong></td>
+<td width="435"><strong>Descrição</strong></td>
+</tr>
+<tr>
+<td width="163">Teste de Unidade</td>
+<td width="435">Teste em um nível de componente ou classe. É o teste cujo objetivo é um “pedaço do código”.</td>
+</tr>
+<tr>
+<td width="163">Teste de Integração</td>
+<td width="435">Garante que um ou mais componentes combinados (ou unidades) funcionam. Podemos dizer que um teste de integração é composto por diversos testes de unidade*1</td>
+</tr>
+<tr>
+<td width="163">Teste Operacional</td>
+<td width="435">Garante que a aplicação pode rodar muito tempo sem falhar.</td>
+</tr>
+<tr>
+<td width="163">Teste Positivo-negativo</td>
+<td width="435">Garante que a aplicação vai funcionar no “caminho feliz” de sua execução e vai funcionar no seu fluxo de exceção. *2</td>
+</tr>
+<tr>
+<td width="163">Teste de regressão</td>
+<td width="435">Toda vez que algo for mudado, deve ser testada toda a aplicação novamente.</td>
+</tr>
+<tr>
+<td width="163">Teste de caixa-preta</td>
+<td width="435">Testar todas as entradas e saídas desejadas. Não se está preocupado com o código, cada saída indesejada é visto como um erro.</td>
+</tr>
+<tr>
+<td width="163">Teste caixa-branca</td>
+<td width="435">O objetivo é testar o código. Às vezes, existem partes do código que nunca foram testadas.</td>
+</tr>
+<tr>
+<td width="163">Teste Funcional</td>
+<td width="435">Testar as funcionalidades, requerimentos, regras de negócio presentes na documentação. Validar as funcionalidades descritas na documentação (pode acontecer de a documentação estar inválida)</td>
+</tr>
+<tr>
+<td width="163">Teste de Interface</td>
+<td width="435">Verifica se a navegabilidade e os objetivos da tela funcionam como especificados e se atendem da melhor forma ao usuário.</td>
+</tr>
+<tr>
+<td width="163">Teste de Performance</td>
+<td width="435">Verifica se o tempo de resposta é o desejado para o momento de utilização da aplicação.</td>
+</tr>
+<tr>
+<td width="163">Teste de carga</td>
+<td width="435">Verifica o funcionamento da aplicação com a utilização de uma quantidade grande de usuários simultâneos.</td>
+</tr>
+<tr>
+<td width="163">Teste de aceitação do usuário</td>
+<td width="435">Testa se a solução será bem vista pelo usuário. Ex: caso exista um botão pequeno demais para executar uma função, isso deve ser criticado em fase de testes. (aqui, cabem quesitos fora da interface, também).</td>
+</tr>
+<tr>
+<td width="163">Teste de Volume</td>
+<td width="435">Testar a quantidade de dados envolvidos (pode ser pouca, normal, grande, ou além de grande).</td>
+</tr>
+<tr>
+<td width="163">Testes de stress</td>
+<td width="435">Testar a aplicação sem situações inesperadas. Testar caminhos, às vezes, antes não previstos no desenvolvimento/documentação.</td>
+</tr>
+<tr>
+<td width="163">Testes de Configuração</td>
+<td width="435">Testar se a aplicação funciona corretamente em diferentes ambientes de hardware ou de software.</td>
+</tr>
+<tr>
+<td width="163">Testes de Instalação</td>
+<td width="435">Testar se a instalação da aplicação foi OK.</td>
+</tr>
+<tr>
+<td width="163">Testes de Segurança</td>
+<td width="435">Testar a segurança da aplicação das mais diversas formas. Utilizar os diversos papéis, perfis, permissões, para navegar no sistema.</td>
+</tr>
+</tbody>
+</table>
+
 ### Teste de Função (Teste funcional)
 
 As funções que um sistema, subsistema ou componente devem realizar podem ser descritas nos seguintes
