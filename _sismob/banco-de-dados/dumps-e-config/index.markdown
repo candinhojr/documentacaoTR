@@ -91,7 +91,7 @@ Senha: oracle
 5. Rodar o script [docker.sh](https://github.com/BruceRodrigues/sismob/blob/homologacao/docker/docker.sh) na pasta <b>sismob/docker</b>:
 
 	```sh
-	$ sh docker.sh
+	$ ./docker.sh
 	```
 
 # Docker.sh
