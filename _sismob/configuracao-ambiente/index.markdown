@@ -257,7 +257,18 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
           <li>Selecione o projeto <b>sismob.tools</b> e vá em <b>Project > Properties > Java Build Path > Projects</b>. Adicione o projeto <b>core.tools</b>. Clique em 'OK' para salvar e fechar;</li>
           <li>Selecione o projeto <b>sismob.business.impl</b> e vá em <b>Project > Properties > Maven > Annotation Processing</b>. Selecione a opção 'Enable project specific settings' e em seguida marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar;</li>
           <li>Vá em <b>Window > Preferences > Maven > Annotation Processing</b>. Marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar;</li>
-          <li>Vá em <b>Run > Debug Configurations</b>. Clique com o botão direito em 'Java Application' e selecione 'New'. Em <b>Project</b> selecione sismob.springboot e em <b>Main class</b> procure pela classe br.gov.sismob.application.SismobApplication. Dê um nome para a configuração (SISMOB) clique em 'Apply' e feche a janela.</li>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Master a 2.8</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">2.9</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"> <li>Vá em <b>Run > Debug Configurations</b>. Clique com o botão direito em 'Java Application' e selecione 'New'. Em <b>Project</b> selecione sismob.springboot e em <b>Main class</b> procure pela classe br.gov.sismob.application.SismobApplication. Dê um nome para a configuração (SISMOB) clique em 'Apply' e feche a janela.</li></div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"><li>Através do Eclipse executar a classe SismobStandaloneApplication.java presente dentro do projeto sismob.app</li></div>
+          </div>
         </ol>
       </div>
       <div class="tab-pane" id="intellij" role="tabpanel">
