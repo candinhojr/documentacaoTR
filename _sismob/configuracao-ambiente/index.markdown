@@ -379,7 +379,30 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
   <div class="tab-pane" id="windows" role="tabpanel">
   <br>
   <br>
-    <h1 align="center">Em construção by <a href="https://laboratoriobridge.slack.com/team/pedro.pacheco">P Pacheco</a></h1>
+  <h1 align="center"><img src="https://talk.jekyllrb.com/uploads/jekyllrb/original/1X/4f9bd5334246d33651e846aed812280fbff586ba.png" alt="Jekyll" width="200px"></h1>
+  <p>Baixar DevKit e instalar com todas opções:</p>
+  <a href="https://github.com/oneclick/rubyinstaller2/releases/download/rubyinstaller-2.4.4-1/rubyinstaller-devkit-2.4.4-1-x64.exe">Download</a>
+  <br>
+  <br>
+  <p><b>Instalação:</b></p>
+  <p>Dentro de Ruby24-x64/bin:</p>
+  <code class="shell">gem install jekyll bundler</code>
+  <br>
+  - adicionar este diretório ao "Path" em variáveis de ambiente do windows
+  <br>
+  <br>
+  <p>Dentro de sismob/sismob.documentacao:</p>
+  <ul>
+    <li><code class="sh">gem install tzinfo</code>  </li>
+    <li><code class="sh">gem install tzinfo-data</code>  </li>
+    <li><code class="sh">gem install posix-spawn</code></li>
+  </ul>
+  <br>
+  <p><b>Gerar Documentação</b></p>
+  <p>Dentro de sismob/sismob.documentacao:</p>
+  <code class="sh">jekyll serve</code>
+
+  <h1 align="center">Em construção by Galera da Qualidade</h1>
   </div>
 
 </div>
