@@ -377,6 +377,7 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
     <!-- End Linux -->
   </div>
   <div class="tab-pane" id="windows" role="tabpanel">
+    <img src="https://img.ibxk.com.br///2016/04/12/12104730220051-t1200x480.jpg" alt="">
   <br>
   <br>
   <h1 align="center"><img src="https://talk.jekyllrb.com/uploads/jekyllrb/original/1X/4f9bd5334246d33651e846aed812280fbff586ba.png" alt="Jekyll" width="200px"></h1>
