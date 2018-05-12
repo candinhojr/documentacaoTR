@@ -45,9 +45,18 @@ ou pelo instalável .debian
 
 https://packagecloud.io/github/git-lfs
 
+
 2. Executar pull do projeto após a instalação do Git LFS
 3. Executar o arquivo docker/build.sh que criará a imagem base com instalação Oracle + Dumps de Schemas terceiros
-4. Executar o arquivo ./run.sh para criar a instância da imagem (container) e realizar a migração de todos os objetos do DBSISMOB
+4. Executar o arquivo ./run.sh para criar a instância da imagem (container) e realizar a migração de todos os objetos do DBSISMOB  
+
+## Executar novas migrações sem zerar o banco
+
+1. Executar mvn spring-boot:run dentro do projeto sismob.database  
+
+## Gerar SQL com diff entre banco de dados e changelogs do liquibase
+
+1. Executar mvn liquibase:updateSQL dentro do projeto sismob.database
 
 ## Acesso Oracle
 
@@ -63,6 +72,13 @@ Senha: oracle
 Login: SYS (sysdba)  
 Senha: oracle  
 
+## Utilizar banco com propostas migradas
+
+1. Fazer pull da imagem: docker pull esusab/sismob:2.8
+2. Executar o script: alter table DBSISMOB.TB_PARAMETRIZACAO_ALERTA rename column QT_DIAS_ENVIO_ALERTA to QT_DIA_ENVIO_ALERTA;
+3. Iniciar o container: docker run -d -p 1521:1521 --name sismob esusab/sismob:2.8 (o container pode demorar até 10min para iniciar a base)
+4. Executar novas migrações normalmente, sem zerar a base
+
 ## Tipos de dados
 
 | Tipo de dado Oracle |  Tipo de dado Java |
@@ -70,7 +86,7 @@ Senha: oracle
 | NUMBER(19,0)        |  Long              |
 | NUMBER(10,0)        |  Integer           |
 | NUMBER(5,0)         |  Short             |
-| VARCHAR(*)          |  String            |
+| VARCHAR(* CHAR)     |  String            |
 | CHAR(*)             |  String            |
 | CLOB                |  String @Lob       |
 | DATE                |  Date              |
