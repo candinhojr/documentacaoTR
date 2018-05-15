@@ -75,8 +75,18 @@ Senha: oracle
 ## Utilizar banco com propostas migradas
 
 1. Fazer pull da imagem: docker pull esusab/sismob:2.8
-2. Iniciar o container: docker run -d -p 1521:1521 --name=sismob esusab/sismob:2.8 (o container pode demorar até 10min para iniciar a base)
-3. Executar o script: alter table DBSISMOB.TB_PARAMETRIZACAO_ALERTA rename column QT_DIAS_ENVIO_ALERTA to QT_DIA_ENVIO_ALERTA;
+2. Iniciar o container:
+
+```sh
+docker run -d -p 1521:1521 --name=sismob esusab/sismob:2.8
+```
+(o container pode demorar até 10min para iniciar a base)
+3. Executar o script:
+
+```sql
+alter table DBSISMOB.TB_PARAMETRIZACAO_ALERTA rename column QT_DIAS_ENVIO_ALERTA to QT_DIA_ENVIO_ALERTA;
+```
+
 4. Executar novas migrações normalmente, sem zerar a base
 
 ## Tipos de dados
