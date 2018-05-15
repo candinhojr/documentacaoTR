@@ -74,7 +74,12 @@ Senha: oracle
 
 ## Utilizar banco com propostas migradas
 
-1. Fazer pull da imagem: docker pull esusab/sismob:2.8
+1. Fazer pull da imagem:
+
+```sh
+docker pull esusab/sismob:2.8
+```
+
 2. Iniciar o container:
 
 ```sh
