@@ -31,7 +31,7 @@ codigo: dumps-e-config
 
 - Semelhante ao Debian 7, o Ubuntu 12 e versões similares do Wheezy precisam ter um repositório PPA instalado para obter o git >= 1.8.2
 
-	1. `sudo apt-get install software-properties-common` para instalar o  add-apt-repository (or `sudo apt-get install python-software-properties` Se você tem o Ubuntu <= 12.04)
+	1. `sudo apt-get install software-properties-common` para instalar o  add-apt-repository (ou `sudo apt-get install python-software-properties` Se você tem o Ubuntu <= 12.04)
 	2. `sudo add-apt-repository ppa:git-core/ppa`
 		O script curl abaixo chama apt-get update, se você não estiver usando, não se esqueça de ligar
 	3. `sudo apt-get update` antes de instalar o git-lfs.
@@ -47,8 +47,21 @@ https://packagecloud.io/github/git-lfs
 
 
 2. Executar pull do projeto após a instalação do Git LFS
-3. Executar o arquivo docker/build.sh que criará a imagem base com instalação Oracle + Dumps de Schemas terceiros
-4. Executar o arquivo ./run.sh para criar a instância da imagem (container) e realizar a migração de todos os objetos do DBSISMOB  
+3. Executar o arquivo
+
+```sh
+./docker/build.sh
+```
+
+que criará a imagem base com instalação Oracle + Dumps de Schemas terceiros
+
+4. Executar o arquivo
+
+```sh
+./run.sh
+```
+
+para criar a instância da imagem (container) e realizar a migração de todos os objetos do DBSISMOB  
 
 ## Executar novas migrações sem zerar o banco
 
