@@ -107,6 +107,12 @@ alter table DBSISMOB.TB_PARAMETRIZACAO_ALERTA rename column QT_DIAS_ENVIO_ALERTA
 
 4. Executar novas migrações normalmente, sem zerar a base
 
+Em sismob.database executar o Script
+
+```sh
+mvn spring-boot:run
+```
+
 ## Tipos de dados
 
 | Tipo de dado Oracle |  Tipo de dado Java |
