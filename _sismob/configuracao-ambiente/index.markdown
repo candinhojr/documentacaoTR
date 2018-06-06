@@ -241,7 +241,7 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
           <li>Vá em <b>Window > Preferences > Java > Code Style > Formatter</b> clique em 'Import...' e selecione o arquivo 'sismob-formatter.xml' na pasta do projeto;</li>
           <li>Vá em <b>Window > Preferences > Java > Code Style > Clean Up</b>  clique em 'Import...' e selecione o arquivo 'java_cleanup.xml' na pasta do projeto;</li>
           <li>Vá em <b>Window > Preferences > Java > Code Style > Organize Imports</b>  clique em 'Import...' e selecione o arquivo 'bridge.importorder' na pasta do projeto;</li>
-          <li>Vá em <b>Help > Eclipse Marketplace</b> para instalar o Maven Integration JDT APT:
+          <li><b>Se sua versão é anterior a 2.10:</b>Vá em <b>Help > Eclipse Marketplace</b> para instalar o Maven Integration JDT APT:
             <ol>
               <li>Pesquise por 'Jboss', procure o item 'JBoss Tools' clique em 'Install'. Em seguida marque apenas as seguintes opções e confirme:
                   <ul>
