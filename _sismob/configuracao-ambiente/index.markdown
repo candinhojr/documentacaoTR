@@ -241,7 +241,7 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
           <li>Vá em <b>Window > Preferences > Java > Code Style > Formatter</b> clique em 'Import...' e selecione o arquivo 'sismob-formatter.xml' na pasta do projeto;</li>
           <li>Vá em <b>Window > Preferences > Java > Code Style > Clean Up</b>  clique em 'Import...' e selecione o arquivo 'java_cleanup.xml' na pasta do projeto;</li>
           <li>Vá em <b>Window > Preferences > Java > Code Style > Organize Imports</b>  clique em 'Import...' e selecione o arquivo 'bridge.importorder' na pasta do projeto;</li>
-          <li><b>Se sua versão é anterior a 2.10:</b>Vá em <b>Help > Eclipse Marketplace</b> para instalar o Maven Integration JDT APT:
+          <li><b>Se sua versão do projeto SISMOB é anterior a 2.10:</b>Vá em <b>Help > Eclipse Marketplace</b> para instalar o Maven Integration JDT APT:
             <ol>
               <li>Pesquise por 'Jboss', procure o item 'JBoss Tools' clique em 'Install'. Em seguida marque apenas as seguintes opções e confirme:
                   <ul>
@@ -252,6 +252,7 @@ oracle.jdbc.password=j5m9jTr5s4mvgvb82MSM
               <li>Após a instalação, clique em OK na mensagem que aparecerá para reiniciar o Eclipse.</li>
             </ol>
           </li>
+          <li>Se sua versão do ECLIPSE é anterior a Oxygen, execute esses passos</li>
           <li>Vá em <b>File > Import > Maven > Existing Maven Projects</b> e selecione a pasta do sismob para importar os projetos. Selecione todos, <b>exceto o core.processor</b>, e aguarde a importação;</li>
           <li>Selecione o projeto <b>sismob.common.api</b> e vá em <b>Project > Properties > Maven > Annotation Processing</b>. Selecione a opção 'Enable project specific settings' e em seguida marque a opção 'Automatically configure JDT APT'. Clique em 'OK' para salvar e fechar;</li>
           <li>Selecione o projeto <b>sismob.tools</b> e vá em <b>Project > Properties > Java Build Path > Projects</b>. Adicione o projeto <b>core.tools</b>. Clique em 'OK' para salvar e fechar;</li>
